@@ -4,14 +4,25 @@ A comprehensive, student-friendly apartment and housing database for Ithaca, NY.
 
 ## Project Goal
 
-Create the most complete apartment database for Ithaca by scraping and aggregating data from all available online sources, including:
+Create the most complete apartment database for Ithaca by scraping and aggregating data from all available online sources.
 
-- Craigslist
-- Facebook Marketplace
-- Local Ithaca rental websites
-- University housing resources
-- Google Maps/Search data
-- Local landlord directories
+### Sources currently scraped
+
+| Source | Method | Notes |
+|--------|--------|-------|
+| **Craigslist** (apts, rooms, sublets) | full detail-page scrape | Largest source; geo-coordinates, photos, amenities |
+| **Lambrou Real Estate** | Squarespace JSON API | Collegetown buildings |
+| **Ithaca Estates Realty** | server-rendered detail pages | Multi-unit buildings |
+| **PPM Homes** | AppFolio listings portal | Live rents, bed/bath |
+| **Travis Hyde Properties** | AppFolio listings portal | Live rents, bed/bath |
+
+### Sources investigated but not scrapable without a headless browser
+
+- **apartments.com**, **Zillow** — return HTTP 403 to automated requests (strong anti-bot).
+- Some local sites render listings entirely client-side with no public API.
+
+To add a source, subclass `BaseScraper` in `scripts/` and register it in
+`build_database.py`.
 
 ## Data Included
 
@@ -148,52 +159,60 @@ All data is stored in JSON format in the `/data` directory:
 ```
 rentica/
 ├── README.md                 # This file
+├── index.html                # Interactive web UI (map + filters)
 ├── data/
 │   ├── apartments.json       # Main comprehensive database
-│   ├── raw/                  # Raw data from each source
-│   │   ├── craigslist.json
-│   │   ├── facebook.json
-│   │   ├── airbnb.json
-│   │   └── ...
-│   └── processed/            # Cleaned and normalized data
+│   └── raw/                  # Raw data from each source
+│       ├── craigslist_raw.json
+│       ├── lambrou_raw.json
+│       ├── ithacaestates_raw.json
+│       ├── ppmhomes_raw.json
+│       └── travishyde_raw.json
 ├── scripts/
-│   ├── scrape_craigslist.py
-│   ├── scrape_facebook.py
-│   ├── scrape_airbnb.py
-│   ├── normalize_data.py     # Standardize all data
-│   ├── deduplicate.py        # Remove duplicate listings
-│   ├── geocode.py            # Add coordinates
-│   ├── calculate_distances.py # Add distances to universities
-│   └── build_database.py     # Combine all sources
+│   ├── scraper_base.py       # Base class for all scrapers
+│   ├── scrape_craigslist.py  # Craigslist (full detail pages)
+│   ├── scrape_lambrou.py     # Lambrou (Squarespace JSON)
+│   ├── scrape_ithacaestates.py
+│   ├── scrape_appfolio.py    # PPM Homes + Travis Hyde (AppFolio)
+│   ├── normalize_data.py     # Standardize + deduplicate
+│   ├── geocode.py            # Coordinates + distances to campuses
+│   └── build_database.py     # Run all sources end-to-end
 ├── tools/
-│   ├── search.py             # Query the database
+│   ├── search.py             # Query the database (CLI)
 │   └── analyze.py            # Generate statistics
+├── requirements.txt
 └── .gitignore
 ```
 
 ## How to Use This Data
 
-### Search by Filters
+### Interactive web interface (recommended)
+Open `index.html` in a browser (or serve the folder) to browse every listing
+on a map with live filters for price-per-person, bedrooms, bathrooms,
+distance to Cornell, parking, laundry, A/C, furnished, and pets:
+```
+python -m http.server 8000      # then visit http://localhost:8000
+```
+
+### Search by Filters (CLI)
 ```
 python tools/search.py --max-price 800 --bedrooms 2 --parking
 ```
 
 ### View Statistics
 ```
-python tools/analyze.py --neighborhood commons
+python tools/analyze.py --neighborhood collegetown
+```
+
+### Rebuild the database
+```
+pip install -r requirements.txt
+python scripts/build_database.py
 ```
 
 ### Access the JSON
-All data is available in structured JSON format for direct analysis.
-
-## Data Sources
-
-- **Craigslist**: Ithaca housing section
-- **Facebook Marketplace**: Ithaca area
-- **Airbnb**: Long-term stays
-- **Google Maps**: Business listings, verified info
-- **Direct landlord websites**: Local property management companies
-- **University Resources**: Cornell/IC housing
+All data is available in structured JSON format (`data/apartments.json`)
+for direct analysis.
 
 ## Contributing
 
