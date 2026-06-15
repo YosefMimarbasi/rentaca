@@ -11,15 +11,28 @@ Create the most complete apartment database for Ithaca by scraping and aggregati
 | Source | Method | Notes |
 |--------|--------|-------|
 | **Craigslist** (apts, rooms, sublets) | full detail-page scrape | Largest source; geo-coordinates, photos, amenities |
+| **PPM Homes** | AppFolio listings portal | Live rents, bed/bath |
+| **Travis Hyde Properties** | AppFolio listings portal | Live rents; manages **Eddygate** & **Seneca Way** |
+| **Modern Living Rentals** | AppFolio listings portal | Large Collegetown portfolio |
 | **Lambrou Real Estate** | Squarespace JSON API | Collegetown buildings |
 | **Ithaca Estates Realty** | server-rendered detail pages | Multi-unit buildings |
-| **PPM Homes** | AppFolio listings portal | Live rents, bed/bath |
-| **Travis Hyde Properties** | AppFolio listings portal | Live rents, bed/bath |
+| **Strawberry Property** | WordPress detail pages | Student houses |
+| **Ridgetop** | Squarespace building pages | Eddy St / Dryden Rd |
 
-### Sources investigated but not scrapable without a headless browser
+AppFolio portals are discovered automatically and share one scraper
+(`scrape_appfolio.py`); add a portal to `APPFOLIO_PORTALS` to include it.
 
-- **apartments.com**, **Zillow** — return HTTP 403 to automated requests (strong anti-bot).
-- Some local sites render listings entirely client-side with no public API.
+### Sources investigated but not (yet) scrapable
+
+| Source | Platform | Blocker |
+|--------|----------|---------|
+| apartments.com, Zillow | — | HTTP 403 anti-bot |
+| Collegetown Terrace | — | HTTP 403 |
+| Ithaca Renting Company | RentManager | HTML doesn't expose per-unit address/price; portal is JS-only |
+| Lux & Lofts | Entrata | client-side rendered |
+| Cayuga Place | RealPage | client-side rendered |
+| Harold's Square | Buildium | client-side rendered |
+| Heritage Park | greatcommunities portal | external portal |
 
 To add a source, subclass `BaseScraper` in `scripts/` and register it in
 `build_database.py`.
