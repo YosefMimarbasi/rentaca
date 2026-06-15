@@ -56,3 +56,8 @@ config.local.json
 # Logs
 *.log
 logs/
+
+# scratch / generated
+scripts/_*.py
+data/*.backup.json
+data/appfolio_detail_cache.json
