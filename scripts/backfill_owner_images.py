@@ -105,25 +105,61 @@ def norm(addr):
     return a
 
 
+def load_apts247():
+    """Load Playwright-scraped apartments247 community images, if present.
+
+    Returns {normalized_address: {"images": [...], "floorplan_images": [...]}}.
+    Filters loader/placeholder assets.
+    """
+    path = ROOT / "data" / "raw" / "apartments247_images.json"
+    if not path.exists():
+        return {}
+    raw = json.loads(path.read_text(encoding="utf-8"))
+    bad = ("img-loading", "placeholder", "spacer", "blank")
+    out = {}
+    for addr, buckets in raw.items():
+        def clean(key):
+            return [u for u in buckets.get(key, []) if not any(b in u.lower() for b in bad)]
+        gallery = dedup(clean("images") + clean("amenity_images"))
+        fps = dedup(clean("floorplan_images"))
+        out[norm(addr)] = {"images": gallery, "floorplan_images": fps}
+    return out
+
+
 def main():
     targets = gather()
     print("gathered owner images for:")
     for k, v in targets.items():
         print(f"  {k:30} {len(v)} images")
     tnorm = {norm(k): v for k, v in targets.items()}
+    a247 = load_apts247()
+    if a247:
+        print("apartments247 communities:")
+        for k, v in a247.items():
+            print(f"  {k:30} gallery+amenity={len(v['images'])} floorplans={len(v['floorplan_images'])}")
 
     db = json.load(open(DB, encoding="utf-8"))
     filled = 0
     for l in db:
-        info = l.get("listing_info", {})
-        if info.get("images"):
-            continue
+        info = l.setdefault("listing_info", {})
         n = norm(l.get("address"))
-        if n in tnorm:
+        changed = False
+        # simple owner-site galleries
+        if not info.get("images") and n in tnorm:
             info["images"] = list(tnorm[n])
-            l.setdefault("listing_info", info)
+            changed = True
+        # apartments247 communities (gallery/amenity + floorplans)
+        if n in a247:
+            if not info.get("images") and a247[n]["images"]:
+                info["images"] = list(a247[n]["images"])
+                changed = True
+            if a247[n]["floorplan_images"]:
+                existing = info.get("floorplan_images", []) or []
+                info["floorplan_images"] = dedup(existing + a247[n]["floorplan_images"])
+                changed = True
+        if changed:
             filled += 1
-            print(f"  filled {l.get('source')}: {l.get('address')}  (+{len(tnorm[n])})")
+            print(f"  filled {l.get('source')}: {l.get('address')}")
 
     print(f"\nfilled {filled} listings")
     import sys
