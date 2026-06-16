@@ -70,7 +70,7 @@
       if (u.ac) tags.push("A/C");
       if (u.utilities) tags.push("Utils incl.");
       return `<tr>
-        <td><div class="price">${money(u.price)}</div>${u.pp ? `<div class="pp">${money(u.pp)}/person</div>` : ""}</td>
+        <td><div class="price">${money(u.price)}${u.est ? ' <span class="est" title="Estimated from building median — exact rent not listed">est.</span>' : ""}</div>${u.pp ? `<div class="pp">${money(u.pp)}/person</div>` : ""}</td>
         <td>${esc(beds)}</td>
         <td>${esc(baths)}</td>
         <td>${u.sqft ? u.sqft.toLocaleString() + " ft²" : "—"}</td>
@@ -136,6 +136,7 @@
     const facts = [];
     if (b.area) facts.push(["Area", b.area]);
     if (b.dist_cornell != null) facts.push(["To Cornell", b.dist_cornell + " mi"]);
+    else if (b.approx_loc) facts.push(["Location", "Ithaca area (approx.)"]);
     if (b.dist_ic != null) facts.push(["To Ithaca College", b.dist_ic + " mi"]);
     if (b.walk_min) facts.push(["Walk to campus", "~" + b.walk_min + " min"]);
     if (b.drive_min) facts.push(["Drive to campus", "~" + b.drive_min + " min"]);
@@ -152,7 +153,7 @@
     if (b.company) contact.push(`<div class="fact"><span class="k">Managed by</span><span class="v">${esc(b.company)}</span></div>`);
     if (b.phone) contact.push(`<div class="fact"><span class="k">Phone</span><span class="v"><a href="tel:${esc(b.phone)}">${esc(b.phone)}</a></span></div>`);
 
-    const firstUrl = (b.units.find((u) => u.url) || {}).url;
+    const firstUrl = ((b.units || []).find((u) => u.url) || {}).url;
 
     return `<div class="sticky-side">
       <div class="panel">
@@ -195,7 +196,7 @@
       ${gallery(b)}
       <div class="cols">
         <div>
-          ${unitsTable(b.units)}
+          ${unitsTable(b.units || [])}
           ${floorplansPanel(b)}
           ${reviewsPanel(b)}
           ${similarPanel(b, all)}

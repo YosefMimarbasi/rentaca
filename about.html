@@ -87,6 +87,9 @@ fetch("data/site.json", { cache: "no-store" }).then((r) => r.json()).then((d) =>
     `<div class="statcard"><div class="n">${n}</div><div class="l">${l}</div></div>`).join("");
   document.getElementById("srcList").textContent = s.source_list.join(" · ");
   document.getElementById("genDate").textContent = d.generated || "—";
+}).catch(() => {
+  document.getElementById("statgrid").innerHTML =
+    '<div class="statcard" style="grid-column:1/-1"><div class="l">Stats unavailable — run <code>python scripts/build_site_data.py</code> to generate the dataset.</div></div>';
 });
 </script>
 </body>

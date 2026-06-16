@@ -373,6 +373,7 @@ button { font-family: inherit; cursor: pointer; }
 .units tr { transition: background .15s var(--ease); }
 .units tbody tr:hover { background: var(--bg-soft); }
 .units .price { font-weight: 700; font-size: 15.5px; }
+.units .price .est { font-weight: 500; font-size: 11px; color: var(--muted); background: var(--bg-tint); padding: 1px 5px; border-radius: 5px; vertical-align: middle; cursor: help; }
 .units .pp { color: var(--muted); font-size: 13px; }
 .units .avail { color: var(--green); font-weight: 500; font-size: 13.5px; }
 .tag {

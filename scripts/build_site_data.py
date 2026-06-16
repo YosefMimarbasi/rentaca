@@ -23,6 +23,19 @@ DATA = ROOT / "data"
 CORNELL = (42.4534, -76.4735)
 ITHACA_COLLEGE = (42.4220, -76.4954)
 
+# Geocoders fall back to the Ithaca city centroid when they can't resolve a
+# vague address ("Ithaca", "South Hill", "Village Circle"). 60+ listings land on
+# this exact point, producing a fake-precise "1.47 mi to Cornell". Detect it and
+# suppress the bogus distance rather than implying precision we don't have.
+CITY_CENTROID = (42.4406, -76.4966)
+CENTROID_TOL = 0.0008
+
+
+def is_centroid(lat, lng):
+    return (lat is not None and lng is not None
+            and abs(lat - CITY_CENTROID[0]) < CENTROID_TOL
+            and abs(lng - CITY_CENTROID[1]) < CENTROID_TOL)
+
 
 def haversine_mi(a, b):
     if not (a[0] and a[1] and b[0] and b[1]):
@@ -173,6 +186,7 @@ def main():
                 "sqft": housing.get("sqft") or None,
                 "price": price or None,
                 "pp": pp or None,
+                "est": pricing.get("price_basis") == "building median",
                 "available": (housing.get("available") or "").strip(),
                 "furnished": bool(housing.get("furnished") or amen.get("furnished")),
                 "parking": amen.get("parking") if amen.get("parking") and amen.get("parking") != "none" else None,
@@ -198,8 +212,18 @@ def main():
                     lat, lng = c["lat"], c["lng"]
                     break
 
-        dc = min(dist_cornell) if dist_cornell else haversine_mi((lat, lng), CORNELL)
-        di = min(dist_ic) if dist_ic else haversine_mi((lat, lng), ITHACA_COLLEGE)
+        # If the only location we have is the city-centroid geocoder fallback,
+        # we don't actually know where this listing is — don't fabricate a
+        # precise distance. The precomputed distance_to_*_miles on these records
+        # was ITSELF derived from the centroid, so it's equally fake; suppress it
+        # too and just flag the location approximate.
+        approx = is_centroid(lat, lng)
+
+        if approx:
+            dc = di = None
+        else:
+            dc = min(dist_cornell) if dist_cornell else haversine_mi((lat, lng), CORNELL)
+            di = min(dist_ic) if dist_ic else haversine_mi((lat, lng), ITHACA_COLLEGE)
 
         # images: building shared gallery (meta) unioned with members' own photos
         images = dedupe((meta.get("images") or []) + own_images)
@@ -241,6 +265,7 @@ def main():
             "baths_max": max(baths) if baths else None,
             "dist_cornell": dc,
             "dist_ic": di,
+            "approx_loc": bool(approx),
             "walk_min": round(walk) if walk else None,
             "drive_min": round(drive) if drive else None,
             "amenities": am,
@@ -259,6 +284,14 @@ def main():
                 "likes": r.get("likes") or 0,
                 "detailed": r.get("detailed_ratings") or {},
             } for r in (meta.get("reviews") or []) if r.get("text")],
+            # slim per-unit rows for the building detail table (drop the heavy
+            # per-unit image/floorplan arrays — the page renders building-level
+            # galleries, and the table only needs these scalar fields)
+            "units": [{k: u[k] for k in (
+                "id", "unit", "title", "beds", "baths", "sqft", "price", "pp",
+                "est", "available", "furnished", "parking", "laundry", "ac",
+                "utilities", "source", "url",
+            )} for u in units_out],
             "_has_photo": bool(images),
         })
 

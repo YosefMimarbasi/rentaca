@@ -152,6 +152,7 @@
     if (b.baths_max) c.push(b.baths_max + " ba");
     if (b.dist_cornell != null) c.push(b.dist_cornell + " mi → Cornell");
     else if (b.walk_min) c.push(b.walk_min + " min walk");
+    else if (b.approx_loc) c.push("Ithaca area");
     return c;
   }
 
@@ -184,7 +185,12 @@
     </a>`;
   }
 
+  const PAGE = 48;          // cards per batch
+  let shown = 0, current = [], firstRender = true;
+
   function render(list) {
+    current = list;
+    shown = 0;
     $("#count").textContent = list.length.toLocaleString() + " buildings";
     drawMarkers(list);
     const cards = $("#cards");
@@ -192,10 +198,49 @@
       cards.innerHTML = '<div class="state"><h3>No matches</h3>Try widening your filters.</div>';
       return;
     }
-    // cap initial DOM for perf; render in one pass (740 is fine)
-    cards.innerHTML = list.map(card).join("");
-    // hover card ↔ map link
-    $$(".card", cards).forEach((el) => {
+    cards.innerHTML = "";
+    appendBatch();
+    // when re-filtering while scrolled into the results, snap back up to the
+    // top of the grid so the user sees the new best matches (skip on first paint)
+    if (!firstRender) {
+      const browse = document.getElementById("browse");
+      if (browse && browse.getBoundingClientRect().top < 0) {
+        browse.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+    firstRender = false;
+  }
+
+  function appendBatch() {
+    const cards = $("#cards");
+    const slice = current.slice(shown, shown + PAGE);
+    const sentinel = $("#sentinel");
+    if (sentinel) sentinel.remove();           // detach before appending
+    const frag = document.createElement("div");
+    frag.innerHTML = slice.map(card).join("");
+    const newCards = Array.from(frag.children);
+    while (frag.firstChild) cards.appendChild(frag.firstChild);
+    bindCardHover(newCards);
+    shown += slice.length;
+
+    if (shown < current.length) {
+      let s = $("#sentinel");
+      if (!s) {
+        s = document.createElement("div");
+        s.id = "sentinel";
+        s.style.cssText = "grid-column:1/-1;height:1px";
+        io.observe(s);
+      }
+      cards.appendChild(s);
+    }
+  }
+
+  const io = new IntersectionObserver((entries) => {
+    if (entries.some((e) => e.isIntersecting)) appendBatch();
+  }, { rootMargin: "600px" });
+
+  function bindCardHover(els) {
+    els.forEach((el) => {
       const id = el.getAttribute("data-id");
       el.addEventListener("mouseenter", () => {
         const m = markerById[id];
