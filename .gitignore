@@ -74,3 +74,4 @@ scripts/ithaca_uids.txt
 
 # local dev / editor
 .claude/
+.tmp_ithaca/ _cl_live_cache

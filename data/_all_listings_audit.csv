@@ -1,5 +1,5 @@
 id,source,beds,baths,total,per_person,per_bed,address,verdict
-craigslist-7941072766,craigslist,1,1,800,800,800,198 Black Oak rd,OK
+craigslist-7941072766,craigslist,3,1,800,267,267,198 Black Oak rd,pp<500;perbed<350
 craigslist-7940110370,craigslist,2,1,1500,750,750,204 West Spencer Street,OK
 craigslist-7941071264,craigslist,2,1,900,450,450,,pp<500;no_addr
 craigslist-7931629149,craigslist,2,1,1895,948,948,114 Overlook Road near kline,OK
@@ -12,15 +12,15 @@ craigslist-7939775630,craigslist,2,2,2062,1031,1031,Village Circle near Equinox 
 craigslist-7939775574,craigslist,3,2,2268,756,756,Village Circle near Equinox drive,no_addr
 craigslist-7940449548,craigslist,1,1,1272,1272,1272,Village Circle,no_addr
 craigslist-7938872264,craigslist,3,2.5,2995,998,998,1062 Dryden Road,OK
-craigslist-7940335029,craigslist,1,1,2500,2500,2500,104 N Aurora St near E State street,OK
-craigslist-7940336645,craigslist,2,1,2800,1400,1400,104-06 N Aurora St near E State street,OK
+craigslist-7940335029,craigslist,1,1,2350,2350,2350,104 N Aurora St near E State street,total!=raw
+craigslist-7940336645,craigslist,2,1,2600,1300,1300,104-06 N Aurora St near E State street,total!=raw
 craigslist-7939697475,craigslist,2,1,1700,850,850,523 E State St near Stewart Ave.,OK
 craigslist-7933948713,craigslist,3,1,2500,833,833,222 Eddy Street,OK
-craigslist-7936922752,craigslist,1,1,795,795,795,107 Eddy st,OK
+craigslist-7936922752,craigslist,3,1,795,265,265,107 Eddy st,pp<500;perbed<350
 craigslist-7940955712,craigslist,1,1,1100,1100,1100,Gunderman Rd near Comfort Rd,no_addr
 craigslist-7940941585,craigslist,0,1,1050,1050,1050,South Hill,no_addr
 craigslist-7931485353,craigslist,1,1,975,975,975,Agard Rd. near Rt. 89,OK
-craigslist-7933905948,craigslist,1,2,700,700,700,103 Birdseye View Dr near Danny rd,OK
+craigslist-7933905948,craigslist,1,2,750,750,750,103 Birdseye View Dr near Danny rd,total!=raw
 craigslist-7934846083,craigslist,1,2,650,650,650,1044 Danby Rd,OK
 craigslist-7940927154,craigslist,1,1,1000,1000,1000,Ellis Hollow RD,no_addr
 craigslist-7940925641,craigslist,1,1,900,900,900,312 turner pl,OK
@@ -37,11 +37,11 @@ craigslist-7934135729,craigslist,2,1,2365,1182,1182,520 Linn St. near King St.,O
 craigslist-7940908340,craigslist,2,2,2300,1150,1150,2227 N Triphammer Rd,OK
 craigslist-7938862198,craigslist,3,1,1200,400,400,56 Groton Ave,pp<500
 craigslist-7938549775,craigslist,3,1,1797,599,599,542 Warren Rd near Winthrop Drive,OK
-craigslist-7940879553,craigslist,3,2,2550,850,850,Ithaca  – Cornell,no_addr
+craigslist-7940879553,craigslist,3,2,2375,792,792,Ithaca  – Cornell,total!=raw;no_addr
 craigslist-7938732685,craigslist,1,1,1400,1400,1400,Utica St. near Farm St.,no_addr
 craigslist-7933548965,craigslist,1,2.5,800,800,800,Dearborn Place near Triphammer Rd,no_addr
 craigslist-7935859297,craigslist,4,2,3400,850,850,E State St near Stewart Ave,no_addr
-craigslist-7939705154,craigslist,4,2.5,3350,838,838,Northeast,no_addr
+craigslist-7939705154,craigslist,3,2.5,3350,1117,1117,Northeast,no_addr
 craigslist-7938377178,craigslist,3,1,1897,632,632,125 Farm Street near North Tioga St,OK
 craigslist-7931369675,craigslist,3,1,2900,967,967,719 Hanshaw Road,OK
 craigslist-7934881624,craigslist,2,1,1850,925,925,2250 North Triphammer Road,OK
@@ -69,7 +69,7 @@ craigslist-7940669440,craigslist,1,1,800,800,800,,no_addr
 craigslist-7936260772,craigslist,1,1,1500,1500,1500,Dearborn Place near Triphammer Rd,no_addr
 craigslist-7940633724,craigslist,4,4.5,4900,1225,1225,99 reach run,OK
 craigslist-7933155813,craigslist,2,1,2295,1148,1148,301 Boiceville Rd,OK
-craigslist-7935493778,craigslist,1,1,1695,1695,1695,301 Boiceville Rd,OK
+craigslist-7935493778,craigslist,2,1,1695,848,848,301 Boiceville Rd,OK
 craigslist-7933954309,craigslist,2,1,1795,898,898,"Burdett, East side of Seneca Lake",no_addr
 craigslist-7936173015,craigslist,2,2,2395,1198,1198,3690 La Bourgade Lane,OK
 craigslist-7940619794,craigslist,2,1,2395,1198,1198,52 Main St,OK
@@ -86,12 +86,12 @@ craigslist-7938828541,craigslist,2,1.5,2150,1075,1075,N Cayuga Ave near Court St
 craigslist-7937502037,craigslist,2,2,2550,1275,1275,N Cayuga St near Court St.,no_addr
 craigslist-7932107346,craigslist,2,2,3500,1750,1750,110 N Titus near S Cayuga St.,OK
 craigslist-7940511518,craigslist,4,1,3260,815,815,505 Dryden Road,total!=raw
-craigslist-7937428458,craigslist,2,1,1775,888,888,618 Stewart Ave,OK
-craigslist-7937428403,craigslist,1,1,1580,1580,1580,618 Stewart Ave,OK
-craigslist-7932016382,craigslist,2,1,1507,754,754,Ithaca,no_addr
-craigslist-7932523817,craigslist,3,1,2995,998,998,115 Llenroc Court,OK
-craigslist-7932016331,craigslist,3,1,2175,725,725,207 Fall Creek Drive,OK
-craigslist-7932523735,craigslist,4,1,3125,781,781,307 Wait Avenue,OK
+craigslist-7937428458,craigslist,5,1,1775,355,355,618 Stewart Ave,pp<500
+craigslist-7937428403,craigslist,5,1,1580,316,316,618 Stewart Ave,pp<500;perbed<350
+craigslist-7932016382,craigslist,5,1,1507,301,301,Ithaca,pp<500;perbed<350;no_addr
+craigslist-7932523817,craigslist,5,1,2995,599,599,115 Llenroc Court,OK
+craigslist-7932016331,craigslist,5,1,2175,435,435,207 Fall Creek Drive,pp<500
+craigslist-7932523735,craigslist,5,1,3125,625,625,307 Wait Avenue,OK
 craigslist-7940488524,craigslist,0,1,550,550,550,Groton,no_addr
 craigslist-7940488218,craigslist,1,1,700,700,700,Groton,no_addr
 craigslist-7940456619,craigslist,2,1,982,491,491,,pp<500;no_addr
@@ -104,7 +104,7 @@ craigslist-7932163425,craigslist,1,1,770,770,770,ithaca,total!=raw;no_addr
 craigslist-7932163824,craigslist,2,1,1400,700,700,Freeville,no_addr
 craigslist-7932163588,craigslist,3,1,2550,850,850,ithaca,no_addr
 craigslist-7940400030,craigslist,1,1,395,395,395,310 Farm St.,total<400;pp<500
-craigslist-7940369053,craigslist,3,1.5,1850,617,617,,no_addr
+craigslist-7940369053,craigslist,2,1.5,1850,925,925,,no_addr
 craigslist-7939809051,craigslist,1,1,1700,1700,1700,Ellis Hollow RD,no_addr
 craigslist-7938547414,craigslist,2,1,1250,625,625,138.5 Linn Street,OK
 craigslist-7940314842,craigslist,1,1,700,700,700,600 warren rd,OK
@@ -123,24 +123,24 @@ craigslist-7940091029,craigslist,3,2,3000,1000,1000,Ithaca,total!=raw;no_addr
 craigslist-7940086463,craigslist,1,1,1300,1300,1300,Ithaca,no_addr
 craigslist-7938268852,craigslist,2,1,1795,898,898,324 Spencer Rd,OK
 craigslist-7937222876,craigslist,4,1,3180,795,795,103 Dryden Rd.,OK
-craigslist-7936483667,craigslist,0,1.5,525,525,525,Ithaca,no_addr
+craigslist-7936483667,craigslist,4,1.5,525,131,131,Ithaca,pp<500;perbed<350;no_addr
 craigslist-7940015457,craigslist,1,1,1500,1500,1500,35 Elm Street near Camp St,OK
 craigslist-7935872476,craigslist,2,1,2825,1412,1412,Ithaca,no_addr
 craigslist-7933421241,craigslist,2,1.5,1900,950,950,116 Birdseye View Dr,OK
 craigslist-7936816842,craigslist,0,1,1100,1100,1100,Ithaca,no_addr
 craigslist-7938734612,craigslist,2,1,1900,950,950,Ithaca,no_addr
-craigslist-7939846492,craigslist,2,1,1700,850,850,111 E Spencer St,OK
+craigslist-7939846492,craigslist,2,1,1850,925,925,111 E Spencer St,total!=raw
 craigslist-7939846051,craigslist,2,1,1240,620,620,200 West Hill Circle,OK
 craigslist-7935757046,craigslist,1,1,1400,1400,1400,Ithaca,no_addr
 craigslist-7939799937,craigslist,2,1,1725,862,862,Dryden,no_addr
 craigslist-7939796397,craigslist,2,1.5,1675,838,838,Dryden,no_addr
-craigslist-7939728384,craigslist,0,1.5,770,770,770,119 Honness Ln,OK
+craigslist-7939728384,craigslist,3,1.5,770,257,257,119 Honness Ln,pp<500;perbed<350
 craigslist-7933572712,craigslist,3,2,2340,780,780,212 Giles,OK
 craigslist-7937593053,craigslist,1,1,1450,1450,1450,1 Maplewood,OK
 craigslist-7931821088,craigslist,4,2,2800,700,700,120 James St,OK
 craigslist-7937592932,craigslist,3,2,2340,780,780,12 Charles,OK
 craigslist-7938428474,craigslist,1,1,1460,1460,1460,Drake Road Lansing NY near East Shore Dr,no_addr
-craigslist-7933760927,craigslist,0,2,850,850,850,112 Ferris Place near State Street,OK
+craigslist-7933760927,craigslist,6,2,850,142,142,112 Ferris Place near State Street,pp<500;perbed<350
 craigslist-7939610340,craigslist,1,1,1311,1311,1311,600 warren rd,OK
 craigslist-7939599617,craigslist,1,1,1033,1033,1033,200 West Hill Circle,OK
 craigslist-7938872073,craigslist,2,1.5,2295,1148,1148,1062 Dryden Road near Monkey Run,OK
@@ -153,10 +153,10 @@ craigslist-7939492878,craigslist,2,1,1100,550,550,00 undisclosed address,OK
 craigslist-7939471508,craigslist,1,1.5,2450,2450,2450,Ithaca,no_addr
 craigslist-7939400527,craigslist,2,2,950,475,475,Ithaca,pp<500;no_addr
 craigslist-7939396901,craigslist,2,1,890,445,445,"521 Wyckoff Road, #1 near #1",pp<500
-craigslist-7939311833,craigslist,0,1.5,500,500,500,Dryden Road near Freese Road,no_addr
+craigslist-7939311833,craigslist,5,1.5,500,100,100,Dryden Road near Freese Road,pp<500;perbed<350;no_addr
 craigslist-7939313559,craigslist,1,1,1600,1600,1600,Dryden Road near Freese Road,no_addr
 craigslist-7939310497,craigslist,3,1.5,2500,833,833,Dryden Road near Freese Road,no_addr
-craigslist-7934699665,craigslist,1,0,925,925,925,207 Kelvin Place,OK
+craigslist-7934699665,craigslist,3,0,925,308,308,207 Kelvin Place,pp<500;perbed<350
 craigslist-7939277994,craigslist,3,1,1975,658,658,1035 Coddington Rd.,OK
 craigslist-7939217172,craigslist,3,2,2400,800,800,Etna NY,no_addr
 craigslist-7939189530,craigslist,1,1,1240,1240,1240,504 University Ave near Cornell Ave,OK
@@ -167,13 +167,13 @@ craigslist-7939125294,craigslist,3,3,2500,833,833,121 Birdseye View Dr,OK
 craigslist-7934120157,craigslist,3,2,1600,533,533,,no_addr
 craigslist-7939057970,craigslist,2,1,1500,750,750,133 N Main near Brooks St,OK
 craigslist-7939048896,craigslist,1,1,750,750,750,interlaken,no_addr
-craigslist-7938812665,craigslist,2,1,2200,1100,1100,Cayuga Street,no_addr
+craigslist-7938812665,craigslist,3,1,2200,733,733,Cayuga Street,no_addr
 craigslist-7938806388,craigslist,2,1,950,475,475,CORTLAND,pp<500;no_addr
-craigslist-7938737234,craigslist,1,1,1485,1485,1485,East Seneca Street near Stewart Ave,no_addr
+craigslist-7938737234,craigslist,2,1,1485,742,742,East Seneca Street near Stewart Ave,no_addr
 craigslist-7933420292,craigslist,2,1,1800,900,900,Ithaca,no_addr
 craigslist-7938730976,craigslist,0,1,1325,1325,1325,East Seneca Street near North Quarry Str,no_addr
 craigslist-7938729327,craigslist,4,2,3980,995,995,North Quarry St near East Buffalo St,no_addr
-craigslist-7938178578,craigslist,0,1,810,810,810,,no_addr
+craigslist-7938178578,craigslist,3,1,810,270,270,,pp<500;perbed<350;no_addr
 craigslist-7938181868,craigslist,3,1,2640,880,880,Schuyler Pl near Seneca St,no_addr
 craigslist-7938713921,craigslist,1,1,1290,1290,1290,East Buffalo near North Quarry,no_addr
 craigslist-7938697007,craigslist,1,1,2300,2300,2300,ITHACA,no_addr
@@ -182,12 +182,12 @@ craigslist-7932670149,craigslist,1,1,1550,1550,1550,312 turner pl,OK
 craigslist-7938650049,craigslist,3,2,2000,667,667,Trumansburg,no_addr
 craigslist-7938564907,craigslist,1,1,1600,1600,1600,Ithaca,no_addr
 craigslist-7938544926,craigslist,2,1,1940,970,970,2250 N TRIPHAMMER road,OK
-craigslist-7938524251,craigslist,0,1.5,859,859,859,200 West Hill Circle,OK
+craigslist-7938524251,craigslist,3,1.5,859,286,286,200 West Hill Circle,pp<500;perbed<350
 craigslist-7938504873,craigslist,2,1,1200,600,600,"Fall Creek, Ithaca",no_addr
 craigslist-7931611910,craigslist,2,1,1500,750,750,RTreman State Park area,no_addr
 craigslist-7938492921,craigslist,3,1.5,2000,667,667,RTreman Park area,no_addr
 craigslist-7938463173,craigslist,1,1,1500,1500,1500,69 South St,OK
-craigslist-7938438970,craigslist,3,3,2700,900,900,Ithaca,no_addr
+craigslist-7938438970,craigslist,4,3,2700,675,675,Ithaca,no_addr
 craigslist-7936210991,craigslist,1,1,1400,1400,1400,,no_addr
 craigslist-7938427387,craigslist,2,1,1500,750,750,E seneca near Steawrt,no_addr
 craigslist-7938287028,craigslist,3,2,1500,500,500,325 Dryden Road,OK
@@ -205,7 +205,7 @@ craigslist-7937503293,craigslist,3,1,2500,833,833,Eastern Heights Drive near Sha
 craigslist-7937251816,craigslist,2,1.5,1800,900,900,Briarwood near Birchwood,no_addr
 craigslist-7935747774,craigslist,2,2,1050,525,525,Danby Road near East king road,no_addr
 craigslist-7937162266,craigslist,3,1,1995,665,665,91 auburn rd,OK
-craigslist-7936995626,craigslist,2,1.5,1500,750,750,Ithaca,no_addr
+craigslist-7936995626,craigslist,2,1.5,1450,725,725,Ithaca,total!=raw;no_addr
 craigslist-7936975231,craigslist,1,1,1375,1375,1375,Burleigh Drive,no_addr
 craigslist-7936879821,craigslist,2,1,2100,1050,1050,Glen Place near Buffalo Street,no_addr
 craigslist-7936834573,craigslist,2,1,1975,988,988,E State St near Sage Pl,no_addr
@@ -245,8 +245,8 @@ craigslist-7934053020,craigslist,1,1,2500,2500,2500,ITHACA,no_addr
 craigslist-7933579557,craigslist,3,2,2500,833,833,5120 Halseyville road. near Perry City r,OK
 craigslist-7933440764,craigslist,2,2,2750,1375,1375,324 Dryden Road near Elmwood,OK
 craigslist-7933436476,craigslist,3,2,2991,997,997,324 Dryden Road near Elmwood Ave,OK
-craigslist-7933072015,craigslist,0,1,850,850,850,Ithaca,no_addr
-craigslist-7933070245,craigslist,0,1,770,770,770,Ithaca,no_addr
+craigslist-7933072015,craigslist,3,1,850,283,283,Ithaca,pp<500;perbed<350;no_addr
+craigslist-7933070245,craigslist,3,1,770,257,257,Ithaca,pp<500;perbed<350;no_addr
 craigslist-7933065843,craigslist,1,1,1550,1550,1550,Ithaca,no_addr
 craigslist-7932896898,craigslist,2,1,1150,575,575,"521 Wyckoff Road, #1 near #1",OK
 craigslist-7932650531,craigslist,3,2,2950,983,983,Ellis Hollow,no_addr
@@ -258,48 +258,48 @@ craigslist-7931738659,craigslist,2,1,900,450,450,29 Hubbard street near Garfield
 craigslist-7931649535,craigslist,3,2,2375,792,792,34 Meadowlark Drive near Sapsuckerwoods ,OK
 craigslist-7941065684,craigslist,0,0,400,400,400,"Ithaca, NY",pp<500;no_addr
 craigslist-7941065680,craigslist,1,0,460,460,460,"Ithaca, NY",pp<500;no_addr
-craigslist-7938846107,craigslist,0,0,700,700,700,Pleasant near Turner,no_addr
+craigslist-7938846107,craigslist,4,0,700,175,175,Pleasant near Turner,pp<500;perbed<350;no_addr
 craigslist-7934613098,craigslist,0,0,600,600,600,Spencer,no_addr
-craigslist-7939801709,craigslist,0,1,750,750,750,S Albany,no_addr
-craigslist-7940162906,craigslist,4,2,3600,900,900,523E State St near Stewart Ave,total!=raw
+craigslist-7939801709,craigslist,3,1,750,250,250,S Albany,pp<500;perbed<350;no_addr
+craigslist-7940162906,craigslist,1,2,900,900,900,523E State St near Stewart Ave,OK
 craigslist-7935718178,craigslist,1,2,650,650,650,103 Birdseye view dr near Danby rd,OK
-craigslist-7937697850,craigslist,0,1,897,897,897,Farm St near North Tioga,no_addr
-craigslist-7938207716,craigslist,0,1,747,747,747,542 Warren Rd near Winthrop Drive,OK
-craigslist-7940751635,craigslist,0,0,450,450,450,4 Schwan Drive,pp<500
+craigslist-7937697850,craigslist,3,1,897,299,299,Farm St near North Tioga,pp<500;perbed<350;no_addr
+craigslist-7938207716,craigslist,3,1,747,249,249,542 Warren Rd near Winthrop Drive,pp<500;perbed<350
+craigslist-7940751635,craigslist,3,0,450,150,150,4 Schwan Drive,pp<500;perbed<350
 craigslist-7939559441,craigslist,0,0,950,950,950,505 E Seneca Street,OK
 craigslist-7940370652,craigslist,1,1,550,550,550,Ithaca,no_addr
-craigslist-7935168833,craigslist,0,0,775,775,775,Bundy Rd near Trumansburg Rd (96),OK
-craigslist-7939858344,craigslist,1,0,595,595,595,Ithaca,no_addr
-craigslist-7939452801,craigslist,0,2,750,750,750,Trumansburg,no_addr
+craigslist-7935168833,craigslist,3,0,775,258,258,Bundy Rd near Trumansburg Rd (96),pp<500;perbed<350
+craigslist-7939858344,craigslist,3,0,595,198,198,Ithaca,pp<500;perbed<350;no_addr
+craigslist-7939452801,craigslist,4,2,750,188,188,Trumansburg,pp<500;perbed<350;no_addr
 craigslist-7939266668,craigslist,1,1,500,500,500,Green Street near Plain street,no_addr
 craigslist-7939208411,craigslist,1,0,700,700,700,6627 Branch Rd,OK
-craigslist-7936149453,craigslist,1,2,700,700,700,Ithaca,no_addr
-craigslist-7934194711,craigslist,1,0,650,650,650,114 Carls Way,OK
+craigslist-7936149453,craigslist,4,2,700,175,175,Ithaca,pp<500;perbed<350;no_addr
+craigslist-7934194711,craigslist,2,0,650,325,325,114 Carls Way,pp<500;perbed<350
 craigslist-7938159833,craigslist,4,1,0,0,0,Newfield/Ithaca,total!=raw;no_addr
-craigslist-7938158070,craigslist,0,2,750,750,750,South Plain Street,no_addr
+craigslist-7938158070,craigslist,3,2,750,250,250,South Plain Street,pp<500;perbed<350;no_addr
 craigslist-7937851066,craigslist,0,3,550,550,550,Rt 34 just outside Ithaca near Lansing a,OK
 craigslist-7937606928,craigslist,2,0,750,375,375,327 W Seneca St,pp<500
-craigslist-7937024739,craigslist,0,1.5,565,565,565,South Albany street,no_addr
+craigslist-7937024739,craigslist,4,1.5,565,141,141,South Albany street,pp<500;perbed<350;no_addr
 craigslist-7936960764,craigslist,2,1,850,425,425,Near Triphammer Mall,pp<500;no_addr
-craigslist-7936794749,craigslist,0,4,800,800,800,Ithaca,no_addr
+craigslist-7936794749,craigslist,8,4,800,100,100,Ithaca,pp<500;perbed<350;no_addr
 craigslist-7936731843,craigslist,3,0,0,0,0,Ithaca,no_addr
 craigslist-7935812316,craigslist,1,1,800,800,800,Green Street near Plain street,no_addr
-craigslist-7935621742,craigslist,0,1.5,620,620,620,Hillview near South Aurora,no_addr
+craigslist-7935621742,craigslist,3,1.5,620,207,207,Hillview near South Aurora,pp<500;perbed<350;no_addr
 craigslist-7935550227,craigslist,0,0,750,750,750,,no_addr
-craigslist-7935478707,craigslist,1,1,500,500,500,700 Warren Road,OK
-craigslist-7934845524,craigslist,1,0,880,880,880,Hanshaw near Triphammer,no_addr
-craigslist-7934220225,craigslist,0,2,500,500,500,S Albany,no_addr
+craigslist-7935478707,craigslist,2,1,500,250,250,700 Warren Road,pp<500;perbed<350
+craigslist-7934845524,craigslist,3,0,880,293,293,Hanshaw near Triphammer,pp<500;perbed<350;no_addr
+craigslist-7934220225,craigslist,2,2,500,250,250,S Albany,pp<500;perbed<350;no_addr
 craigslist-7933243799,craigslist,1,1,900,900,900,121 Veteran's Pl,OK
-craigslist-7931971969,craigslist,3,1,1800,600,600,317-2S South Cayuga St near E. Clinton S,total!=raw
+craigslist-7931971969,craigslist,1,1,600,600,600,317-2S South Cayuga St near E. Clinton S,OK
 craigslist-7931708725,craigslist,0,1.5,760,760,760,Giles Street near Columbia street,no_addr
 craigslist-7931657323,craigslist,0,0,700,700,700,54 shudaben rd near Enfield ctr rd,OK
 craigslist-7940879763,craigslist,1,1,650,650,650,505 Dryden Road,OK
 craigslist-7940324485,craigslist,1,0,750,750,750,"Ithaca, Westhill",no_addr
 craigslist-7938150458,craigslist,1,0,610,610,610,Summit Avenue near Oak Avenue,no_addr
-craigslist-7940132315,craigslist,0,2,800,800,800,Center st near N. Titus,no_addr
+craigslist-7940132315,craigslist,3,2,800,267,267,Center st near N. Titus,pp<500;perbed<350;no_addr
 craigslist-7935423996,craigslist,1,1,2565,2565,2565,,no_addr
-craigslist-7939513641,craigslist,0,1.5,575,575,575,514 S Aurora St,OK
-craigslist-7939219008,craigslist,1,1,700,700,700,"117 Oak Ave, Apt 1",OK
+craigslist-7939513641,craigslist,3,1.5,575,192,192,514 S Aurora St,pp<500;perbed<350
+craigslist-7939219008,craigslist,2,1,700,350,350,"117 Oak Ave, Apt 1",pp<500
 craigslist-7938593048,craigslist,1,1,700,700,700,419 East Buffalo Street near 419 East Bu,OK
 craigslist-7938594712,craigslist,4,2,1500,375,375,419 East Buffalo Street near 419 East Bu,pp<500
 craigslist-7936818116,craigslist,5,2,3500,700,700,Trumansburg,no_addr
@@ -309,7 +309,7 @@ craigslist-7936586806,craigslist,0,4,650,650,650,Dryden,no_addr
 craigslist-7935855142,craigslist,2,2,2000,1000,1000,,no_addr
 craigslist-7934517542,craigslist,1,1,0,0,0,delaware ave,total!=raw;no_addr
 craigslist-7931460958,craigslist,0,0,1100,1100,1100,40 village circle near Apt Q,OK
-craigslist-7931916522,craigslist,0,4.5,795,795,795,131 VETERANS PL near 131 VET B,OK
+craigslist-7931916522,craigslist,4,4.5,795,199,199,131 VETERANS PL near 131 VET B,pp<500;perbed<350
 ithacaestates-1060-danby-road,ithacaestates,1,1,850,850,850,"1060 Danby Road, Ithaca, NY",OK
 ithacaestates-918-danby-road,ithacaestates,1,1,2100,2100,2100,"918 Danby Road, Ithaca, NY",OK
 ithacaestates-hayloft-art-studios,ithacaestates,1,1,500,500,500,"1059 Danby Road, Ithaca, NY 14850",OK
@@ -336,10 +336,10 @@ modernliving-482,modernliving,6,2,6222,1037,1037,"609 E State St, Ithaca, NY 148
 modernliving-242,modernliving,3,1,2550,850,850,"710 Stewart Ave Unit 8, Ithaca, NY",OK
 modernliving-196,modernliving,3,2,2850,950,950,"518 Linn St -  apt 1, Ithaca, NY 14850",OK
 modernliving-203,modernliving,3,2,3300,1100,1100,"404 University Ave Unit 2, Ithaca, NY",OK
-modernliving-476,modernliving,0,2,1000,1000,1000,"200 Highland Ave - BTB Unit 2C '26-'27, ",OK
+modernliving-476,modernliving,5,2,1000,200,200,"200 Highland Ave - BTB Unit 2C '26-'27, ",pp<500;perbed<350
 modernliving-222,modernliving,3,1,3000,1000,1000,"109 Williams St Unit 5, Ithaca, NY",OK
 modernliving-301,modernliving,2,1,2450,1225,1225,"704 E. State St Unit C, Ithaca, NY",OK
-modernliving-296,modernliving,0,1,1000,1000,1000,"704 E. State St Unit B, Ithaca, NY",OK
+modernliving-296,modernliving,3,1,1000,333,333,"704 E. State St Unit B, Ithaca, NY",pp<500;perbed<350
 modernliving-321,modernliving,3,1,3300,1100,1100,"702 E. State St Unit B, Ithaca, NY",OK
 modernliving-295,modernliving,3,1,3300,1100,1100,"702 E. State St Unit A, Ithaca, NY",OK
 modernliving-207,modernliving,3,1,2575,858,858,"1005 - 1007 N Aurora St Unit 1, Ithaca, ",OK
@@ -457,7 +457,7 @@ modernliving-390,modernliving,1,1,3000,3000,3000,"The Summit Unit 004, Ithaca, N
 modernliving-385,modernliving,0,1,3000,3000,3000,"The Summit Unit 003, Ithaca, NY",OK
 modernliving-378,modernliving,2,2,4400,2200,2200,"The Summit Unit 002, Ithaca, NY",OK
 modernliving-268,modernliving,3,1,2250,750,750,"412 E Marshall St - Unit 3, Ithaca, NY 1",OK
-modernliving-270,modernliving,0,5,850,850,850,"200 Highland Ave - Entire Property, Itha",OK
+modernliving-270,modernliving,20,5,850,42,42,"200 Highland Ave - Entire Property, Itha",pp<500;beds_implausible;perbed<350
 modernliving-39,modernliving,3,2,2950,983,983,"1002 N. Aurora St. Unit 2, Ithaca, NY",OK
 modernliving-290,modernliving,2,1,2200,1100,1100,"504 Stewart Ave Unit 2, Ithaca, NY",OK
 modernliving-355,modernliving,3,1,3600,1200,1200,"601 E. State St Unit F, Ithaca, NY",OK
@@ -523,7 +523,7 @@ ppmhomes-419,ppmhomes,3,1,1950,650,650,"403 S Cayuga Street - 2, Ithaca, NY 1485
 ppmhomes-304,ppmhomes,6,2,3900,650,650,"119-121 Prospect St - 119-121, 119+ PRO,",OK
 ppmhomes-417,ppmhomes,1,1.5,1000,1000,1000,"401 College Avenue - 2a, Ithaca, NY 1485",OK
 ppmhomes-210,ppmhomes,2,1,1100,550,550,"501 N Tioga St #3B, Ithaca, NY 14850",OK
-ppmhomes-124,ppmhomes,0,1,650,650,650,"119 Prospect St, Ithaca, NY 14850",OK
+ppmhomes-124,ppmhomes,3,1,650,217,217,"119 Prospect St, Ithaca, NY 14850",pp<500;perbed<350
 ppmhomes-11,ppmhomes,2,1,1450,725,725,"220-222 West Spencer Street - 222 #5, It",OK
 ppmhomes-8,ppmhomes,0,1,1075,1075,1075,"220-222 West Spencer Street - 222 #2, It",OK
 ppmhomes-50,ppmhomes,3,1,2100,700,700,"320 Hillview Place #7, Ithaca, NY 14850",OK
@@ -541,7 +541,7 @@ ppmhomes-208,ppmhomes,1,1,1450,1450,1450,"310-312 East Buffalo - #6, Ithaca, NY 
 ppmhomes-91,ppmhomes,1,1,1275,1275,1275,"308 Fairmount Ave - #2, Ithaca, NY 14850",OK
 ppmhomes-233,ppmhomes,2,1,1425,712,712,"123 Prospect Street - 2R, 123 PRO, Ithac",OK
 ppmhomes-26,ppmhomes,2,1,1675,838,838,"320 Hillview Place #5, Ithaca, NY 14850",OK
-ppmhomes-346,ppmhomes,0,3.5,595,595,595,"222 S Geneva St., Ithaca, NY 14850",OK
+ppmhomes-346,ppmhomes,10,3.5,595,60,60,"222 S Geneva St., Ithaca, NY 14850",pp<500;beds_implausible;perbed<350
 ppmhomes-234,ppmhomes,3,1,2200,733,733,"410 S Aurora Street - 2, Ithaca, NY 1485",OK
 ppmhomes-399,ppmhomes,2,1,1675,838,838,"403 S Cayuga - 1, Ithaca, NY 14850",OK
 ppmhomes-412,ppmhomes,0,1,1150,1150,1150,"118 Hudson Steet - Studio 3, Ithaca, NY ",OK
@@ -589,9 +589,9 @@ travishyde-213,travishyde,3,2,3900,1300,1300,"311 E. Green St, 5C, Ithaca, NY 14
 travishyde-223,travishyde,1,1,2405,2405,2405,"311 E. Green St, 4B, Ithaca, NY 14850",OK
 travishyde-204,travishyde,3,2,3900,1300,1300,"311 E. Green St, 3C, Ithaca, NY 14850",OK
 travishyde-51,travishyde,2,2,3150,1575,1575,"311 E. Green St, 2D, Ithaca, NY 14850",OK
-travishyde-10,travishyde,2,1,2785,1392,1392,"314-320 East State Street, 701, Ithaca, ",OK
+travishyde-10,travishyde,2,1,2650,1325,1325,"314-320 East State Street, 701, Ithaca, ",total!=raw
 travishyde-167,travishyde,5,1,1800,360,360,"516 University Ave, Ithaca, NY 14850",pp<500
-travishyde-264,travishyde,0,2,700,700,700,"516 University Ave, Ithaca, NY 14850",OK
+travishyde-264,travishyde,5,2,700,140,140,"516 University Ave, Ithaca, NY 14850",pp<500;perbed<350
 travishyde-57,travishyde,5,2,2200,440,440,"516 University Ave, Ithaca, NY 14850",pp<500
 travishyde-216,travishyde,1,1,1845,1845,1845,"171 E State St, 343, Ithaca, NY 14850",OK
 travishyde-219,travishyde,1,1,1625,1625,1625,"171 E State St, 350, Ithaca, NY 14850",OK
