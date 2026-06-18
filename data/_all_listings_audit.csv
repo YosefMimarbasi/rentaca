@@ -37,7 +37,7 @@ craigslist-7934135729,craigslist,2,1,2365,1182,1182,520 Linn St. near King St.,O
 craigslist-7940908340,craigslist,2,2,2300,1150,1150,2227 N Triphammer Rd,OK
 craigslist-7938862198,craigslist,3,1,1200,400,400,56 Groton Ave,pp<500
 craigslist-7938549775,craigslist,3,1,1797,599,599,542 Warren Rd near Winthrop Drive,OK
-craigslist-7940879553,craigslist,3,2,2375,792,792,Ithaca  – Cornell,total!=raw;no_addr
+craigslist-7940879553,craigslist,3,2,2375,792,792,Ithaca – Cornell,total!=raw;no_addr
 craigslist-7938732685,craigslist,1,1,1400,1400,1400,Utica St. near Farm St.,no_addr
 craigslist-7933548965,craigslist,1,2.5,800,800,800,Dearborn Place near Triphammer Rd,no_addr
 craigslist-7935859297,craigslist,4,2,3400,850,850,E State St near Stewart Ave,no_addr
@@ -95,15 +95,16 @@ craigslist-7932523735,craigslist,5,1,3125,625,625,307 Wait Avenue,OK
 craigslist-7940488524,craigslist,0,1,550,550,550,Groton,no_addr
 craigslist-7940488218,craigslist,1,1,700,700,700,Groton,no_addr
 craigslist-7940456619,craigslist,2,1,982,491,491,,pp<500;no_addr
-craigslist-7935436704,craigslist,2,1,1250,625,625,"Brooktondale,NY",no_addr
+craigslist-7935436704,craigslist,2,1,1250,625,625,"Brooktondale, NY",no_addr
 craigslist-7940437874,craigslist,3,2,1800,600,600,Salem Drive near Deerfield place,no_addr
 craigslist-7940437833,craigslist,3,1,1995,665,665,544 Warren Rd near Winthrop,OK
 craigslist-7940437801,craigslist,3,1,1725,575,575,Tareyton Dr near Rose hill Rd,no_addr
-craigslist-7940430618,craigslist,2,1,1300,650,650,150  Old Ithaca Road,OK
+craigslist-7940430618,craigslist,2,1,1300,650,650,150 Old Ithaca Road,OK
 craigslist-7932163425,craigslist,1,1,770,770,770,ithaca,total!=raw;no_addr
 craigslist-7932163824,craigslist,2,1,1400,700,700,Freeville,no_addr
 craigslist-7932163588,craigslist,3,1,2550,850,850,ithaca,no_addr
 craigslist-7940400030,craigslist,1,1,0,0,0,310 Farm St.,total!=raw
+craigslist-7937391673,craigslist,1,1,0,0,0,310 Farm St.,total!=raw
 craigslist-7940369053,craigslist,2,1.5,1850,925,925,,no_addr
 craigslist-7939809051,craigslist,1,1,1700,1700,1700,Ellis Hollow RD,no_addr
 craigslist-7938547414,craigslist,2,1,1250,625,625,138.5 Linn Street,OK
@@ -115,7 +116,6 @@ craigslist-7940279957,craigslist,1,1,1225,1225,1225,North Geneva Street near Cas
 craigslist-7939355470,craigslist,2,1,1985,992,992,N Geneva near W Court,no_addr
 craigslist-7940243934,craigslist,1,1,1750,1750,1750,East Hill Area OIthaca,no_addr
 craigslist-7939264207,craigslist,2,1.5,1690,845,845,426 Winthrop Dr,OK
-craigslist-7937391673,craigslist,1,1,0,0,0,310 Farm St.,total!=raw
 craigslist-7938528360,craigslist,2,2,3610,1805,1805,430 West State Street,OK
 craigslist-7940192073,craigslist,3,1,2050,683,683,Ithaca,no_addr
 craigslist-7936696284,craigslist,2,1,1700,850,850,Midline near Hurd,no_addr
@@ -197,7 +197,7 @@ craigslist-7938062890,craigslist,3,1,1950,650,650,202 Prospect Street,OK
 craigslist-7932809083,craigslist,5,2.5,5000,1000,1000,108 linden ave near Mitchell,OK
 craigslist-7937973226,craigslist,2,1,1750,875,875,202 Floral Ave near Elm Dr,OK
 craigslist-7937853833,craigslist,1,1,800,800,800,219 Snyder Hill Rd,OK
-craigslist-7933173338,craigslist,2,1,1800,900,900,393 peruville rd near scofield rd,OK
+craigslist-7935574879,craigslist,2,1,1800,900,900,393 Peruville Rd near Scofield Rd,OK
 craigslist-7937663706,craigslist,2,1,1900,950,950,35 Elm Street near Camp St,OK
 craigslist-7931606375,craigslist,3,1,2000,667,667,508 W Clinton St.,OK
 craigslist-7934105885,craigslist,2,1,1750,875,875,1621 Slaterville Rd near Burns Rd,OK
@@ -229,7 +229,6 @@ craigslist-7935749898,craigslist,2,1,1750,875,875,5211 williamee rd,OK
 craigslist-7932001374,craigslist,2,1,1400,700,700,Cleveland near Corn,no_addr
 craigslist-7935715747,craigslist,4,2.5,1975,494,494,South Coddington Rd.,pp<500;no_addr
 craigslist-7932007301,craigslist,2,1,2500,1250,1250,Newfield,no_addr
-craigslist-7935574879,craigslist,2,1,1800,900,900,393 Peruville Rd near Scofield Rd,OK
 craigslist-7931371629,craigslist,1,1,970,970,970,23 min dr. to Cornell/Ithaca-Cortland/Bi,OK
 craigslist-7935314979,craigslist,1,1,1075,1075,1075,124 roberts place,OK
 craigslist-7935220097,craigslist,2,1,2220,1110,1110,Ithaca,no_addr
@@ -246,7 +245,6 @@ craigslist-7933579557,craigslist,3,2,2500,833,833,5120 Halseyville road. near Pe
 craigslist-7933440764,craigslist,2,2,2750,1375,1375,324 Dryden Road near Elmwood,OK
 craigslist-7933436476,craigslist,3,2,2991,997,997,324 Dryden Road near Elmwood Ave,OK
 craigslist-7933072015,craigslist,1,1,850,850,850,Ithaca,no_addr
-craigslist-7933070245,craigslist,1,1,770,770,770,Ithaca,no_addr
 craigslist-7933065843,craigslist,1,1,1550,1550,1550,Ithaca,no_addr
 craigslist-7932896898,craigslist,2,1,1150,575,575,"521 Wyckoff Road, #1 near #1",OK
 craigslist-7932650531,craigslist,3,2,2950,983,983,Ellis Hollow,no_addr
@@ -281,7 +279,7 @@ craigslist-7937851066,craigslist,0,3,550,550,550,Rt 34 just outside Ithaca near 
 craigslist-7937606928,craigslist,2,0,750,375,375,327 W Seneca St,pp<500
 craigslist-7937024739,craigslist,1,1.5,565,565,565,South Albany street,no_addr
 craigslist-7936960764,craigslist,2,1,850,425,425,Near Triphammer Mall,pp<500;no_addr
-craigslist-7936794749,craigslist,1,4,800,800,800,Ithaca,no_addr
+craigslist-7936794749,craigslist,1,0,800,800,800,Ithaca,no_addr
 craigslist-7936731843,craigslist,3,0,0,0,0,Ithaca,no_addr
 craigslist-7935812316,craigslist,1,1,800,800,800,Green Street near Plain street,no_addr
 craigslist-7935621742,craigslist,1,1.5,620,620,620,Hillview near South Aurora,no_addr
@@ -309,7 +307,7 @@ craigslist-7936586806,craigslist,0,4,650,650,650,Dryden,no_addr
 craigslist-7935855142,craigslist,2,2,2000,1000,1000,,no_addr
 craigslist-7934517542,craigslist,1,1,0,0,0,delaware ave,total!=raw;no_addr
 craigslist-7931460958,craigslist,0,0,1100,1100,1100,40 village circle near Apt Q,OK
-craigslist-7931916522,craigslist,1,4.5,795,795,795,131 VETERANS PL near 131 VET B,OK
+craigslist-7931916522,craigslist,1,0,795,795,795,131 VETERANS PL near 131 VET B,OK
 ithacaestates-1060-danby-road,ithacaestates,1,1,850,850,850,"1060 Danby Road, Ithaca, NY",OK
 ithacaestates-918-danby-road,ithacaestates,1,1,2100,2100,2100,"918 Danby Road, Ithaca, NY",OK
 ithacaestates-hayloft-art-studios,ithacaestates,1,1,500,500,500,"1059 Danby Road, Ithaca, NY 14850",OK
@@ -331,10 +329,10 @@ lambrou-55bd574ee4b09f3341f299c1,lambrou,2,0,0,0,0,"320 Dryden Road, Ithaca, NY"
 lambrou-55bd5761e4b0bf5a19e7e2fe,lambrou,3,0,0,0,0,"407 Eddy Street, Ithaca, NY",OK
 lambrou-55bd5776e4b07e0f7542aa4b,lambrou,4,0,0,0,0,"414 Eddy Street, Ithaca, NY",OK
 lambrou-55c9651ee4b039eb8202a39b,lambrou,1,0,0,0,0,"125 1/2 Eddy Street, Ithaca, NY",OK
-modernliving-483,modernliving,1,2,900,900,900,"200 Highland Ave , Ithaca, NY 14850",OK
+modernliving-483,modernliving,1,2,900,900,900,"200 Highland Ave, Ithaca, NY 14850",OK
 modernliving-482,modernliving,6,2,6222,1037,1037,"609 E State St, Ithaca, NY 14850",OK
 modernliving-242,modernliving,3,1,2550,850,850,"710 Stewart Ave Unit 8, Ithaca, NY",OK
-modernliving-196,modernliving,3,2,2850,950,950,"518 Linn St -  apt 1, Ithaca, NY 14850",OK
+modernliving-196,modernliving,3,2,2850,950,950,"518 Linn St - apt 1, Ithaca, NY 14850",OK
 modernliving-203,modernliving,3,2,3300,1100,1100,"404 University Ave Unit 2, Ithaca, NY",OK
 modernliving-476,modernliving,0,2,1000,1000,1000,"200 Highland Ave - BTB Unit 2C '26-'27, ",OK
 modernliving-222,modernliving,3,1,3000,1000,1000,"109 Williams St Unit 5, Ithaca, NY",OK
@@ -350,11 +348,11 @@ modernliving-266,modernliving,4,1.5,3400,850,850,"412 E Marshall St - Unit 1, It
 modernliving-323,modernliving,3,1,3300,1100,1100,"103 N. Quarry St Unit A, Ithaca, NY",OK
 modernliving-334,modernliving,2,1,3600,1800,1800,504 Stewart Ave Cascadilla Gorge Penthou,OK
 modernliving-10,modernliving,3,1,2400,800,800,"605 S. Aurora St. Unit 2, Ithaca, NY",OK
-modernliving-202,modernliving,3,2,3300,1100,1100,"404 University Ave Unit 1 , Ithaca, NY",OK
+modernliving-202,modernliving,3,2,3300,1100,1100,"404 University Ave Unit 1, Ithaca, NY",OK
 modernliving-286,modernliving,2,1,2650,1325,1325,"105 Highland Place Unit 5, Ithaca, NY",OK
 modernliving-217,modernliving,3,1,3375,1125,1125,"105 Highland Place Unit 1, Ithaca, NY",OK
-modernliving-343,modernliving,2,1,2650,1325,1325,"104 Harvard Pl Unit 5 , Ithaca, NY",OK
-modernliving-256,modernliving,2,1,2600,1300,1300,"104 Harvard Pl Unit 1 , Ithaca, NY",OK
+modernliving-343,modernliving,2,1,2650,1325,1325,"104 Harvard Pl Unit 5, Ithaca, NY",OK
+modernliving-256,modernliving,2,1,2600,1300,1300,"104 Harvard Pl Unit 1, Ithaca, NY",OK
 modernliving-305,modernliving,3,1,3300,1100,1100,"101 N. Quarry St Unit A, Ithaca, NY",OK
 modernliving-229,modernliving,2,1,2500,1250,1250,"711 E. Seneca St Unit 3, Ithaca, NY",OK
 modernliving-237,modernliving,2,1,2300,1150,1150,"710 Stewart Ave Unit 3, Ithaca, NY",OK
@@ -367,9 +365,9 @@ modernliving-356,modernliving,3,1,3600,1200,1200,"601 E. State St Unit H, Ithaca
 modernliving-206,modernliving,5,2,5625,1125,1125,"601 E. State St Unit B, Ithaca, NY",OK
 modernliving-181,modernliving,9,3,11025,1225,1225,"528 Stewart Ave Unit 2, Ithaca, NY",OK
 modernliving-172,modernliving,9,4,9675,1075,1075,"522 Stewart Ave Unit 2, Ithaca, NY",OK
-modernliving-349,modernliving,0,1,1650,1650,1650,"504 Stewart Ave Unit B , Ithaca, NY",OK
-modernliving-292,modernliving,2,1,2250,1125,1125,"504 Stewart Ave Unit 6 , Ithaca, NY",OK
-modernliving-288,modernliving,2,1,2250,1125,1125,"504 Stewart Ave Unit 1A , Ithaca, NY",OK
+modernliving-349,modernliving,0,1,1650,1650,1650,"504 Stewart Ave Unit B, Ithaca, NY",OK
+modernliving-292,modernliving,2,1,2250,1125,1125,"504 Stewart Ave Unit 6, Ithaca, NY",OK
+modernliving-288,modernliving,2,1,2250,1125,1125,"504 Stewart Ave Unit 1A, Ithaca, NY",OK
 modernliving-112,modernliving,8,3,10800,1350,1350,"306 Bryant Ave House, Ithaca, NY",OK
 modernliving-95,modernliving,2,1,1950,975,975,"232 S Geneva St Unit 4, Ithaca, NY",OK
 modernliving-168,modernliving,2,1,2650,1325,1325,"230 Bryant Ave Unit 2, Ithaca, NY",OK
@@ -386,7 +384,7 @@ modernliving-162,modernliving,3,1,3075,1025,1025,"112 Stewart Ave Unit 1, Ithaca
 modernliving-149,modernliving,3,1,3225,1075,1075,"110 Stewart Ave Unit 3, Ithaca, NY",OK
 modernliving-223,modernliving,2,1,2650,1325,1325,"109 Williams St Unit 2, Ithaca, NY",OK
 modernliving-211,modernliving,2,2,3200,1600,1600,"105 Highland Place Unit 2, Ithaca, NY",OK
-modernliving-315,modernliving,2,1,2650,1325,1325,"104 Harvard Pl Unit 2 , Ithaca, NY",OK
+modernliving-315,modernliving,2,1,2650,1325,1325,"104 Harvard Pl Unit 2, Ithaca, NY",OK
 modernliving-148,modernliving,2,1,2200,1100,1100,"110 Stewart Ave Unit 2, Ithaca, NY",OK
 modernliving-193,modernliving,3,1,3765,1255,1255,"105 Highland Place Unit 4, Ithaca, NY",OK
 modernliving-37,modernliving,2,1,1650,825,825,"1002 N. Aurora St. Unit 4, Ithaca, NY",OK
@@ -395,9 +393,9 @@ modernliving-7,modernliving,3,1,3900,1300,1300,"707 E. Seneca St Unit 2A, Ithaca
 modernliving-177,modernliving,4,2,4300,1075,1075,"613 E State St Unit 2, Ithaca, NY",OK
 modernliving-353,modernliving,3,1,3750,1250,1250,"601 E. State St Unit D, Ithaca, NY",OK
 modernliving-352,modernliving,3,1,3750,1250,1250,"601 E. State St Unit C, Ithaca, NY",OK
-modernliving-336,modernliving,3,1,3375,1125,1125,"504 Stewart Ave Unit 7 , Ithaca, NY",OK
+modernliving-336,modernliving,3,1,3375,1125,1125,"504 Stewart Ave Unit 7, Ithaca, NY",OK
 modernliving-335,modernliving,2,1,2250,1125,1125,"504 Stewart Ave Unit 4, Ithaca, NY",OK
-modernliving-347,modernliving,2,1,2250,1125,1125,"504 Stewart Ave Unit 1B , Ithaca, NY",OK
+modernliving-347,modernliving,2,1,2250,1125,1125,"504 Stewart Ave Unit 1B, Ithaca, NY",OK
 modernliving-213,modernliving,4,2,4600,1150,1150,"308 Stewart Ave Unit 2, Ithaca, NY",OK
 modernliving-99,modernliving,2,1,1950,975,975,"232 S Geneva St Unit 3, Ithaca, NY",OK
 modernliving-130,modernliving,3,2,2400,800,800,"217 Columbia St. - Unit B, Ithaca, NY 14",OK
@@ -416,7 +414,7 @@ modernliving-98,modernliving,4,1,3500,875,875,"232 S Geneva St Unit 2, Ithaca, N
 modernliving-259,modernliving,6,2,6000,1000,1000,"200 Highland Ave Unit 1-B, Ithaca, NY",OK
 modernliving-258,modernliving,1,1,1850,1850,1850,"104 Harvard Pl Unit 7, Ithaca, NY",OK
 modernliving-228,modernliving,5,2,6000,1200,1200,"711 E. Seneca St Unit 2, Ithaca, NY",OK
-modernliving-108,modernliving,2,1,2250,1125,1125,"609 E State St , Ithaca, NY",OK
+modernliving-108,modernliving,2,1,2250,1125,1125,"609 E State St, Ithaca, NY",OK
 modernliving-173,modernliving,5,2,5875,1175,1175,"522 Stewart Ave Unit 3, Ithaca, NY",OK
 modernliving-167,modernliving,4,2,5500,1375,1375,"230 Bryant Ave Unit 1, Ithaca, NY",OK
 modernliving-264,modernliving,3,1,3075,1025,1025,"202 Stewart Ave Unit 1, Ithaca, NY",OK
@@ -429,7 +427,7 @@ modernliving-53,modernliving,3,1,3600,1200,1200,"707 E. Seneca St Unit 3B, Ithac
 modernliving-220,modernliving,0,1,1500,1500,1500,"308 E Seneca St Unit 3A, Ithaca, NY",OK
 modernliving-331,modernliving,0,1,1650,1650,1650,"504 Stewart Ave Unit D, Ithaca, NY",OK
 modernliving-377,modernliving,1,1,3000,3000,3000,"201 Oak Avenue - G01, Ithaca, NY 14850",OK
-modernliving-109,modernliving,6,2,5700,950,950,"609 E State St , Ithaca, NY",OK
+modernliving-109,modernliving,6,2,5700,950,950,"609 E State St, Ithaca, NY",OK
 modernliving-395,modernliving,1,1,3000,3000,3000,"325 College Ave - 206, Ithaca, NY 14850",OK
 modernliving-394,modernliving,1,1,3000,3000,3000,"325 College Ave - 205, Ithaca, NY 14850",OK
 modernliving-417,modernliving,3,3,5800,1933,1933,"325 College Ave - 204, Ithaca, NY 14850",OK
@@ -457,7 +455,7 @@ modernliving-390,modernliving,1,1,3000,3000,3000,"The Summit Unit 004, Ithaca, N
 modernliving-385,modernliving,0,1,3000,3000,3000,"The Summit Unit 003, Ithaca, NY",OK
 modernliving-378,modernliving,2,2,4400,2200,2200,"The Summit Unit 002, Ithaca, NY",OK
 modernliving-268,modernliving,3,1,2250,750,750,"412 E Marshall St - Unit 3, Ithaca, NY 1",OK
-modernliving-270,modernliving,20,5,0,0,0,"200 Highland Ave - Entire Property, Itha",total!=raw;beds_implausible
+modernliving-270,modernliving,0,5,0,0,0,"200 Highland Ave - Entire Property, Itha",total!=raw
 modernliving-39,modernliving,3,2,2950,983,983,"1002 N. Aurora St. Unit 2, Ithaca, NY",OK
 modernliving-290,modernliving,2,1,2200,1100,1100,"504 Stewart Ave Unit 2, Ithaca, NY",OK
 modernliving-355,modernliving,3,1,3600,1200,1200,"601 E. State St Unit F, Ithaca, NY",OK
@@ -476,22 +474,22 @@ modernliving-171,modernliving,5,2,6100,1220,1220,"522 Stewart Ave Unit 1, Ithaca
 modernliving-195,modernliving,2,2,2000,1000,1000,"518 Linn St Unit 3, Ithaca, NY",OK
 modernliving-234,modernliving,3,2,3450,1150,1150,"404 University Ave Unit 4, Ithaca, NY",OK
 modernliving-96,modernliving,0,1,1150,1150,1150,"232 S Geneva St Unit 5, Ithaca, NY",OK
-modernliving-165,modernliving,2,1,2000,1000,1000,"112 Stewart Ave Unit 3 , Ithaca, NY",OK
+modernliving-165,modernliving,2,1,2000,1000,1000,"112 Stewart Ave Unit 3, Ithaca, NY",OK
 modernliving-320,modernliving,2,1,2650,1325,1325,"104 Harvard Pl Unit 6, Ithaca, NY",OK
-modernliving-257,modernliving,0,1,1800,1800,1800,"104 Harvard Pl Unit 3  , Ithaca, NY",OK
-modernliving-233,modernliving,3,2,3450,1150,1150,"404 University Ave Unit 3 , Ithaca, NY",OK
+modernliving-257,modernliving,0,1,1800,1800,1800,"104 Harvard Pl Unit 3, Ithaca, NY",OK
+modernliving-233,modernliving,3,2,3450,1150,1150,"404 University Ave Unit 3, Ithaca, NY",OK
 modernliving-239,modernliving,2,1,2400,1200,1200,"710 Stewart Ave Unit 5, Ithaca, NY",OK
 modernliving-232,modernliving,1,1,1700,1700,1700,"404 University Ave Unit 5, Ithaca, NY",OK
 modernliving-40,modernliving,3,1,2700,900,900,"1002 N. Aurora St. Unit 3, Ithaca, NY",OK
 modernliving-147,modernliving,0,1,1650,1650,1650,"110 Stewart Ave Unit 1, Ithaca, NY",OK
 modernliving-238,modernliving,2,1,2350,1175,1175,"710 Stewart Ave Unit 4, Ithaca, NY",OK
 modernliving-236,modernliving,2,1,2200,1100,1100,"710 Stewart Ave Unit 2, Ithaca, NY",OK
-modernliving-332,modernliving,0,1,1650,1650,1650,"504 Stewart Ave Unit A , Ithaca, NY",OK
+modernliving-332,modernliving,0,1,1650,1650,1650,"504 Stewart Ave Unit A, Ithaca, NY",OK
 modernliving-138,modernliving,2,1,2150,1075,1075,"113 Stewart Ave Unit 3, Ithaca, NY",OK
 modernliving-209,modernliving,3,1,2625,875,875,"1005 - 1007 N Aurora St Unit 2, Ithaca, ",OK
 modernliving-215,modernliving,4,2,4500,1125,1125,"308 Stewart Ave Unit 4, Ithaca, NY",OK
 modernliving-285,modernliving,5,2,5000,1000,1000,"200 Highland Ave Unit 2-D, Ithaca, NY",OK
-modernliving-57,modernliving,3,2,2950,983,983,"1002 N. Aurora St. Unit 1 , Ithaca, NY",OK
+modernliving-57,modernliving,3,2,2950,983,983,"1002 N. Aurora St. Unit 1, Ithaca, NY",OK
 modernliving-287,modernliving,2,1,2650,1325,1325,"105 Highland Place Unit 6, Ithaca, NY",OK
 modernliving-226,modernliving,3,1,3600,1200,1200,"109 Williams St Unit 3, Ithaca, NY",OK
 modernliving-169,modernliving,1,1,1875,1875,1875,"230 Bryant Ave Unit 3, Ithaca, NY",OK
@@ -602,12 +600,12 @@ travishyde-128,travishyde,2,1,1660,830,830,"934 Stewart Avenue, 22, Ithaca, NY 1
 travishyde-150,travishyde,4,2,4920,1230,1230,"407 College Ave, 1B, Ithaca, NY 14850",OK
 travishyde-259,travishyde,2,1,1740,870,870,"319 Highland Road, 2C, Ithaca, NY 14850",OK
 travishyde-125,travishyde,2,2,2190,1095,1095,"100 West Buffalo, 2BC, Ithaca, NY 14850",OK
-travishyde-146,travishyde,2,1,1775,888,888,"400 Triphammer Road K2 , Ithaca, NY 1485",OK
+travishyde-146,travishyde,2,1,1775,888,888,"400 Triphammer Road K2, Ithaca, NY 14850",OK
 travishyde-187,travishyde,2,0,1760,880,880,"8 Country Club Road - 7, Ithaca, NY 1485",OK
-travishyde-83,travishyde,2,0,1760,880,880,"8 Country Club Road - 4 , Ithaca, NY 148",OK
+travishyde-83,travishyde,2,0,1760,880,880,"8 Country Club Road - 4, Ithaca, NY 1485",OK
 travishyde-55,travishyde,2,0,1760,880,880,"8 Country Club Road - 26, Ithaca, NY 148",OK
 travishyde-184,travishyde,2,0,1760,880,880,"8 Country Club Road - 10, Ithaca, NY 148",OK
-travishyde-147,travishyde,2,1,1650,825,825,"400 Triphammer Road L5 , Ithaca, NY 1485",OK
+travishyde-147,travishyde,2,1,1650,825,825,"400 Triphammer Road L5, Ithaca, NY 14850",OK
 travishyde-230,travishyde,1,1,2405,2405,2405,"311 E. Green St, 5B, Ithaca, NY 14850",OK
 travishyde-151,travishyde,0,1,1800,1800,1800,"314-320 East State Street, 402, Ithaca, ",OK
 travishyde-225,travishyde,2,1,1910,955,955,"171 E State St, 310, Ithaca, NY 14850",OK
@@ -643,6 +641,7 @@ cuapts-112,cuapts,0,0,0,0,0,"402 Stewart Ave, Ithaca, NY",OK
 cuapts-113,cuapts,0,0,0,0,0,"403 Stewart Ave, Ithaca, NY",OK
 cuapts-114,cuapts,0,0,0,0,0,"404 Stewart Ave, Ithaca, NY",OK
 cuapts-115,cuapts,0,0,0,0,0,"507 E. Buffalo St, Ithaca, NY",OK
+cuapts-128,cuapts,0,0,0,0,0,"507 E. Buffalo St, Ithaca, NY",OK
 cuapts-116,cuapts,0,0,0,0,0,"140 Seneca Way, Ithaca, NY",OK
 cuapts-117,cuapts,0,0,0,0,0,"408 Stewart Ave, Ithaca, NY",OK
 cuapts-118,cuapts,0,0,0,0,0,"201 Highgate Rd, Ithaca, NY",OK
@@ -656,7 +655,6 @@ cuapts-124,cuapts,0,0,0,0,0,"408 University Ave, Ithaca, NY",OK
 cuapts-125,cuapts,0,0,0,0,0,"108 W. Buffalo St, Ithaca, NY",OK
 cuapts-126,cuapts,0,0,0,0,0,"411 N. Cayuga St, Ithaca, NY",OK
 cuapts-127,cuapts,0,0,0,0,0,"909 N. Cayuga St, Ithaca, NY",OK
-cuapts-128,cuapts,0,0,0,0,0,"507 E. Buffalo St, Ithaca, NY",OK
 cuapts-129,cuapts,0,0,0,0,0,"210 Lake St, Ithaca, NY",OK
 cuapts-13,cuapts,0,0,0,0,0,"116 Ferris Place, Ithaca, NY",OK
 cuapts-130,cuapts,0,0,0,0,0,"709 Stewart Ave, Ithaca, NY",OK
@@ -849,6 +847,7 @@ cuapts-65,cuapts,0,0,0,0,0,"216 Dryden Rd, Ithaca, NY",OK
 cuapts-66,cuapts,0,0,0,0,0,"222 Dryden Rd, Ithaca, NY",OK
 cuapts-67,cuapts,0,0,0,0,0,"226 Linden Ave, Ithaca, NY",OK
 cuapts-68,cuapts,0,0,0,0,0,"310 Bryant Ave, Ithaca, NY",OK
+cuapts-81,cuapts,0,0,0,0,0,"310 Bryant Ave, Ithaca, NY",OK
 cuapts-69,cuapts,0,0,0,0,0,"315 Dryden Rd, Ithaca, NY",OK
 cuapts-7,cuapts,0,0,0,0,0,"807 Triphammer Rd, Ithaca, NY",OK
 cuapts-70,cuapts,0,0,0,0,0,"319 Dryden Rd, Ithaca, NY",OK
@@ -863,11 +862,11 @@ cuapts-78,cuapts,0,0,0,0,0,"318 Elmwood Ave, Ithaca, NY",OK
 cuapts-79,cuapts,0,0,0,0,0,"135 Cook St, Ithaca, NY",OK
 cuapts-8,cuapts,0,0,0,0,0,"702 N. Aurora St, Ithaca, NY",OK
 cuapts-80,cuapts,0,0,0,0,0,"301 Bryant Ave, Ithaca, NY",total!=raw
-cuapts-81,cuapts,0,0,0,0,0,"310 Bryant Ave, Ithaca, NY",OK
 cuapts-82,cuapts,0,0,0,0,0,"130 College Ave, Ithaca, NY",OK
 cuapts-83,cuapts,0,0,0,0,0,"407 Elmwood Ave, Ithaca, NY",OK
 cuapts-84,cuapts,0,0,1182,1182,1182,"111 Dryden Rd, Ithaca, NY",OK
 cuapts-85,cuapts,0,0,0,0,0,"105 Dryden Court, Ithaca, NY",OK
+cuapts-92,cuapts,0,0,0,0,0,"105 Dryden Court, Ithaca, NY",OK
 cuapts-86,cuapts,0,0,825,825,825,"208 Dryden Rd, Ithaca, NY",OK
 cuapts-87,cuapts,0,0,1770,1770,1770,"151 Dryden Rd, Ithaca, NY",OK
 cuapts-88,cuapts,0,0,0,0,0,"213 Williams St, Ithaca, NY",OK
@@ -875,7 +874,6 @@ cuapts-89,cuapts,0,0,895,895,895,"210 Dryden Rd, Ithaca, NY",OK
 cuapts-9,cuapts,0,0,0,0,0,"118 Ferris Place, Ithaca, NY",OK
 cuapts-90,cuapts,0,0,795,795,795,"214 Dryden Rd, Ithaca, NY",OK
 cuapts-91,cuapts,0,0,885,885,885,"202 Dryden Rd, Ithaca, NY",OK
-cuapts-92,cuapts,0,0,0,0,0,"105 Dryden Court, Ithaca, NY",OK
 cuapts-93,cuapts,0,0,1195,1195,1195,"705 East Buffalo St, Ithaca, NY",OK
 cuapts-94,cuapts,0,0,0,0,0,"418 Eddy St, Ithaca, NY",OK
 cuapts-95,cuapts,0,0,0,0,0,"118 E. Prospect St, Ithaca, NY",OK
@@ -883,46 +881,36 @@ cuapts-96,cuapts,0,0,0,0,0,"101 E State St, Ithaca, NY",OK
 cuapts-97,cuapts,0,0,0,0,0,"108 E State St, Ithaca, NY",OK
 cuapts-98,cuapts,0,0,0,0,0,"111 S. Cayuga St, Ithaca, NY",OK
 cuapts-99,cuapts,0,0,0,0,0,"154 E. State St, Ithaca, NY",OK
-ithacarenting-1,ithacarenting,3,3.0,2670,890,890,", Ithaca, NY",no_addr
-ithacarenting-5,ithacarenting,0,0,745,745,745,", Ithaca, NY",no_addr
-ithacarenting-17,ithacarenting,0,2,1100,1100,1100,", Ithaca, NY",no_addr
+ithacarenting-1,ithacarenting,3,3.0,2670,890,890,"Ithaca, NY",no_addr
+ithacarenting-5,ithacarenting,0,0,745,745,745,"Ithaca, NY",no_addr
+ithacarenting-17,ithacarenting,0,2,1100,1100,1100,"Ithaca, NY",no_addr
 ithacarenting-204,ithacarenting,1,1.0,825,825,825,"208 Dryden Road, Ithaca, NY",OK
 ithacarenting-205,ithacarenting,5,0,4125,825,825,"208 Dryden Road, Ithaca, NY",OK
-ithacarenting-207,ithacarenting,1,1.0,825,825,825,"208 Dryden Road, Ithaca, NY",OK
 ithacarenting-208,ithacarenting,5,2.0,4375,875,875,"208 Dryden Road, Ithaca, NY",OK
 ithacarenting-209,ithacarenting,4,1.0,3300,825,825,"208 Dryden Road, Ithaca, NY",OK
-ithacarenting-210,ithacarenting,5,0,4125,825,825,"208 Dryden Road, Ithaca, NY",OK
 ithacarenting-212,ithacarenting,3,1.0,2475,825,825,"208 Dryden Road, Ithaca, NY",OK
 ithacarenting-213,ithacarenting,5,1.0,4125,825,825,"208 Dryden Road, Ithaca, NY",OK
-ithacarenting-217,ithacarenting,1,1.0,825,825,825,"208 Dryden Road, Ithaca, NY",OK
 ithacarenting-218,ithacarenting,5,1.0,3875,775,775,"208 Dryden Road, Ithaca, NY",OK
 ithacarenting-253,ithacarenting,2,1.0,2780,1390,1390,"111 Dryden Road, Ithaca, NY",OK
-ithacarenting-254,ithacarenting,1,1.0,1182,1182,1182,"111 Dryden Road, Ithaca, NY",OK
+ithacarenting-278,ithacarenting,1,1.0,1182,1182,1182,"111 Dryden Road, Ithaca, NY",OK
 ithacarenting-255,ithacarenting,6,3.0,5850,975,975,"111 Dryden Road, Ithaca, NY",OK
-ithacarenting-256,ithacarenting,6,2,7092,1182,1182,"111 Dryden Road, Ithaca, NY",OK
+ithacarenting-276,ithacarenting,6,2.0,7092,1182,1182,"111 Dryden Road, Ithaca, NY",OK
 ithacarenting-262,ithacarenting,4,3.5,4728,1182,1182,"111 Dryden Road, Ithaca, NY",OK
 ithacarenting-269,ithacarenting,5,1.5,5910,1182,1182,"111 Dryden Road, Ithaca, NY",OK
 ithacarenting-270,ithacarenting,5,3.5,5910,1182,1182,"111 Dryden Road, Ithaca, NY",OK
-ithacarenting-276,ithacarenting,6,2.0,7092,1182,1182,"111 Dryden Road, Ithaca, NY",OK
 ithacarenting-277,ithacarenting,3,2.0,3546,1182,1182,"111 Dryden Road, Ithaca, NY",OK
-ithacarenting-278,ithacarenting,1,1.0,1182,1182,1182,"111 Dryden Road, Ithaca, NY",OK
 ithacarenting-279,ithacarenting,6,1.5,7092,1182,1182,"111 Dryden Road, Ithaca, NY",OK
 ithacarenting-286,ithacarenting,4,1.0,4728,1182,1182,"111 Dryden Road, Ithaca, NY",OK
 ithacarenting-289,ithacarenting,2,1.0,2364,1182,1182,"111 Dryden Road, Ithaca, NY",OK
-ithacarenting-291,ithacarenting,2,1.0,2364,1182,1182,"111 Dryden Road, Ithaca, NY",OK
 ithacarenting-301,ithacarenting,4,1.0,3740,935,935,"111 Dryden Road, Ithaca, NY",OK
 ithacarenting-307,ithacarenting,6,2,10380,1730,1730,"111 Dryden Road, Ithaca, NY",OK
-ithacarenting-318,ithacarenting,6,2,7092,1182,1182,"111 Dryden Road, Ithaca, NY",OK
 ithacarenting-336,ithacarenting,6,2.0,4650,775,775,"426 Eddy Street, Ithaca, NY",OK
 ithacarenting-337,ithacarenting,6,1.5,4650,775,775,"426 Eddy Street, Ithaca, NY",OK
 ithacarenting-340,ithacarenting,1,0,1685,1685,1685,"151 Dryden Road, Ithaca, NY",OK
 ithacarenting-341,ithacarenting,1,0,1730,1730,1730,"151 Dryden Road, Ithaca, NY",OK
 ithacarenting-343,ithacarenting,1,1.0,1770,1770,1770,"151 Dryden Road, Ithaca, NY",OK
-ithacarenting-345,ithacarenting,2,1.0,3540,1770,1770,"151 Dryden Road, Ithaca, NY",OK
 ithacarenting-353,ithacarenting,2,1.0,3540,1770,1770,"151 Dryden Road, Ithaca, NY",OK
-ithacarenting-354,ithacarenting,2,1.0,3540,1770,1770,"151 Dryden Road, Ithaca, NY",OK
 ithacarenting-358,ithacarenting,1,0,1810,1810,1810,"151 Dryden Road, Ithaca, NY",OK
-ithacarenting-382,ithacarenting,1,1.0,1770,1770,1770,"151 Dryden Road, Ithaca, NY",OK
 ithacarenting-491,ithacarenting,1,1.0,2445,2445,2445,"151 Dryden Road, Ithaca, NY",OK
 ithacarenting-494,ithacarenting,4,1.5,3100,775,775,"426 Eddy Street, Ithaca, NY",OK
 ithacarenting-497,ithacarenting,1,1.0,775,775,775,"426 Eddy Street, Ithaca, NY",OK
@@ -935,42 +923,37 @@ ithacarenting-526,ithacarenting,4,1.5,3540,885,885,"202 Dryden Rd, Ithaca, NY",O
 ithacarenting-528,ithacarenting,10,2.5,8850,885,885,"202 Dryden Rd, Ithaca, NY",OK
 ithacarenting-529,ithacarenting,2,1.0,1790,895,895,"210 Dryden Rd, Ithaca, NY",OK
 ithacarenting-530,ithacarenting,3,1.5,2685,895,895,"210 Dryden Rd, Ithaca, NY",OK
-ithacarenting-531,ithacarenting,3,0,2685,895,895,"210 Dryden Rd, Ithaca, NY",OK
 ithacarenting-533,ithacarenting,3,0,2685,895,895,"210 Dryden Rd, Ithaca, NY",OK
-ithacarenting-546,ithacarenting,2,1.0,2150,1075,1075,", Ithaca, NY",no_addr
-ithacarenting-547,ithacarenting,0,0,1450,1450,1450,", Ithaca, NY",no_addr
-ithacarenting-548,ithacarenting,1,1.0,1650,1650,1650,", Ithaca, NY",no_addr
-ithacarenting-558,ithacarenting,0,0,0,0,0,", Ithaca, NY",no_addr
-ithacarenting-577,ithacarenting,3,1.0,1992,664,664,", Ithaca, NY",no_addr
-ithacarenting-609,ithacarenting,1,1.0,2026,2026,2026,", Ithaca, NY",no_addr
-ithacarenting-610,ithacarenting,0,0,1595,1595,1595,", Ithaca, NY",no_addr
-ithacarenting-612,ithacarenting,5,2.0,4225,845,845,", Ithaca, NY",no_addr
-ithacarenting-617,ithacarenting,6,2.0,5100,850,850,", Ithaca, NY",no_addr
-ithacarenting-630,ithacarenting,1,1.0,1595,1595,1595,", Ithaca, NY",no_addr
-ithacarenting-631,ithacarenting,0,0,1395,1395,1395,", Ithaca, NY",no_addr
-ithacarenting-633,ithacarenting,1,1.0,1800,1800,1800,", Ithaca, NY",no_addr
-ithacarenting-635,ithacarenting,0,0,1400,1400,1400,", Ithaca, NY",no_addr
-ithacarenting-638,ithacarenting,0,0,1425,1425,1425,", Ithaca, NY",no_addr
-ithacarenting-645,ithacarenting,2,1.0,0,0,0,", Ithaca, NY",no_addr
-ithacarenting-679,ithacarenting,3,1.0,0,0,0,", Ithaca, NY",no_addr
-ithacarenting-686,ithacarenting,2,1.0,0,0,0,", Ithaca, NY",no_addr
-ithacarenting-696,ithacarenting,0,0,1350,1350,1350,", Ithaca, NY",no_addr
-ithacarenting-698,ithacarenting,1,0,2026,2026,2026,", Ithaca, NY",no_addr
-ithacarenting-699,ithacarenting,1,1.0,950,950,950,", Ithaca, NY",no_addr
-ithacarenting-725,ithacarenting,1,1.0,0,0,0,", Ithaca, NY",no_addr
-ithacarenting-729,ithacarenting,1,0,2026,2026,2026,", Ithaca, NY",no_addr
-ithacarenting-742,ithacarenting,0,0,1375,1375,1375,", Ithaca, NY",no_addr
-ithacarenting-744,ithacarenting,0,0,1350,1350,1350,", Ithaca, NY",no_addr
-ithacarenting-745,ithacarenting,2,2.0,0,0,0,", Ithaca, NY",no_addr
-ithacarenting-746,ithacarenting,3,2.0,2355,785,785,", Ithaca, NY",no_addr
-ithacarenting-747,ithacarenting,2,2.0,1930,965,965,", Ithaca, NY",no_addr
-ithacarenting-749,ithacarenting,2,1.0,2000,1000,1000,", Ithaca, NY",no_addr
-ithacarenting-750,ithacarenting,0,0,0,0,0,", Ithaca, NY",no_addr
-ithacarenting-754,ithacarenting,1,1.0,1650,1650,1650,", Ithaca, NY",no_addr
-ithacarenting-755,ithacarenting,2,1.0,2150,1075,1075,", Ithaca, NY",no_addr
-ithacarenting-756,ithacarenting,2,1.0,0,0,0,", Ithaca, NY",no_addr
-ithacarenting-757,ithacarenting,3,1.5,2385,795,795,", Ithaca, NY",no_addr
-ithacarenting-832,ithacarenting,8,2.5,0,0,0,", Ithaca, NY",no_addr
+ithacarenting-546,ithacarenting,2,1.0,2150,1075,1075,"Ithaca, NY",no_addr
+ithacarenting-547,ithacarenting,0,0,1450,1450,1450,"Ithaca, NY",no_addr
+ithacarenting-548,ithacarenting,1,1.0,1650,1650,1650,"Ithaca, NY",no_addr
+ithacarenting-558,ithacarenting,0,0,0,0,0,"Ithaca, NY",no_addr
+ithacarenting-750,ithacarenting,0,0,0,0,0,"Ithaca, NY",no_addr
+ithacarenting-577,ithacarenting,3,1.0,1992,664,664,"Ithaca, NY",no_addr
+ithacarenting-609,ithacarenting,1,1.0,2026,2026,2026,"Ithaca, NY",no_addr
+ithacarenting-610,ithacarenting,0,0,1595,1595,1595,"Ithaca, NY",no_addr
+ithacarenting-612,ithacarenting,5,2.0,4225,845,845,"Ithaca, NY",no_addr
+ithacarenting-617,ithacarenting,6,2.0,5100,850,850,"Ithaca, NY",no_addr
+ithacarenting-630,ithacarenting,1,1.0,1595,1595,1595,"Ithaca, NY",no_addr
+ithacarenting-631,ithacarenting,0,0,1395,1395,1395,"Ithaca, NY",no_addr
+ithacarenting-633,ithacarenting,1,1.0,1800,1800,1800,"Ithaca, NY",no_addr
+ithacarenting-635,ithacarenting,0,0,1400,1400,1400,"Ithaca, NY",no_addr
+ithacarenting-638,ithacarenting,0,0,1425,1425,1425,"Ithaca, NY",no_addr
+ithacarenting-645,ithacarenting,2,1.0,0,0,0,"Ithaca, NY",no_addr
+ithacarenting-686,ithacarenting,2,1.0,0,0,0,"Ithaca, NY",no_addr
+ithacarenting-756,ithacarenting,2,1.0,0,0,0,"Ithaca, NY",no_addr
+ithacarenting-679,ithacarenting,3,1.0,0,0,0,"Ithaca, NY",no_addr
+ithacarenting-744,ithacarenting,0,0,1350,1350,1350,"Ithaca, NY",no_addr
+ithacarenting-698,ithacarenting,1,0,2026,2026,2026,"Ithaca, NY",no_addr
+ithacarenting-699,ithacarenting,1,1.0,950,950,950,"Ithaca, NY",no_addr
+ithacarenting-725,ithacarenting,1,1.0,0,0,0,"Ithaca, NY",no_addr
+ithacarenting-742,ithacarenting,0,0,1375,1375,1375,"Ithaca, NY",no_addr
+ithacarenting-745,ithacarenting,2,2.0,0,0,0,"Ithaca, NY",no_addr
+ithacarenting-746,ithacarenting,3,2.0,2355,785,785,"Ithaca, NY",no_addr
+ithacarenting-747,ithacarenting,2,2.0,1930,965,965,"Ithaca, NY",no_addr
+ithacarenting-749,ithacarenting,2,1.0,2000,1000,1000,"Ithaca, NY",no_addr
+ithacarenting-757,ithacarenting,3,1.5,2385,795,795,"Ithaca, NY",no_addr
+ithacarenting-832,ithacarenting,8,2.5,0,0,0,"Ithaca, NY",no_addr
 ithacarenting-833,ithacarenting,14,4.0,11130,795,795,"214 Dryden Road, Ithaca, NY",OK
 csp-76905,csp,0,0,0,0,0,"840 Hanshaw Road Ithaca, NY 14850",total!=raw
 csp-78634,csp,0,0,375,375,375,"415 N. Tioga Street, Ithaca, NY",total<400;pp<500
@@ -992,9 +975,9 @@ largebuildings-luxlofts-1br-1ba-lux-south,largebuildings,1,1,0,0,0,"112 Summit S
 largebuildings-luxlofts-2br-2ba-lux-south,largebuildings,2,2,0,0,0,"112 Summit St, Ithaca, NY 14850",OK
 largebuildings-luxlofts-2br-1ba-lofts,largebuildings,2,1,0,0,0,"201 College Ave, Ithaca, NY 14850",OK
 largebuildings-luxlofts-3br-2ba-lux-north,largebuildings,3,2,0,0,0,"112 Summit St, Ithaca, NY 14850",OK
+largebuildings-luxlofts-3br-2ba-balcony-lux-south,largebuildings,3,2,0,0,0,"112 Summit St, Ithaca, NY 14850",OK
 largebuildings-luxlofts-3br-3ba-lofts,largebuildings,3,3,0,0,0,"201 College Ave, Ithaca, NY 14850",OK
 largebuildings-luxlofts-3br-3ba-balcony-lux-south,largebuildings,3,3,0,0,0,"112 Summit St, Ithaca, NY 14850",OK
-largebuildings-luxlofts-3br-2ba-balcony-lux-south,largebuildings,3,2,0,0,0,"112 Summit St, Ithaca, NY 14850",OK
 largebuildings-luxlofts-4br-2ba-lux-north,largebuildings,4,2,0,0,0,"112 Summit St, Ithaca, NY 14850",OK
 largebuildings-luxlofts-4br-2ba-lux-south,largebuildings,4,2,0,0,0,"112 Summit St, Ithaca, NY 14850",OK
 largebuildings-luxlofts-4br-3ba-lux-north,largebuildings,4,3,0,0,0,"112 Summit St, Ithaca, NY 14850",OK
@@ -1005,7 +988,6 @@ largebuildings-luxlofts-5br-5ba-lux-north,largebuildings,5,5,0,0,0,"112 Summit S
 largebuildings-cayugaplace-201-A,largebuildings,2,2,1715,858,858,"131 E Green St, Ithaca, NY 14850",OK
 largebuildings-cayugaplace-204,largebuildings,1,1,2419,2419,2419,"131 E Green St, Ithaca, NY 14850",OK
 largebuildings-cayugaplace-207,largebuildings,1,1,2549,2549,2549,"131 E Green St, Ithaca, NY 14850",OK
-largebuildings-cayugaplace-212,largebuildings,1,1,2419,2419,2419,"131 E Green St, Ithaca, NY 14850",OK
 largebuildings-cayugaplace-216,largebuildings,0,1,2419,2419,2419,"131 E Green St, Ithaca, NY 14850",OK
 largebuildings-cayugaplace-303,largebuildings,0,1,2319,2319,2319,"131 E Green St, Ithaca, NY 14850",OK
 largebuildings-cayugaplace-307,largebuildings,1,1,2569,2569,2569,"131 E Green St, Ithaca, NY 14850",OK
@@ -1014,13 +996,9 @@ largebuildings-cayugaplace-316,largebuildings,0,1,2279,2279,2279,"131 E Green St
 largebuildings-cayugaplace-401-A,largebuildings,2,2,3269,1634,1634,"131 E Green St, Ithaca, NY 14850",OK
 largebuildings-cayugaplace-402-A,largebuildings,2,2,3189,1594,1594,"131 E Green St, Ithaca, NY 14850",OK
 largebuildings-cayugaplace-404,largebuildings,1,1,2459,2459,2459,"131 E Green St, Ithaca, NY 14850",OK
-largebuildings-cayugaplace-405,largebuildings,1,1,2459,2459,2459,"131 E Green St, Ithaca, NY 14850",OK
-largebuildings-cayugaplace-406,largebuildings,1,1,2459,2459,2459,"131 E Green St, Ithaca, NY 14850",OK
 largebuildings-cayugaplace-410-A,largebuildings,2,2,3309,1654,1654,"131 E Green St, Ithaca, NY 14850",OK
 largebuildings-cayugaplace-413,largebuildings,0,1,2189,2189,2189,"131 E Green St, Ithaca, NY 14850",OK
 largebuildings-cayugaplace-415-B,largebuildings,2,2,3589,1794,1794,"131 E Green St, Ithaca, NY 14850",OK
-largebuildings-cayugaplace-505,largebuildings,1,1,2459,2459,2459,"131 E Green St, Ithaca, NY 14850",OK
-largebuildings-cayugaplace-506,largebuildings,1,1,2459,2459,2459,"131 E Green St, Ithaca, NY 14850",OK
 largebuildings-cayugaplace-507,largebuildings,1,1,2609,2609,2609,"131 E Green St, Ithaca, NY 14850",OK
 largebuildings-cayugaplace-512,largebuildings,1,1,2489,2489,2489,"131 E Green St, Ithaca, NY 14850",OK
 largebuildings-cayugaplace-513,largebuildings,0,1,2209,2209,2209,"131 E Green St, Ithaca, NY 14850",OK
@@ -1033,7 +1011,6 @@ largebuildings-haroldssquare-d-1b-1b,largebuildings,1,1,2500,2500,2500,"125 E St
 largebuildings-haroldssquare-e-1b-1b,largebuildings,1,1,3000,3000,3000,"125 E State St, Ithaca, NY 14850",OK
 largebuildings-haroldssquare-f-1b-1b,largebuildings,1,1,2800,2800,2800,"125 E State St, Ithaca, NY 14850",OK
 largebuildings-haroldssquare-g-2b-2b,largebuildings,2,2,3400,1700,1700,"125 E State St, Ithaca, NY 14850",OK
-largebuildings-haroldssquare-h-1b-1b,largebuildings,1,1,2800,2800,2800,"125 E State St, Ithaca, NY 14850",OK
 largebuildings-haroldssquare-i-studio,largebuildings,0,1,1750,1750,1750,"125 E State St, Ithaca, NY 14850",OK
 largebuildings-collegetownterrace-quarry-studio-shared-bathroom-kitchen,largebuildings,0,1,639,639,639,"Collegetown Terrace, Ithaca, NY 14850",OK
 largebuildings-collegetownterrace-quarry-studio-w-bath-shared-showers-kitchen,largebuildings,0,0.5,739,739,739,"Collegetown Terrace, Ithaca, NY 14850",OK
@@ -1062,9 +1039,8 @@ largebuildings-collegetownterrace-terrace-1-bedroom-1-bath-apartment,largebuildi
 largebuildings-collegetownterrace-townhome-studio,largebuildings,0,1,2099,2099,2099,"Collegetown Terrace, Ithaca, NY 14850",OK
 largebuildings-collegetownterrace-1-bedroom-1-bath-casa-quarry,largebuildings,1,1,2209,2209,2209,"Collegetown Terrace, Ithaca, NY 14850",OK
 largebuildings-collegetownterrace-1-bedroom-1-bath-historic-cottage,largebuildings,1,1,2259,2259,2259,"Collegetown Terrace, Ithaca, NY 14850",OK
-largebuildings-collegetownterrace-1-bedroom-1-bath-townhome,largebuildings,1,1,2259,2259,2259,"Collegetown Terrace, Ithaca, NY 14850",OK
 moll-61,moll,0,1,0,0,0,"523 E Buffalo Street, Ithaca, NY 14850",OK
-ithacalivingsolutions-85,ithacalivingsolutions,0,1,1100,1100,1100,"33 Hudson Pl , Ithaca, NY 14850",OK
+ithacalivingsolutions-85,ithacalivingsolutions,0,1,1100,1100,1100,"33 Hudson Pl, Ithaca, NY 14850",OK
 ithacalivingsolutions-25,ithacalivingsolutions,0,1,1200,1200,1200,"10 Hudson Pl, Ithaca, NY 14850",OK
 ithacalivingsolutions-52,ithacalivingsolutions,0,1,1200,1200,1200,"31 Hudson Pl, Ithaca, NY 14850",OK
 ithacalivingsolutions-4,ithacalivingsolutions,0,1,1100,1100,1100,"31 Hudson Pl, Ithaca, NY 14850",OK
