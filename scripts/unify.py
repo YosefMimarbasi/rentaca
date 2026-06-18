@@ -112,15 +112,16 @@ def main():
     # --- 3. build CUAPTS lookup for cross-linking ---
     cu_by_key = {}
     for key, members in groups.items():
-        cu = [m for m in members if m["source"] == "cuapts"]
+        # Any review-bearing member (CUAPTS reviews now ride on relabeled
+        # landlord rows or were transferred to a sibling).
+        cu = [m for m in members if (m.get("ratings", {}) or {}).get("num_reviews", 0)]
         if cu:
-            # Prefer the one with most reviews.
             cu_by_key[key] = max(cu, key=lambda m: m.get("ratings", {}).get("num_reviews", 0))
 
     linked = 0
     for l in listings:
-        if l["source"] == "cuapts":
-            continue
+        if (l.get("ratings", {}) or {}).get("num_reviews"):
+            continue  # already has its own reviews
         cu = cu_by_key.get(l["building_key"])
         if not cu:
             continue
@@ -164,8 +165,6 @@ def main():
         sources = sorted({m["source"] for m in members})
         units = []
         for m in members:
-            if m["source"] == "cuapts":
-                continue  # cuapts is building-level, not a rentable unit
             units.append({
                 "id": m["id"],
                 "source": m["source"],

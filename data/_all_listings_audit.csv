@@ -103,8 +103,6 @@ craigslist-7940430618,craigslist,2,1,1300,650,650,150 Old Ithaca Road,OK
 craigslist-7932163425,craigslist,1,1,770,770,770,ithaca,total!=raw;no_addr
 craigslist-7932163824,craigslist,2,1,1400,700,700,Freeville,no_addr
 craigslist-7932163588,craigslist,3,1,2550,850,850,ithaca,no_addr
-craigslist-7940400030,craigslist,1,1,0,0,0,310 Farm St.,total!=raw
-craigslist-7937391673,craigslist,1,1,0,0,0,310 Farm St.,total!=raw
 craigslist-7940369053,craigslist,2,1.5,1850,925,925,,no_addr
 craigslist-7939809051,craigslist,1,1,1700,1700,1700,Ellis Hollow RD,no_addr
 craigslist-7938547414,craigslist,2,1,1250,625,625,138.5 Linn Street,OK
@@ -215,7 +213,6 @@ craigslist-7936484274,craigslist,1,1,750,750,750,Ithaca,no_addr
 craigslist-7936205116,craigslist,2,1,1600,800,800,109 Treva Ave near Water St,OK
 craigslist-7936204636,craigslist,3,1.5,1900,633,633,Belle Sherman,no_addr
 craigslist-7932886636,craigslist,2,1,1700,850,850,"Ithaca, New York",no_addr
-craigslist-7936119730,craigslist,1,1,775,775,775,Ithaca,no_addr
 craigslist-7936079896,craigslist,3,1,2850,950,950,327 Cascadilla St,OK
 craigslist-7931834249,craigslist,4,1,3400,850,850,412 University Ave near Lake st,OK
 craigslist-7931830846,craigslist,5,2,3800,760,760,412 University Ave near Lake st,OK
@@ -622,265 +619,203 @@ travishyde-169,travishyde,2,1,1540,770,770,"319 Highland Road, 7C, Ithaca, NY 14
 travishyde-84,travishyde,2,0,1760,880,880,"8 Country Club Road - 1, Ithaca, NY 1485",OK
 travishyde-73,travishyde,1,1,1786,1786,1786,"100 West Buffalo, 1E, Ithaca, NY 14850",OK
 travishyde-26,travishyde,3,1,2205,735,735,"934 Stewart Avenue, 14, Ithaca, NY 14850",OK
-cuapts-1,cuapts,0,0,0,0,0,"1 Sanctuary Dr, Ithaca, NY",OK
-cuapts-10,cuapts,0,0,0,0,0,"117 Prospect St, Ithaca, NY",OK
-cuapts-100,cuapts,0,0,0,0,0,"156 E. State St, Ithaca, NY",OK
-cuapts-101,cuapts,0,0,0,0,0,"212 E. State St, Ithaca, NY",OK
-cuapts-102,cuapts,0,0,0,0,0,"222 S. Aurora St, Ithaca, NY",OK
-cuapts-103,cuapts,0,0,0,0,0,"319 College Ave, Ithaca, NY",OK
-cuapts-104,cuapts,0,0,0,0,0,"408 College Ave, Ithaca, NY",OK
-cuapts-105,cuapts,0,0,0,0,0,"109 College Ave, Ithaca, NY",OK
-cuapts-106,cuapts,0,0,0,0,0,"227 Linden Ave, Ithaca, NY",OK
-cuapts-107,cuapts,0,0,0,0,0,"117 Eddy St, Ithaca, NY",OK
-cuapts-108,cuapts,0,0,0,0,0,"118 Eddy St, Ithaca, NY",OK
-cuapts-109,cuapts,0,0,0,0,0,"119 Eddy St, Ithaca, NY",OK
-cuapts-11,cuapts,0,0,0,0,0,"218 Delaware Ave, Ithaca, NY",OK
-cuapts-110,cuapts,0,0,1220,1220,1220,"400 Stewart Ave, Ithaca, NY",OK
-cuapts-111,cuapts,0,0,0,0,0,"401 Stewart Ave, Ithaca, NY",OK
-cuapts-112,cuapts,0,0,0,0,0,"402 Stewart Ave, Ithaca, NY",OK
-cuapts-113,cuapts,0,0,0,0,0,"403 Stewart Ave, Ithaca, NY",OK
-cuapts-114,cuapts,0,0,0,0,0,"404 Stewart Ave, Ithaca, NY",OK
-cuapts-115,cuapts,0,0,0,0,0,"507 E. Buffalo St, Ithaca, NY",OK
-cuapts-128,cuapts,0,0,0,0,0,"507 E. Buffalo St, Ithaca, NY",OK
-cuapts-116,cuapts,0,0,0,0,0,"140 Seneca Way, Ithaca, NY",OK
-cuapts-117,cuapts,0,0,0,0,0,"408 Stewart Ave, Ithaca, NY",OK
-cuapts-118,cuapts,0,0,0,0,0,"201 Highgate Rd, Ithaca, NY",OK
-cuapts-119,cuapts,0,0,0,0,0,"513 Elm St, Ithaca, NY",OK
-cuapts-12,cuapts,0,0,0,0,0,"506 S. Cayuga St, Ithaca, NY",OK
-cuapts-120,cuapts,0,0,0,0,0,"116 Osmun Pl, Ithaca, NY",OK
-cuapts-121,cuapts,0,0,0,0,0,"204 N. Cayuga St, Ithaca, NY",OK
-cuapts-122,cuapts,0,0,0,0,0,"321 E. Falls St, Ithaca, NY",OK
-cuapts-123,cuapts,0,0,0,0,0,"406 Stewart Ave, Ithaca, NY",OK
-cuapts-124,cuapts,0,0,0,0,0,"408 University Ave, Ithaca, NY",OK
-cuapts-125,cuapts,0,0,0,0,0,"108 W. Buffalo St, Ithaca, NY",OK
-cuapts-126,cuapts,0,0,0,0,0,"411 N. Cayuga St, Ithaca, NY",OK
-cuapts-127,cuapts,0,0,0,0,0,"909 N. Cayuga St, Ithaca, NY",OK
-cuapts-129,cuapts,0,0,0,0,0,"210 Lake St, Ithaca, NY",OK
-cuapts-13,cuapts,0,0,0,0,0,"116 Ferris Place, Ithaca, NY",OK
-cuapts-130,cuapts,0,0,0,0,0,"709 Stewart Ave, Ithaca, NY",OK
-cuapts-131,cuapts,0,0,0,0,0,"120-126 Westbourne Lane, Ithaca, NY",OK
-cuapts-132,cuapts,0,0,0,0,0,"110 Heights Court, Ithaca, NY",OK
-cuapts-133,cuapts,0,0,0,0,0,"114 Catherine St, Ithaca, NY",total!=raw
-cuapts-134,cuapts,0,0,0,0,0,"116 Catherine St, Ithaca, NY",total!=raw
-cuapts-135,cuapts,0,0,0,0,0,"118 Catherine St, Ithaca, NY",OK
-cuapts-136,cuapts,0,0,0,0,0,"301 Eddy St, Ithaca, NY",OK
-cuapts-137,cuapts,0,0,0,0,0,"303 Eddy St, Ithaca, NY",OK
-cuapts-138,cuapts,0,0,0,0,0,"305 Eddy St, Ithaca, NY",OK
-cuapts-139,cuapts,0,0,0,0,0,"307 Eddy St, Ithaca, NY",OK
-cuapts-14,cuapts,0,0,0,0,0,"106 Valentine Place, Ithaca, NY",total!=raw
-cuapts-140,cuapts,0,0,0,0,0,"309 Eddy St, Ithaca, NY",OK
-cuapts-141,cuapts,0,0,0,0,0,"320 Dryden Rd, Ithaca, NY",OK
-cuapts-142,cuapts,0,0,0,0,0,"407 Eddy St, Ithaca, NY",OK
-cuapts-143,cuapts,0,0,0,0,0,"414 Eddy St, Ithaca, NY",OK
-cuapts-144,cuapts,0,0,0,0,0,"125 1/2 Eddy St, Ithaca, NY",OK
-cuapts-145,cuapts,0,0,0,0,0,"103 Eddy St, Ithaca, NY",OK
-cuapts-146,cuapts,0,0,0,0,0,"106 Highland Pl, Ithaca, NY",OK
-cuapts-147,cuapts,0,0,0,0,0,"125 Eddy St, Ithaca, NY",OK
-cuapts-148,cuapts,0,0,0,0,0,"131 N. Quarry St, Ithaca, NY",total!=raw
-cuapts-149,cuapts,0,0,0,0,0,"113 Cook St, Ithaca, NY",total!=raw
-cuapts-15,cuapts,0,0,0,0,0,"313 Wait Ave, Ithaca, NY",OK
-cuapts-150,cuapts,0,0,0,0,0,"121 Catherine St, Ithaca, NY",OK
-cuapts-151,cuapts,0,0,0,0,0,"133 Blair St, Ithaca, NY",OK
-cuapts-152,cuapts,0,0,0,0,0,"801 E. Seneca St, Ithaca, NY",OK
-cuapts-153,cuapts,0,0,0,0,0,"133 N. Quarry St, Ithaca, NY",OK
-cuapts-154,cuapts,0,0,0,0,0,"202 Eddy St, Ithaca, NY",OK
-cuapts-155,cuapts,0,0,0,0,0,"410 Elmwood St, Ithaca, NY",OK
-cuapts-156,cuapts,0,0,0,0,0,"305 Oak Ave, Ithaca, NY",OK
-cuapts-157,cuapts,0,0,0,0,0,"114 Summit St, Ithaca, NY",total!=raw
-cuapts-158,cuapts,0,0,0,0,0,"201 College Ave, Ithaca, NY",OK
-cuapts-159,cuapts,0,0,0,0,0,"126 College Ave, Ithaca, NY",OK
-cuapts-16,cuapts,0,0,0,0,0,"210 Stewart Ave, Ithaca, NY",OK
-cuapts-160,cuapts,0,0,0,0,0,"648 Hudson St, Ithaca, NY",OK
-cuapts-161,cuapts,0,0,0,0,0,"702 Hudson St, Ithaca, NY",OK
-cuapts-162,cuapts,0,0,0,0,0,"108 Ferris Pl, Ithaca, NY",OK
-cuapts-163,cuapts,0,0,1162,1162,1162,"710 Stewart Ave, Ithaca, NY",OK
-cuapts-164,cuapts,0,0,0,0,0,"111 Blair St, Ithaca, NY",OK
-cuapts-165,cuapts,0,0,0,0,0,"105 N Quarry St, Ithaca, NY",OK
-cuapts-166,cuapts,0,0,1175,1175,1175,"711 E Seneca St, Ithaca, NY",OK
-cuapts-167,cuapts,0,0,0,0,0,"515 E State St, Ithaca, NY",OK
-cuapts-168,cuapts,0,0,0,0,0,"527 E Buffalo St, Ithaca, NY",OK
-cuapts-169,cuapts,0,0,0,0,0,"523 E Buffalo St, Ithaca, NY",OK
-cuapts-17,cuapts,0,0,0,0,0,"546 Warren Rd, Ithaca, NY",OK
-cuapts-170,cuapts,0,0,0,0,0,"519 E Buffalo St, Ithaca, NY",OK
-cuapts-171,cuapts,0,0,0,0,0,"201 Williams St, Ithaca, NY",OK
-cuapts-172,cuapts,0,0,0,0,0,"202 Williams St, Ithaca, NY",OK
-cuapts-173,cuapts,0,0,0,0,0,"203 Williams St, Ithaca, NY",OK
-cuapts-174,cuapts,0,0,0,0,0,"205 Williams St, Ithaca, NY",OK
-cuapts-175,cuapts,0,0,0,0,0,"207 Williams St, Ithaca, NY",OK
-cuapts-176,cuapts,0,0,0,0,0,"208 Williams St, Ithaca, NY",OK
-cuapts-177,cuapts,0,0,0,0,0,"209 Williams St, Ithaca, NY",OK
-cuapts-178,cuapts,0,0,0,0,0,"210 Williams St, Ithaca, NY",OK
-cuapts-179,cuapts,0,0,0,0,0,"211 Williams St, Ithaca, NY",OK
-cuapts-18,cuapts,0,0,0,0,0,"705 Giles St, Ithaca, NY",OK
-cuapts-180,cuapts,0,0,0,0,0,"105 Dewitt Pl, Ithaca, NY",OK
-cuapts-181,cuapts,0,0,0,0,0,"109 Dewitt Pl, Ithaca, NY",OK
-cuapts-182,cuapts,0,0,0,0,0,"111 Dewitt Pl, Ithaca, NY",OK
-cuapts-183,cuapts,0,0,0,0,0,"113 Dewitt Pl, Ithaca, NY",total!=raw
-cuapts-184,cuapts,0,0,0,0,0,"115 Dewitt Pl, Ithaca, NY",OK
-cuapts-185,cuapts,0,0,0,0,0,"117 Dewitt Pl, Ithaca, NY",OK
-cuapts-186,cuapts,0,0,0,0,0,"514 E. Buffalo St, Ithaca, NY",OK
-cuapts-187,cuapts,0,0,0,0,0,"516 E. Buffalo St, Ithaca, NY",OK
-cuapts-188,cuapts,0,0,0,0,0,"614 E. Buffalo St, Ithaca, NY",total!=raw
-cuapts-189,cuapts,0,0,0,0,0,"715 E. Buffalo St, Ithaca, NY",OK
-cuapts-19,cuapts,0,0,0,0,0,"132A E. Spencer St, Ithaca, NY",OK
-cuapts-190,cuapts,0,0,0,0,0,"102 Highland Pl, Ithaca, NY",OK
-cuapts-191,cuapts,0,0,0,0,0,"103 Highland Pl, Ithaca, NY",total!=raw
-cuapts-192,cuapts,0,0,0,0,0,"110 Highland Pl, Ithaca, NY",OK
-cuapts-193,cuapts,0,0,0,0,0,"112 Highland Pl, Ithaca, NY",OK
-cuapts-194,cuapts,0,0,0,0,0,"114 Highland Pl, Ithaca, NY",OK
-cuapts-195,cuapts,0,0,0,0,0,"123 Highland Pl, Ithaca, NY",OK
-cuapts-196,cuapts,0,0,0,0,0,"125 Highland Pl, Ithaca, NY",total!=raw
-cuapts-197,cuapts,0,0,0,0,0,"312 Thurston Ave, Ithaca, NY",OK
-cuapts-198,cuapts,0,0,1300,1300,1300,"105 Highland Pl, Ithaca, NY",OK
-cuapts-199,cuapts,0,0,0,0,0,"134 College Ave, Ithaca, NY",OK
-cuapts-2,cuapts,0,0,0,0,0,"1067 Warren Rd, Ithaca, NY",OK
-cuapts-20,cuapts,0,0,0,0,0,"401 S. Aurora St, Ithaca, NY",OK
-cuapts-200,cuapts,0,0,0,0,0,"208 Delaware Ave, Ithaca, NY",OK
-cuapts-201,cuapts,0,0,900,900,900,"211 Linden Ave, Ithaca, NY",OK
-cuapts-202,cuapts,0,0,1150,1150,1150,"308 Stewart Ave, Ithaca, NY",OK
-cuapts-203,cuapts,0,0,1950,1950,1950,"400 College Ave, Ithaca, NY",OK
-cuapts-204,cuapts,0,0,1000,1000,1000,"401 College Ave, Ithaca, NY",OK
-cuapts-205,cuapts,0,0,0,0,0,"403 College Ave, Ithaca, NY",OK
-cuapts-206,cuapts,0,0,1072,1072,1072,"306 N. Cayuga St, Ithaca, NY",OK
-cuapts-207,cuapts,0,0,1230,1230,1230,"407 College Ave, Ithaca, NY",OK
-cuapts-208,cuapts,0,0,1562,1562,1562,"314-320 E. State St, Ithaca, NY",OK
-cuapts-209,cuapts,0,0,0,0,0,"100 W. Buffalo St, Ithaca, NY",OK
-cuapts-21,cuapts,0,0,0,0,0,"110 Cook St, Ithaca, NY",OK
-cuapts-210,cuapts,0,0,1290,1290,1290,"171 E. State St, Ithaca, NY",OK
-cuapts-211,cuapts,0,0,0,0,0,"110 Dryden Rd, Ithaca, NY",total!=raw
-cuapts-212,cuapts,0,0,795,795,795,"934 Stewart Ave, Ithaca, NY",OK
-cuapts-213,cuapts,0,0,0,0,0,"106-112 Lake St, Ithaca, NY",OK
-cuapts-214,cuapts,0,0,770,770,770,"319 Highland Rd, Ithaca, NY",OK
-cuapts-215,cuapts,0,0,440,440,440,"516 University Ave, Ithaca, NY",pp<500
-cuapts-216,cuapts,0,0,0,0,0,"400 Triphammer Rd, Ithaca, NY",OK
-cuapts-217,cuapts,0,0,0,0,0,"321 N. Tioga St, Ithaca, NY",OK
-cuapts-218,cuapts,0,0,0,0,0,"150 Highland Ave, Ithaca, NY",OK
-cuapts-219,cuapts,0,0,1100,1100,1100,"101-103 N. Quarry St, Ithaca, NY",OK
-cuapts-22,cuapts,0,0,0,0,0,"478 Etna Rd, Ithaca, NY",OK
-cuapts-220,cuapts,0,0,1100,1100,1100,"702-704 E. State St, Ithaca, NY",OK
-cuapts-221,cuapts,0,0,1325,1325,1325,"104 Harvard Pl, Ithaca, NY",OK
-cuapts-222,cuapts,0,0,0,0,0,"105 Worth St, Ithaca, NY",OK
-cuapts-223,cuapts,0,0,0,0,0,"107 Elmwood Ave, Ithaca, NY",OK
-cuapts-224,cuapts,0,0,0,0,0,"108 Stewart Ave, Ithaca, NY",OK
-cuapts-225,cuapts,0,0,0,0,0,"127 College Ave, Ithaca, NY",OK
-cuapts-226,cuapts,0,0,1000,1000,1000,"200 Highland Ave, Ithaca, NY",OK
-cuapts-227,cuapts,0,0,650,650,650,"202 Prospect St, Ithaca, NY",OK
-cuapts-228,cuapts,0,0,0,0,0,"206 Prospect St, Ithaca, NY",OK
-cuapts-229,cuapts,0,0,0,0,0,"398 Triphammer Rd, Ithaca, NY",OK
-cuapts-23,cuapts,0,0,0,0,0,"310 Turner Pl, Ithaca, NY",OK
-cuapts-230,cuapts,0,0,1125,1125,1125,"504 Stewart Avenue, Ithaca, NY",OK
-cuapts-231,cuapts,0,0,1075,1075,1075,"710 E. State St, Ithaca, NY",OK
-cuapts-232,cuapts,0,0,0,0,0,"835 Taughannock Blvd, Ithaca, NY",OK
-cuapts-233,cuapts,0,0,0,0,0,"893 Taughannock Blvd, Ithaca, NY",OK
-cuapts-234,cuapts,0,0,0,0,0,"921 Taughannock Blvd, Ithaca, NY",OK
-cuapts-235,cuapts,0,0,0,0,0,"506 Dryden Rd, Ithaca, NY",OK
-cuapts-236,cuapts,0,0,0,0,0,"304 Bryant Ave, Ithaca, NY",OK
-cuapts-237,cuapts,0,0,0,0,0,"301 College Ave, Ithaca, NY",total!=raw
-cuapts-238,cuapts,0,0,0,0,0,"312 College Ave, Ithaca, NY",total!=raw
-cuapts-239,cuapts,0,0,0,0,0,"626 Stewart Ave, Ithaca, NY",OK
-cuapts-24,cuapts,0,0,0,0,0,"204 Miller St, Ithaca, NY",OK
-cuapts-240,cuapts,0,0,0,0,0,"219 Eddy Street, Ithaca, NY",OK
-cuapts-241,cuapts,0,0,0,0,0,"419 Wyckoff Ave, Ithaca, NY",OK
-cuapts-242,cuapts,0,0,0,0,0,"226 Bryant Avenue, Ithaca, NY",OK
-cuapts-243,cuapts,0,0,0,0,0,"238 Linden Ave, Ithaca, NY",OK
-cuapts-244,cuapts,0,0,0,0,0,"409 College Ave, Ithaca, NY",OK
-cuapts-245,cuapts,0,0,0,0,0,"205 Dryden Rd, Ithaca, NY",OK
-cuapts-246,cuapts,0,0,1150,1150,1150,"404 University Avenue, Ithaca, NY",OK
-cuapts-247,cuapts,0,0,0,0,0,"212 Giles Street, Ithaca, NY",OK
-cuapts-248,cuapts,0,0,0,0,0,"135 Blair Street, Ithaca, NY",OK
-cuapts-249,cuapts,0,0,0,0,0,"806 East State Street, Ithaca, NY",OK
-cuapts-25,cuapts,0,0,0,0,0,"312 Pleasant St, Ithaca, NY",OK
-cuapts-250,cuapts,0,0,0,0,0,"107 East State Street, Ithaca, NY",OK
-cuapts-251,cuapts,0,0,0,0,0,"305 Dryden Road, Ithaca, NY",OK
-cuapts-252,cuapts,0,0,0,0,0,"309 Dryden Road, Ithaca, NY",OK
-cuapts-253,cuapts,0,0,0,0,0,"307 Dryden Road, Ithaca, NY",OK
-cuapts-254,cuapts,0,0,0,0,0,"118 College Avenue, Ithaca, NY",OK
-cuapts-255,cuapts,0,0,0,0,0,"224 Dryden Road, Ithaca, NY",OK
-cuapts-256,cuapts,0,0,0,0,0,"127 Grand View, Ithaca, NY",OK
-cuapts-257,cuapts,0,0,0,0,0,"202 Linden Street, Ithaca, NY",OK
-cuapts-258,cuapts,0,0,1066,1066,1066,"815 South Aurora Street, Ithaca, NY",OK
-cuapts-259,cuapts,0,0,0,0,0,"1028 Ellis Hollow Road, Ithaca, NY",OK
-cuapts-26,cuapts,0,0,0,0,0,"616 East State St, Ithaca, NY",OK
-cuapts-27,cuapts,0,0,0,0,0,"37 Dove Drive, Ithaca, NY",OK
-cuapts-28,cuapts,0,0,0,0,0,"308 University Ave, Ithaca, NY",OK
-cuapts-29,cuapts,0,0,891,891,891,"708 Stewart Ave, Ithaca, NY",OK
-cuapts-3,cuapts,0,0,0,0,0,"117 Village Cir, Ithaca, NY",OK
-cuapts-30,cuapts,0,0,0,0,0,"111 Osmun Place, Ithaca, NY",OK
-cuapts-31,cuapts,0,0,0,0,0,"314 University Ave, Ithaca, NY",OK
-cuapts-32,cuapts,0,0,0,0,0,"616 E. State St, Ithaca, NY",OK
-cuapts-33,cuapts,0,0,0,0,0,"1453 Trumansburg Rd, Ithaca, NY",OK
-cuapts-34,cuapts,0,0,0,0,0,"410 E Yates St, Ithaca, NY",OK
-cuapts-35,cuapts,0,0,0,0,0,"705 N Aurora St, Ithaca, NY",OK
-cuapts-36,cuapts,0,0,0,0,0,"305 Pleasant St, Ithaca, NY",OK
-cuapts-37,cuapts,0,0,0,0,0,"114 Eddy St, Ithaca, NY",OK
-cuapts-38,cuapts,0,0,0,0,0,"401 Dryden Rd, Ithaca, NY",OK
-cuapts-39,cuapts,0,0,0,0,0,"509 S. Cayuga St, Ithaca, NY",OK
-cuapts-4,cuapts,0,0,0,0,0,"Observatory Circle, Ithaca, NY",no_addr
-cuapts-40,cuapts,0,0,0,0,0,"310 Pleasant St, Ithaca, NY",OK
-cuapts-41,cuapts,0,0,0,0,0,"402 Eddy St, Ithaca, NY",OK
-cuapts-42,cuapts,0,0,0,0,0,"401 Eddy St, Ithaca, NY",OK
-cuapts-43,cuapts,0,0,0,0,0,"327 Eddy St, Ithaca, NY",OK
-cuapts-44,cuapts,0,0,0,0,0,"109 Dryden Rd, Ithaca, NY",OK
-cuapts-45,cuapts,0,0,0,0,0,"311 Eddy St, Ithaca, NY",OK
-cuapts-46,cuapts,0,0,0,0,0,"105 Hudson St, Ithaca, NY",OK
-cuapts-47,cuapts,0,0,0,0,0,"107 Hudson St, Ithaca, NY",OK
-cuapts-48,cuapts,0,0,0,0,0,"109 Hudson St, Ithaca, NY",OK
-cuapts-49,cuapts,0,0,0,0,0,"114 Hudson St, Ithaca, NY",OK
-cuapts-5,cuapts,0,0,0,0,0,"847 Dryden Rd, Ithaca, NY",OK
-cuapts-50,cuapts,0,0,0,0,0,"117 Hudson St, Ithaca, NY",OK
-cuapts-51,cuapts,0,0,650,650,650,"119 Prospect St, Ithaca, NY",OK
-cuapts-52,cuapts,0,0,712,712,712,"123 Prospect St, Ithaca, NY",OK
-cuapts-53,cuapts,0,0,0,0,0,"139 Coddington St, Ithaca, NY",OK
-cuapts-54,cuapts,0,0,775,775,775,"309 S Aurora St, Ithaca, NY",OK
-cuapts-55,cuapts,0,0,0,0,0,"311 S Aurora St, Ithaca, NY",OK
-cuapts-56,cuapts,0,0,0,0,0,"313 S Aurora St, Ithaca, NY",OK
-cuapts-57,cuapts,0,0,0,0,0,"320 Hillview Pl, Ithaca, NY",OK
-cuapts-58,cuapts,0,0,0,0,0,"407 S Aurora St, Ithaca, NY",OK
-cuapts-59,cuapts,0,0,0,0,0,"409 S Aurora St, Ithaca, NY",OK
-cuapts-6,cuapts,0,0,0,0,0,"142 Burleigh Dr, Ithaca, NY",OK
-cuapts-60,cuapts,0,0,733,733,733,"410 S Aurora St, Ithaca, NY",OK
-cuapts-61,cuapts,0,0,0,0,0,"506 S Aurora St, Ithaca, NY",OK
-cuapts-62,cuapts,0,0,0,0,0,"514 S Aurora St, Ithaca, NY",OK
-cuapts-63,cuapts,0,0,0,0,0,"520 Etna Rd, Ithaca, NY",OK
-cuapts-64,cuapts,0,0,0,0,0,"307 College Ave, Ithaca, NY",total!=raw
-cuapts-65,cuapts,0,0,0,0,0,"216 Dryden Rd, Ithaca, NY",OK
-cuapts-66,cuapts,0,0,0,0,0,"222 Dryden Rd, Ithaca, NY",OK
-cuapts-67,cuapts,0,0,0,0,0,"226 Linden Ave, Ithaca, NY",OK
-cuapts-68,cuapts,0,0,0,0,0,"310 Bryant Ave, Ithaca, NY",OK
-cuapts-81,cuapts,0,0,0,0,0,"310 Bryant Ave, Ithaca, NY",OK
-cuapts-69,cuapts,0,0,0,0,0,"315 Dryden Rd, Ithaca, NY",OK
-cuapts-7,cuapts,0,0,0,0,0,"807 Triphammer Rd, Ithaca, NY",OK
-cuapts-70,cuapts,0,0,0,0,0,"319 Dryden Rd, Ithaca, NY",OK
-cuapts-71,cuapts,0,0,0,0,0,"205 College Ave, Ithaca, NY",OK
-cuapts-72,cuapts,0,0,0,0,0,"302 Bryant Ave, Ithaca, NY",OK
-cuapts-73,cuapts,0,0,0,0,0,"308 Bryant Ave, Ithaca, NY",OK
-cuapts-74,cuapts,0,0,0,0,0,"108 Cook St, Ithaca, NY",OK
-cuapts-75,cuapts,0,0,0,0,0,"234 Linden Ave, Ithaca, NY",total!=raw
-cuapts-76,cuapts,0,0,0,0,0,"241 Linden Ave, Ithaca, NY",OK
-cuapts-77,cuapts,0,0,0,0,0,"317 Dryden Rd, Ithaca, NY",OK
-cuapts-78,cuapts,0,0,0,0,0,"318 Elmwood Ave, Ithaca, NY",OK
-cuapts-79,cuapts,0,0,0,0,0,"135 Cook St, Ithaca, NY",OK
-cuapts-8,cuapts,0,0,0,0,0,"702 N. Aurora St, Ithaca, NY",OK
-cuapts-80,cuapts,0,0,0,0,0,"301 Bryant Ave, Ithaca, NY",total!=raw
-cuapts-82,cuapts,0,0,0,0,0,"130 College Ave, Ithaca, NY",OK
-cuapts-83,cuapts,0,0,0,0,0,"407 Elmwood Ave, Ithaca, NY",OK
-cuapts-84,cuapts,0,0,1182,1182,1182,"111 Dryden Rd, Ithaca, NY",OK
-cuapts-85,cuapts,0,0,0,0,0,"105 Dryden Court, Ithaca, NY",OK
-cuapts-92,cuapts,0,0,0,0,0,"105 Dryden Court, Ithaca, NY",OK
-cuapts-86,cuapts,0,0,825,825,825,"208 Dryden Rd, Ithaca, NY",OK
-cuapts-87,cuapts,0,0,1770,1770,1770,"151 Dryden Rd, Ithaca, NY",OK
-cuapts-88,cuapts,0,0,0,0,0,"213 Williams St, Ithaca, NY",OK
-cuapts-89,cuapts,0,0,895,895,895,"210 Dryden Rd, Ithaca, NY",OK
-cuapts-9,cuapts,0,0,0,0,0,"118 Ferris Place, Ithaca, NY",OK
-cuapts-90,cuapts,0,0,795,795,795,"214 Dryden Rd, Ithaca, NY",OK
-cuapts-91,cuapts,0,0,885,885,885,"202 Dryden Rd, Ithaca, NY",OK
-cuapts-93,cuapts,0,0,1195,1195,1195,"705 East Buffalo St, Ithaca, NY",OK
-cuapts-94,cuapts,0,0,0,0,0,"418 Eddy St, Ithaca, NY",OK
-cuapts-95,cuapts,0,0,0,0,0,"118 E. Prospect St, Ithaca, NY",OK
-cuapts-96,cuapts,0,0,0,0,0,"101 E State St, Ithaca, NY",OK
-cuapts-97,cuapts,0,0,0,0,0,"108 E State St, Ithaca, NY",OK
-cuapts-98,cuapts,0,0,0,0,0,"111 S. Cayuga St, Ithaca, NY",OK
-cuapts-99,cuapts,0,0,0,0,0,"154 E. State St, Ithaca, NY",OK
+cuapts-1,Lifestyle Properties,0,0,0,0,0,"1 Sanctuary Dr, Ithaca, NY",OK
+cuapts-10,Mazza & Amici,0,0,0,0,0,"117 Prospect St, Ithaca, NY",OK
+cuapts-100,ithacarenting,0,0,0,0,0,"156 E. State St, Ithaca, NY",OK
+cuapts-101,ithacarenting,0,0,0,0,0,"212 E. State St, Ithaca, NY",OK
+cuapts-102,ithacarenting,0,0,0,0,0,"222 S. Aurora St, Ithaca, NY",OK
+cuapts-103,Avramis Real Esate,0,0,0,0,0,"319 College Ave, Ithaca, NY",OK
+cuapts-104,Avramis Real Esate,0,0,0,0,0,"408 College Ave, Ithaca, NY",OK
+cuapts-105,Avramis Real Esate,0,0,0,0,0,"109 College Ave, Ithaca, NY",OK
+cuapts-106,Avramis Real Esate,0,0,0,0,0,"227 Linden Ave, Ithaca, NY",OK
+cuapts-107,Avramis Real Esate,0,0,0,0,0,"117 Eddy St, Ithaca, NY",OK
+cuapts-108,Avramis Real Esate,0,0,0,0,0,"118 Eddy St, Ithaca, NY",OK
+cuapts-109,Avramis Real Esate,0,0,0,0,0,"119 Eddy St, Ithaca, NY",OK
+cuapts-11,Mazza & Amici,0,0,0,0,0,"218 Delaware Ave, Ithaca, NY",OK
+cuapts-111,csp,0,0,0,0,0,"401 Stewart Ave, Ithaca, NY",OK
+cuapts-112,csp,0,0,0,0,0,"402 Stewart Ave, Ithaca, NY",OK
+cuapts-113,csp,0,0,0,0,0,"403 Stewart Ave, Ithaca, NY",OK
+cuapts-114,csp,0,0,0,0,0,"404 Stewart Ave, Ithaca, NY",OK
+cuapts-115,csp,0,0,0,0,0,"507 E. Buffalo St, Ithaca, NY",OK
+cuapts-116,csp,0,0,0,0,0,"140 Seneca Way, Ithaca, NY",OK
+cuapts-117,csp,0,0,0,0,0,"408 Stewart Ave, Ithaca, NY",OK
+cuapts-118,csp,0,0,0,0,0,"201 Highgate Rd, Ithaca, NY",OK
+cuapts-119,csp,0,0,0,0,0,"513 Elm St, Ithaca, NY",OK
+cuapts-12,Mazza & Amici,0,0,0,0,0,"506 S. Cayuga St, Ithaca, NY",OK
+cuapts-120,csp,0,0,0,0,0,"116 Osmun Pl, Ithaca, NY",OK
+cuapts-121,csp,0,0,0,0,0,"204 N. Cayuga St, Ithaca, NY",OK
+cuapts-122,csp,0,0,0,0,0,"321 E. Falls St, Ithaca, NY",OK
+cuapts-123,csp,0,0,0,0,0,"406 Stewart Ave, Ithaca, NY",OK
+cuapts-124,csp,0,0,0,0,0,"408 University Ave, Ithaca, NY",OK
+cuapts-125,csp,0,0,0,0,0,"108 W. Buffalo St, Ithaca, NY",OK
+cuapts-126,csp,0,0,0,0,0,"411 N. Cayuga St, Ithaca, NY",OK
+cuapts-127,csp,0,0,0,0,0,"909 N. Cayuga St, Ithaca, NY",OK
+cuapts-13,Mazza & Amici,0,0,0,0,0,"116 Ferris Place, Ithaca, NY",OK
+cuapts-130,Kimball Real Estate,0,0,0,0,0,"709 Stewart Ave, Ithaca, NY",OK
+cuapts-131,Kimball Real Estate,0,0,0,0,0,"120-126 Westbourne Lane, Ithaca, NY",OK
+cuapts-132,Kimball Real Estate,0,0,0,0,0,"110 Heights Court, Ithaca, NY",OK
+cuapts-14,Novarr-Mackesey / Ithaca Student Apartments,0,0,0,0,0,"106 Valentine Place, Ithaca, NY",total!=raw
+cuapts-145,lambrou,0,0,0,0,0,"103 Eddy St, Ithaca, NY",OK
+cuapts-146,lambrou,0,0,0,0,0,"106 Highland Pl, Ithaca, NY",OK
+cuapts-147,lambrou,0,0,0,0,0,"125 Eddy St, Ithaca, NY",OK
+cuapts-148,lambrou,0,0,0,0,0,"131 N. Quarry St, Ithaca, NY",total!=raw
+cuapts-149,lambrou,0,0,0,0,0,"113 Cook St, Ithaca, NY",total!=raw
+cuapts-15,Certified Properties,0,0,0,0,0,"313 Wait Ave, Ithaca, NY",OK
+cuapts-150,lambrou,0,0,0,0,0,"121 Catherine St, Ithaca, NY",OK
+cuapts-151,lambrou,0,0,0,0,0,"133 Blair St, Ithaca, NY",OK
+cuapts-152,lambrou,0,0,0,0,0,"801 E. Seneca St, Ithaca, NY",OK
+cuapts-153,lambrou,0,0,0,0,0,"133 N. Quarry St, Ithaca, NY",OK
+cuapts-154,lambrou,0,0,0,0,0,"202 Eddy St, Ithaca, NY",OK
+cuapts-155,lambrou,0,0,0,0,0,"410 Elmwood St, Ithaca, NY",OK
+cuapts-156,lambrou,0,0,0,0,0,"305 Oak Ave, Ithaca, NY",OK
+cuapts-157,LiveMoreIthaca,0,0,0,0,0,"114 Summit St, Ithaca, NY",total!=raw
+cuapts-159,LiveMoreIthaca,0,0,0,0,0,"126 College Ave, Ithaca, NY",OK
+cuapts-16,Certified Properties,0,0,0,0,0,"210 Stewart Ave, Ithaca, NY",OK
+cuapts-160,LiveMoreIthaca,0,0,0,0,0,"648 Hudson St, Ithaca, NY",OK
+cuapts-161,LiveMoreIthaca,0,0,0,0,0,"702 Hudson St, Ithaca, NY",OK
+cuapts-162,LiveMoreIthaca,0,0,0,0,0,"108 Ferris Pl, Ithaca, NY",OK
+cuapts-164,moll,0,0,0,0,0,"111 Blair St, Ithaca, NY",OK
+cuapts-165,moll,0,0,0,0,0,"105 N Quarry St, Ithaca, NY",OK
+cuapts-167,moll,0,0,0,0,0,"515 E State St, Ithaca, NY",OK
+cuapts-168,moll,0,0,0,0,0,"527 E Buffalo St, Ithaca, NY",OK
+cuapts-17,Certified Properties,0,0,0,0,0,"546 Warren Rd, Ithaca, NY",OK
+cuapts-170,moll,0,0,0,0,0,"519 E Buffalo St, Ithaca, NY",OK
+cuapts-171,PJ Apartments,0,0,0,0,0,"201 Williams St, Ithaca, NY",OK
+cuapts-172,PJ Apartments,0,0,0,0,0,"202 Williams St, Ithaca, NY",OK
+cuapts-173,PJ Apartments,0,0,0,0,0,"203 Williams St, Ithaca, NY",OK
+cuapts-174,PJ Apartments,0,0,0,0,0,"205 Williams St, Ithaca, NY",OK
+cuapts-175,PJ Apartments,0,0,0,0,0,"207 Williams St, Ithaca, NY",OK
+cuapts-176,PJ Apartments,0,0,0,0,0,"208 Williams St, Ithaca, NY",OK
+cuapts-177,PJ Apartments,0,0,0,0,0,"209 Williams St, Ithaca, NY",OK
+cuapts-178,PJ Apartments,0,0,0,0,0,"210 Williams St, Ithaca, NY",OK
+cuapts-179,PJ Apartments,0,0,0,0,0,"211 Williams St, Ithaca, NY",OK
+cuapts-18,Certified Properties,0,0,0,0,0,"705 Giles St, Ithaca, NY",OK
+cuapts-180,PJ Apartments,0,0,0,0,0,"105 Dewitt Pl, Ithaca, NY",OK
+cuapts-181,PJ Apartments,0,0,0,0,0,"109 Dewitt Pl, Ithaca, NY",OK
+cuapts-182,PJ Apartments,0,0,0,0,0,"111 Dewitt Pl, Ithaca, NY",OK
+cuapts-183,PJ Apartments,0,0,0,0,0,"113 Dewitt Pl, Ithaca, NY",total!=raw
+cuapts-184,PJ Apartments,0,0,0,0,0,"115 Dewitt Pl, Ithaca, NY",OK
+cuapts-185,PJ Apartments,0,0,0,0,0,"117 Dewitt Pl, Ithaca, NY",OK
+cuapts-186,PJ Apartments,0,0,0,0,0,"514 E. Buffalo St, Ithaca, NY",OK
+cuapts-187,PJ Apartments,0,0,0,0,0,"516 E. Buffalo St, Ithaca, NY",OK
+cuapts-188,PJ Apartments,0,0,0,0,0,"614 E. Buffalo St, Ithaca, NY",total!=raw
+cuapts-189,PJ Apartments,0,0,0,0,0,"715 E. Buffalo St, Ithaca, NY",OK
+cuapts-19,Certified Properties,0,0,0,0,0,"132A E. Spencer St, Ithaca, NY",OK
+cuapts-190,PJ Apartments,0,0,0,0,0,"102 Highland Pl, Ithaca, NY",OK
+cuapts-191,PJ Apartments,0,0,0,0,0,"103 Highland Pl, Ithaca, NY",total!=raw
+cuapts-192,PJ Apartments,0,0,0,0,0,"110 Highland Pl, Ithaca, NY",OK
+cuapts-193,PJ Apartments,0,0,0,0,0,"112 Highland Pl, Ithaca, NY",OK
+cuapts-194,PJ Apartments,0,0,0,0,0,"114 Highland Pl, Ithaca, NY",OK
+cuapts-195,PJ Apartments,0,0,0,0,0,"123 Highland Pl, Ithaca, NY",OK
+cuapts-196,PJ Apartments,0,0,0,0,0,"125 Highland Pl, Ithaca, NY",total!=raw
+cuapts-197,Rabco Highland House,0,0,0,0,0,"312 Thurston Ave, Ithaca, NY",OK
+cuapts-199,Student Rentals,0,0,0,0,0,"134 College Ave, Ithaca, NY",OK
+cuapts-2,Lifestyle Properties,0,0,0,0,0,"1067 Warren Rd, Ithaca, NY",OK
+cuapts-20,Certified Properties,0,0,0,0,0,"401 S. Aurora St, Ithaca, NY",OK
+cuapts-200,Student Rentals,0,0,0,0,0,"208 Delaware Ave, Ithaca, NY",OK
+cuapts-205,Student Rentals,0,0,0,0,0,"403 College Ave, Ithaca, NY",OK
+cuapts-209,travishyde,0,0,0,0,0,"100 W. Buffalo St, Ithaca, NY",OK
+cuapts-21,Certified Properties,0,0,0,0,0,"110 Cook St, Ithaca, NY",OK
+cuapts-211,travishyde,0,0,0,0,0,"110 Dryden Rd, Ithaca, NY",total!=raw
+cuapts-213,travishyde,0,0,0,0,0,"106-112 Lake St, Ithaca, NY",OK
+cuapts-216,travishyde,0,0,0,0,0,"400 Triphammer Rd, Ithaca, NY",OK
+cuapts-217,travishyde,0,0,0,0,0,"321 N. Tioga St, Ithaca, NY",OK
+cuapts-218,travishyde,0,0,0,0,0,"150 Highland Ave, Ithaca, NY",OK
+cuapts-22,Certified Properties,0,0,0,0,0,"478 Etna Rd, Ithaca, NY",OK
+cuapts-222,West Shore Apartments,0,0,0,0,0,"105 Worth St, Ithaca, NY",OK
+cuapts-223,West Shore Apartments,0,0,0,0,0,"107 Elmwood Ave, Ithaca, NY",OK
+cuapts-224,West Shore Apartments,0,0,0,0,0,"108 Stewart Ave, Ithaca, NY",OK
+cuapts-225,West Shore Apartments,0,0,0,0,0,"127 College Ave, Ithaca, NY",OK
+cuapts-228,West Shore Apartments,0,0,0,0,0,"206 Prospect St, Ithaca, NY",OK
+cuapts-229,West Shore Apartments,0,0,0,0,0,"398 Triphammer Rd, Ithaca, NY",OK
+cuapts-23,Certified Properties,0,0,0,0,0,"310 Turner Pl, Ithaca, NY",OK
+cuapts-232,West Shore Apartments,0,0,0,0,0,"835 Taughannock Blvd, Ithaca, NY",OK
+cuapts-233,West Shore Apartments,0,0,0,0,0,"893 Taughannock Blvd, Ithaca, NY",OK
+cuapts-234,West Shore Apartments,0,0,0,0,0,"921 Taughannock Blvd, Ithaca, NY",OK
+cuapts-235,CP Student Properties,0,0,0,0,0,"506 Dryden Rd, Ithaca, NY",OK
+cuapts-236,Urban Ithaca Real Estate,0,0,0,0,0,"304 Bryant Ave, Ithaca, NY",OK
+cuapts-237,301 College Ave,0,0,0,0,0,"301 College Ave, Ithaca, NY",total!=raw
+cuapts-238,312 College Ave,0,0,0,0,0,"312 College Ave, Ithaca, NY",total!=raw
+cuapts-239,ithaca-listing,0,0,0,0,0,"626 Stewart Ave, Ithaca, NY",OK
+cuapts-24,Certified Properties,0,0,0,0,0,"204 Miller St, Ithaca, NY",OK
+cuapts-242,Sky Property Holding,0,0,0,0,0,"226 Bryant Avenue, Ithaca, NY",OK
+cuapts-243,"Dry-Lin, LLC",0,0,0,0,0,"238 Linden Ave, Ithaca, NY",OK
+cuapts-244,Student Agencies,0,0,0,0,0,"409 College Ave, Ithaca, NY",OK
+cuapts-245,ithaca-listing,0,0,0,0,0,"205 Dryden Rd, Ithaca, NY",OK
+cuapts-247,ithaca-listing,0,0,0,0,0,"212 Giles Street, Ithaca, NY",OK
+cuapts-248,ithaca-listing,0,0,0,0,0,"135 Blair Street, Ithaca, NY",OK
+cuapts-249,ithaca-listing,0,0,0,0,0,"806 East State Street, Ithaca, NY",OK
+cuapts-25,Certified Properties,0,0,0,0,0,"312 Pleasant St, Ithaca, NY",OK
+cuapts-250,ithacarenting,0,0,0,0,0,"107 East State Street, Ithaca, NY",OK
+cuapts-251,lambrou,0,0,0,0,0,"305 Dryden Road, Ithaca, NY",OK
+cuapts-252,lambrou,0,0,0,0,0,"309 Dryden Road, Ithaca, NY",OK
+cuapts-253,lambrou,0,0,0,0,0,"307 Dryden Road, Ithaca, NY",OK
+cuapts-254,118 College Ave,0,0,0,0,0,"118 College Avenue, Ithaca, NY",OK
+cuapts-255,Urban Ithaca Real Estate,0,0,0,0,0,"224 Dryden Road, Ithaca, NY",OK
+cuapts-256,Conifer,0,0,0,0,0,"127 Grand View, Ithaca, NY",OK
+cuapts-257,ithaca-listing,0,0,0,0,0,"202 Linden Street, Ithaca, NY",OK
+cuapts-259,Conifer,0,0,0,0,0,"1028 Ellis Hollow Road, Ithaca, NY",OK
+cuapts-26,Certified Properties,0,0,0,0,0,"616 East State St, Ithaca, NY",OK
+cuapts-27,Certified Properties,0,0,0,0,0,"37 Dove Drive, Ithaca, NY",OK
+cuapts-28,Certified Properties,0,0,0,0,0,"308 University Ave, Ithaca, NY",OK
+cuapts-3,Lifestyle Properties,0,0,0,0,0,"117 Village Cir, Ithaca, NY",OK
+cuapts-30,Certified Properties,0,0,0,0,0,"111 Osmun Place, Ithaca, NY",OK
+cuapts-31,Certified Properties,0,0,0,0,0,"314 University Ave, Ithaca, NY",OK
+cuapts-33,Certified Properties,0,0,0,0,0,"1453 Trumansburg Rd, Ithaca, NY",OK
+cuapts-34,Certified Properties,0,0,0,0,0,"410 E Yates St, Ithaca, NY",OK
+cuapts-35,Certified Properties,0,0,0,0,0,"705 N Aurora St, Ithaca, NY",OK
+cuapts-36,Certified Properties,0,0,0,0,0,"305 Pleasant St, Ithaca, NY",OK
+cuapts-37,Certified Properties,0,0,0,0,0,"114 Eddy St, Ithaca, NY",OK
+cuapts-38,Certified Properties,0,0,0,0,0,"401 Dryden Rd, Ithaca, NY",OK
+cuapts-39,Certified Properties,0,0,0,0,0,"509 S. Cayuga St, Ithaca, NY",OK
+cuapts-4,Lifestyle Properties,0,0,0,0,0,"Observatory Circle, Ithaca, NY",no_addr
+cuapts-40,Certified Properties,0,0,0,0,0,"310 Pleasant St, Ithaca, NY",OK
+cuapts-41,Certified Properties,0,0,0,0,0,"402 Eddy St, Ithaca, NY",OK
+cuapts-46,ppmhomes,0,0,0,0,0,"105 Hudson St, Ithaca, NY",OK
+cuapts-47,ppmhomes,0,0,0,0,0,"107 Hudson St, Ithaca, NY",OK
+cuapts-48,ppmhomes,0,0,0,0,0,"109 Hudson St, Ithaca, NY",OK
+cuapts-49,ppmhomes,0,0,0,0,0,"114 Hudson St, Ithaca, NY",OK
+cuapts-5,Lifestyle Properties,0,0,0,0,0,"847 Dryden Rd, Ithaca, NY",OK
+cuapts-50,ppmhomes,0,0,0,0,0,"117 Hudson St, Ithaca, NY",OK
+cuapts-53,ppmhomes,0,0,0,0,0,"139 Coddington St, Ithaca, NY",OK
+cuapts-55,ppmhomes,0,0,0,0,0,"311 S Aurora St, Ithaca, NY",OK
+cuapts-56,ppmhomes,0,0,0,0,0,"313 S Aurora St, Ithaca, NY",OK
+cuapts-57,ppmhomes,0,0,0,0,0,"320 Hillview Pl, Ithaca, NY",OK
+cuapts-58,ppmhomes,0,0,0,0,0,"407 S Aurora St, Ithaca, NY",OK
+cuapts-59,ppmhomes,0,0,0,0,0,"409 S Aurora St, Ithaca, NY",OK
+cuapts-6,Mazza & Amici,0,0,0,0,0,"142 Burleigh Dr, Ithaca, NY",OK
+cuapts-61,ppmhomes,0,0,0,0,0,"506 S Aurora St, Ithaca, NY",OK
+cuapts-63,ppmhomes,0,0,0,0,0,"520 Etna Rd, Ithaca, NY",OK
+cuapts-64,Urban Ithaca Real Estate,0,0,0,0,0,"307 College Ave, Ithaca, NY",total!=raw
+cuapts-65,Urban Ithaca Real Estate,0,0,0,0,0,"216 Dryden Rd, Ithaca, NY",OK
+cuapts-66,Urban Ithaca Real Estate,0,0,0,0,0,"222 Dryden Rd, Ithaca, NY",OK
+cuapts-67,Urban Ithaca Real Estate,0,0,0,0,0,"226 Linden Ave, Ithaca, NY",OK
+cuapts-68,Urban Ithaca Real Estate,0,0,0,0,0,"310 Bryant Ave, Ithaca, NY",OK
+cuapts-69,Urban Ithaca Real Estate,0,0,0,0,0,"315 Dryden Rd, Ithaca, NY",OK
+cuapts-7,Mazza & Amici,0,0,0,0,0,"807 Triphammer Rd, Ithaca, NY",OK
+cuapts-70,Urban Ithaca Real Estate,0,0,0,0,0,"319 Dryden Rd, Ithaca, NY",OK
+cuapts-71,Urban Ithaca Real Estate,0,0,0,0,0,"205 College Ave, Ithaca, NY",OK
+cuapts-72,Urban Ithaca Real Estate,0,0,0,0,0,"302 Bryant Ave, Ithaca, NY",OK
+cuapts-73,Urban Ithaca Real Estate,0,0,0,0,0,"308 Bryant Ave, Ithaca, NY",OK
+cuapts-74,Urban Ithaca Real Estate,0,0,0,0,0,"108 Cook St, Ithaca, NY",OK
+cuapts-75,Urban Ithaca Real Estate,0,0,0,0,0,"234 Linden Ave, Ithaca, NY",total!=raw
+cuapts-76,Urban Ithaca Real Estate,0,0,0,0,0,"241 Linden Ave, Ithaca, NY",OK
+cuapts-77,Urban Ithaca Real Estate,0,0,0,0,0,"317 Dryden Rd, Ithaca, NY",OK
+cuapts-78,Urban Ithaca Real Estate,0,0,0,0,0,"318 Elmwood Ave, Ithaca, NY",OK
+cuapts-79,Urban Ithaca Real Estate,0,0,0,0,0,"135 Cook St, Ithaca, NY",OK
+cuapts-8,Mazza & Amici,0,0,0,0,0,"702 N. Aurora St, Ithaca, NY",OK
+cuapts-80,Urban Ithaca Real Estate,0,0,0,0,0,"301 Bryant Ave, Ithaca, NY",total!=raw
+cuapts-82,Urban Ithaca Real Estate,0,0,0,0,0,"130 College Ave, Ithaca, NY",OK
+cuapts-83,Urban Ithaca Real Estate,0,0,0,0,0,"407 Elmwood Ave, Ithaca, NY",OK
+cuapts-85,ithacarenting,0,0,0,0,0,"105 Dryden Court, Ithaca, NY",OK
+cuapts-88,ithacarenting,0,0,0,0,0,"213 Williams St, Ithaca, NY",OK
+cuapts-9,Mazza & Amici,0,0,0,0,0,"118 Ferris Place, Ithaca, NY",OK
+cuapts-94,ithacarenting,0,0,0,0,0,"418 Eddy St, Ithaca, NY",OK
+cuapts-95,ithacarenting,0,0,0,0,0,"118 E. Prospect St, Ithaca, NY",OK
+cuapts-96,ithacarenting,0,0,0,0,0,"101 E State St, Ithaca, NY",OK
+cuapts-97,ithacarenting,0,0,0,0,0,"108 E State St, Ithaca, NY",OK
+cuapts-98,ithacarenting,0,0,0,0,0,"111 S. Cayuga St, Ithaca, NY",OK
+cuapts-99,ithacarenting,0,0,0,0,0,"154 E. State St, Ithaca, NY",OK
 ithacarenting-1,ithacarenting,3,3.0,2670,890,890,"Ithaca, NY",no_addr
 ithacarenting-5,ithacarenting,0,0,745,745,745,"Ithaca, NY",no_addr
 ithacarenting-17,ithacarenting,0,2,1100,1100,1100,"Ithaca, NY",no_addr
