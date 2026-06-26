@@ -172,7 +172,7 @@
       </div>
       ${b.lat && b.lng ? `<div class="panel"><h2 style="font-size:18px;margin-bottom:12px">Location</h2><div id="bmap"></div></div>` : ""}
       <div class="panel" style="font-size:13px;color:var(--muted)">
-        <strong style="color:var(--text-2)">Sources:</strong> <span style="text-transform:capitalize">${b.sources.join(", ")}</span>.
+        <strong style="color:var(--text-2)">Sources:</strong> <span style="text-transform:lowercase">${b.sources.join(", ")}</span>.
         Rents and availability change frequently — confirm with the landlord.
       </div>
     </div>`;
