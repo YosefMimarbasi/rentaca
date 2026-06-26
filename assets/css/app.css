@@ -80,15 +80,24 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; letter-spacing:
   padding: 11px 22px; transition: background var(--dur-1) var(--ease), color var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease), transform var(--dur-1) var(--ease);
   white-space: nowrap;
 }
+/* Button taxonomy — Preline-style 6 styles (solid/outline/soft/ghost/white/link),
+   tokenized to Cornell red. Shared base above. */
 .btn--primary { background: var(--accent); color: #fff; }
 .btn--primary:hover { background: var(--accent-hover); color: #fff; text-decoration: none; transform: translateY(-1px); }
 .btn--primary:active { transform: translateY(0); }
+.btn--outline { background: transparent; color: var(--accent); border-color: var(--accent); }
+.btn--outline:hover { background: var(--accent); color: #fff; text-decoration: none; }
+.btn--soft { background: rgba(179,27,27,.10); color: var(--accent); border-color: transparent; }
+.btn--soft:hover { background: rgba(179,27,27,.16); color: var(--accent-hover); text-decoration: none; }
 .btn--ghost { background: transparent; color: var(--ink); border-color: var(--gray-30); }
 .btn--ghost:hover { background: var(--line-50); color: var(--ink); text-decoration: none; border-color: var(--gray-50); }
+.btn--white { background: #fff; color: var(--ink); border-color: var(--line); box-shadow: var(--sh-1); }
+.btn--white:hover { background: var(--line-50); text-decoration: none; }
 .btn--sm { padding: 8px 16px; font-size: 13px; }
-.btn--link { background: none; color: var(--accent); padding: 0; border: 0; border-radius: 0; font-size: 15px; }
+.btn--lg { padding: 14px 28px; font-size: 16px; }
+.btn--link { background: none; color: var(--accent); padding: 0; border: 0; border-radius: 0; font-size: 15px; font-weight: 600; }
 .btn--link:hover { text-decoration: underline; }
-.btn[disabled], .btn--disabled { background: var(--line-100); color: var(--gray-50); border-color: transparent; cursor: not-allowed; transform: none; }
+.btn[disabled], .btn--disabled { background: var(--line-100); color: var(--gray-50); border-color: transparent; cursor: not-allowed; transform: none; box-shadow: none; }
 
 /* ===========================================================================
    Hero — white, calm, one red accent word
@@ -289,8 +298,9 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; letter-spacing:
 .lp { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(18px,5vw,28px); }
 .lp-feature { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 28px 24px; transition: transform var(--dur-2) var(--ease), box-shadow var(--dur-2) var(--ease), border-color var(--dur-2) var(--ease); }
 .lp-feature:hover { transform: translateY(-3px); box-shadow: var(--sh-2); border-color: var(--gray-30); }
-.lp-feature sl-icon { font-size: 24px; color: var(--accent); }
-.lp-feature h3 { font-family: var(--font-display); font-size: 18px; font-weight: 600; letter-spacing: -0.02em; margin: 14px 0 6px; color: var(--ink); }
+/* shadcn/Preline-style icon container: tinted rounded square */
+.lp-feature sl-icon { font-size: 22px; color: var(--accent); display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 10px; background: rgba(179,27,27,.08); border: 1px solid rgba(179,27,27,.14); }
+.lp-feature h3 { font-family: var(--font-display); font-size: 18px; font-weight: 600; letter-spacing: -0.02em; margin: 16px 0 6px; color: var(--ink); }
 .lp-feature p { color: var(--muted); font-size: 14.5px; line-height: 1.55; margin: 0; }
 .lp-eyebrow { color: var(--accent); font-weight: 600; font-size: 13px; letter-spacing: .02em; }
 .lp-h2 { font-family: var(--font-display); font-size: var(--fs-h2); font-weight: 700; letter-spacing: -0.025em; margin: 8px 0 10px; color: var(--ink); }

@@ -167,7 +167,7 @@
         ${amens ? `<div style="margin-top:16px"><div class="field" style="margin:0 0 9px"><label style="margin:0">Amenities</label></div><div class="amen-chips">${amens}</div></div>` : ""}
         <div class="side-cta">
           ${b.website ? `<a class="btn btn--primary" href="${esc(b.website)}" target="_blank" rel="noopener">Visit landlord site ↗</a>` : ""}
-          ${firstUrl ? `<a class="btn btn--ghost" href="${esc(firstUrl)}" target="_blank" rel="noopener">View original listing ↗</a>` : ""}
+          ${firstUrl ? `<a class="btn btn--outline" href="${esc(firstUrl)}" target="_blank" rel="noopener">View original listing ↗</a>` : ""}
         </div>
       </div>
       ${b.lat && b.lng ? `<div class="panel"><h2 style="font-size:18px;margin-bottom:12px">Location</h2><div id="bmap"></div></div>` : ""}
