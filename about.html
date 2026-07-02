@@ -5,8 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>About — Rentaca</title>
 <meta name="description" content="How Rentaca aggregates Ithaca rental data, what the numbers mean, and how to read pricing.">
-<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0E0E0F" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#ffffff">
+<script>
+  if (localStorage.getItem("theme") === "dark") {
+    document.documentElement.classList.add("theme-dark", "sl-theme-dark");
+  }
+</script>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Rentaca">
 <meta property="og:title" content="About — Rentaca">
@@ -22,7 +26,6 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/dark.css">
 <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js"></script>
-<script>if(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)document.documentElement.classList.add("sl-theme-dark");</script>
 </head>
 <body>
 
@@ -44,6 +47,10 @@
       <a href="about.html" aria-current="page">About</a>
     </div>
     <div class="nav__spacer"></div>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <sl-icon name="sun-fill" class="theme-toggle__sun"></sl-icon>
+      <sl-icon name="moon-stars-fill" class="theme-toggle__moon"></sl-icon>
+    </button>
   </div>
 </nav>
 

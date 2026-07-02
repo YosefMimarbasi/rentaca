@@ -26,7 +26,7 @@ a { color: var(--accent); text-decoration: none; }
 a:hover { color: var(--accent-hover); text-decoration: underline; text-underline-offset: 2px; }
 img { display: block; max-width: 100%; }
 button { font-family: inherit; cursor: pointer; }
-h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.02em; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.02em; text-transform: lowercase; }
 
 /* ---------- Accessibility: skip link + focus ---------- */
 .skip-link {
@@ -56,6 +56,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing:
   border-radius: 0 0 var(--r-lg) var(--r-lg);
   box-shadow: 0 10px 30px -16px rgba(0,0,0,.22);
   transition: background var(--dur-2) var(--ease), box-shadow var(--dur-2) var(--ease);
+  text-transform: lowercase;
 }
 .nav__util { background: transparent; color: var(--muted); font-size: var(--fs-micro); box-shadow: inset 0 -1px 0 var(--line-100); transition: box-shadow var(--dur-2) var(--ease); }
 .nav__util-inner { max-width: var(--maxw); margin: 0 auto; padding: 7px clamp(18px,5vw,28px); display: flex; align-items: center; gap: 16px; }
@@ -110,36 +111,42 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing:
 .btn[disabled], .btn--disabled { background: var(--base); color: var(--gray-30); box-shadow: none; cursor: not-allowed; transform: none; }
 
 /* ===========================================================================
-   Hero — one-liner statement on an animated Carnelian liquid-blob field
+   Hero — one-liner statement on an animated red + white mesh field
+   (plain layered gradients, no mix-blend-mode — guaranteed to render
+   identically everywhere rather than depend on blend-mode support)
    =========================================================================== */
 .hero {
   position: relative; overflow: hidden; isolation: isolate;
   min-height: 92vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
-  background: var(--red); text-align: center; padding: 120px 22px 96px;
+  text-align: center; padding: 120px 22px 96px;
+  background:
+    radial-gradient(55% 42% at 4% -4%, rgba(255,255,255,.85) 0%, transparent 62%),
+    radial-gradient(70% 60% at 100% 112%, var(--red-lo) 0%, transparent 62%),
+    var(--red);
 }
 .hero__bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
-.hero__bg .blob { position: absolute; border-radius: 50%; filter: blur(70px); mix-blend-mode: plus-lighter; }
-.hero__bg .blob--1 { width: 62vw; height: 62vw; top: -20vw; left: -12vw; background: radial-gradient(circle at 35% 35%, var(--red-hi), transparent 70%); animation: blobDrift1 8s ease-in-out infinite alternate; }
-.hero__bg .blob--2 { width: 52vw; height: 52vw; bottom: -22vw; right: -14vw; background: radial-gradient(circle at 60% 40%, var(--red-lo), transparent 70%); animation: blobDrift2 9s ease-in-out infinite alternate; }
-.hero__bg .blob--3 { width: 42vw; height: 42vw; top: 28%; left: 55%; background: radial-gradient(circle at 50% 50%, #fff, transparent 72%); opacity: .12; animation: blobDrift3 7s ease-in-out infinite alternate; }
+.hero__bg .blob { position: absolute; border-radius: 50%; filter: blur(70px); }
+.hero__bg .blob--1 { width: 62vw; height: 62vw; top: -20vw; left: -12vw; background: radial-gradient(circle at 35% 35%, #fff, transparent 70%); opacity: .4; animation: blobDrift1 8s ease-in-out infinite alternate; }
+.hero__bg .blob--2 { width: 52vw; height: 52vw; bottom: -22vw; right: -14vw; background: radial-gradient(circle at 60% 40%, var(--red-lo), transparent 70%); opacity: .8; animation: blobDrift2 9s ease-in-out infinite alternate; }
+.hero__bg .blob--3 { width: 42vw; height: 42vw; top: 28%; left: 55%; background: radial-gradient(circle at 50% 50%, #fff, transparent 72%); opacity: .22; animation: blobDrift3 7s ease-in-out infinite alternate; }
 /* Dot field — subtle orbiting-particle texture over the blobs, white on red */
 .hero__bg .dots {
   position: absolute; inset: -20px;
-  background-image: radial-gradient(rgba(255,255,255,.4) 1.4px, transparent 1.6px);
+  background-image: radial-gradient(rgba(255,255,255,.45) 1.4px, transparent 1.6px);
   background-size: 34px 34px;
   opacity: .3;
   animation: dotDrift 16s linear infinite;
 }
 @keyframes dotDrift { from { transform: translate(0,0); } to { transform: translate(34px, 34px); } }
-@keyframes blobDrift1 { from { transform: translate(0,0) scale(1) rotate(0deg); opacity: .55; } to { transform: translate(4%,6%) scale(1.12) rotate(8deg); opacity: .8; } }
-@keyframes blobDrift2 { from { transform: translate(0,0) scale(1) rotate(0deg); opacity: .5; } to { transform: translate(-5%,-4%) scale(1.15) rotate(-10deg); opacity: .75; } }
-@keyframes blobDrift3 { from { transform: translate(0,0) scale(1); opacity: .08; } to { transform: translate(-6%,4%) scale(1.2); opacity: .18; } }
+@keyframes blobDrift1 { from { transform: translate(0,0) scale(1) rotate(0deg); opacity: .3; } to { transform: translate(4%,6%) scale(1.12) rotate(8deg); opacity: .5; } }
+@keyframes blobDrift2 { from { transform: translate(0,0) scale(1) rotate(0deg); opacity: .65; } to { transform: translate(-5%,-4%) scale(1.15) rotate(-10deg); opacity: .85; } }
+@keyframes blobDrift3 { from { transform: translate(0,0) scale(1); opacity: .14; } to { transform: translate(-6%,4%) scale(1.2); opacity: .28; } }
 
 .hero__content { position: relative; z-index: 1; max-width: 900px; }
 .hero sl-badge { margin-bottom: 22px; }
 .hero sl-badge::part(base) { background: rgba(255,255,255,.18); color: #fff; box-shadow: none; backdrop-filter: blur(8px); }
 .hero h1 { margin: 0 auto; max-width: 16ch; font-size: var(--fs-hero); line-height: var(--lh-tight); font-weight: 800; color: #fff; }
-.hero h1 .grad { color: #161616; -webkit-text-fill-color: #161616; }
+.hero h1 .grad { color: #fff; -webkit-text-fill-color: #fff; }
 
 .hero__scroll {
   position: absolute; left: 50%; bottom: 30px; transform: translateX(-50%); z-index: 1;
@@ -423,7 +430,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing:
    Shoelace harmonization — remap the ENTIRE primary ramp to Cornell red so no
    default sky-blue leaks into badges, switches, focus rings, or button states.
    =========================================================================== */
-:root:root, :root:root.sl-theme-dark {
+:root:root {
   --sl-color-primary-50:  #fcf0f0;
   --sl-color-primary-100: #f6d4d4;
   --sl-color-primary-200: #eca3a3;
@@ -530,20 +537,36 @@ select { -webkit-appearance: none; appearance: none; }
 }
 
 /* ===========================================================================
-   Dark mode (auto) — near-black material, same soft-shadow mechanic
+   Dark theme — opt-in via the toggle (adds .theme-dark to <html>), not tied
+   to system preference. Same soft-shadow mechanic, near-black material.
    =========================================================================== */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --base: #1C1C1C; --base-rgb: 28,28,28; --bg-tint: #222222;
-    --ink: #F2F2F2; --text-2: #D8D8D8; --muted: #9C9C9C; --muted-2: #6E6E6E;
-    --line-100: #272727; --line-soft: rgba(255,255,255,.05);
-    --gray-30: #565656; --gray-50: #8C8C8C; --gray-70: #B8B8B8; --gray-90: #ECECEC;
-    --accent: #E8615D; --accent-hover: #ec6663;   /* #E0524F measured 4.45:1 on the dark surface — just under WCAG AA; this clears 5:1+ */
-    --ne-d: rgba(0,0,0,.6); --ne-l: rgba(255,255,255,.045);
-    --ne-red-out: 6px 6px 14px rgba(0,0,0,.6), -4px -4px 10px rgba(216,67,63,.16);
-    --ne-red-in:  inset 4px 4px 9px rgba(0,0,0,.6), inset -3px -3px 8px rgba(216,67,63,.14);
-  }
-  .badge--rating, .card__pp { background: rgba(28,28,30,.92); color: var(--text); }
-  .badge--units { background: rgba(0,0,0,.7); }
-  .btn--white { background: var(--paper); color: var(--ink); }
+:root.theme-dark {
+  --base: #1C1C1C; --base-rgb: 28,28,28; --bg-tint: #222222;
+  --ink: #F2F2F2; --text-2: #D8D8D8; --muted: #9C9C9C; --muted-2: #6E6E6E;
+  --line-100: #272727; --line-soft: rgba(255,255,255,.05);
+  --gray-30: #565656; --gray-50: #8C8C8C; --gray-70: #B8B8B8; --gray-90: #ECECEC;
+  --accent: #E8615D; --accent-hover: #ec6663;
+  --ne-d: rgba(0,0,0,.6); --ne-l: rgba(255,255,255,.045);
+  --ne-red-out: 6px 6px 14px rgba(0,0,0,.6), -4px -4px 10px rgba(216,67,63,.16);
+  --ne-red-in:  inset 4px 4px 9px rgba(0,0,0,.6), inset -3px -3px 8px rgba(216,67,63,.14);
 }
+.theme-dark .badge--rating, .theme-dark .card__pp { background: rgba(28,28,30,.92); color: var(--text); }
+.theme-dark .badge--units { background: rgba(0,0,0,.7); }
+.theme-dark .btn--white { background: var(--paper); color: var(--ink); }
+
+/* ===========================================================================
+   Theme toggle — raised neumorphic circle in the nav; sun/moon swap by theme
+   =========================================================================== */
+.theme-toggle {
+  width: 38px; height: 38px; border-radius: 50%; border: none; cursor: pointer;
+  display: grid; place-items: center; background: var(--surface); color: var(--ink);
+  box-shadow: var(--ne-out-sm); font-size: 17px; margin-left: 6px;
+  transition: box-shadow var(--dur-1) var(--ease);
+}
+.theme-toggle:hover { box-shadow: var(--ne-out); }
+.theme-toggle:active { box-shadow: var(--ne-in-sm); }
+.theme-toggle__moon { display: none; }
+.theme-dark .theme-toggle__sun { display: none; }
+.theme-dark .theme-toggle__moon { display: block; }
+.nav--transparent .theme-toggle { background: rgba(255,255,255,.16); color: #fff; box-shadow: none; }
+.nav--transparent .theme-toggle:hover { background: rgba(255,255,255,.26); }
