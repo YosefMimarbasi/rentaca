@@ -27,13 +27,15 @@
     });
   }
 
-  // Hero scroll animation — content drifts/fades back, background parallaxes
-  // slower, scroll cue disappears as soon as the user takes the hint.
+  // Hero scroll animation — content drifts/fades back, canopy layers part at
+  // their own depth (data-depth), scroll cue disappears once scrolling starts.
   const hero = document.querySelector(".hero");
   const reduceMotion = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (hero && !reduceMotion) {
     const content = hero.querySelector(".hero__content");
-    const bg = hero.querySelector(".hero__bg");
+    const depthLayers = Array.from(hero.querySelectorAll("[data-depth]")).map((el) => ({
+      el, depth: parseFloat(el.dataset.depth) || 0,
+    }));
     const cue = hero.querySelector(".hero__scroll");
     let ticking = false;
     function heroParallax() {
@@ -42,7 +44,9 @@
         content.style.setProperty("transform", `translateY(${progress * 70}px)`, "important");
         content.style.setProperty("opacity", String(Math.max(1 - progress * 1.3, 0)), "important");
       }
-      if (bg) bg.style.transform = `translateY(${progress * 35}px)`;
+      depthLayers.forEach(({ el, depth }) => {
+        el.style.transform = `translateY(${progress * 130 * depth}px)`;
+      });
       if (cue) cue.style.opacity = String(Math.max(1 - progress * 4, 0));
       ticking = false;
     }
