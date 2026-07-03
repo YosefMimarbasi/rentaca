@@ -3,6 +3,14 @@
   if (!nav) return;
   const hasHero = !!document.querySelector(".hero");
   const threshold = 60;
+
+  // Keep --nav-h in sync with the real rendered height so sticky elements
+  // (toolbar, sidebar) sit flush under the nav instead of guessing a fixed value.
+  const syncNavHeight = () => document.documentElement.style.setProperty("--nav-h", nav.offsetHeight + "px");
+  syncNavHeight();
+  window.addEventListener("resize", syncNavHeight);
+  if (window.ResizeObserver) new ResizeObserver(syncNavHeight).observe(nav);
+
   function update() {
     if (hasHero && window.scrollY < threshold) nav.classList.add("nav--transparent");
     else nav.classList.remove("nav--transparent");

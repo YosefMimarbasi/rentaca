@@ -63,7 +63,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing:
 .nav__util a { color: var(--muted); }
 .nav__util a:hover { color: var(--accent); }
 .nav__util .sp { margin-left: auto; }
-.nav__inner { max-width: var(--maxw); margin: 0 auto; min-height: var(--nav-h); padding: 10px clamp(18px,5vw,28px); display: flex; align-items: center; gap: 30px; }
+.nav__inner { max-width: var(--maxw); margin: 0 auto; min-height: 64px; padding: 10px clamp(18px,5vw,28px); display: flex; align-items: center; gap: 30px; }
 .nav__brand { font-family: var(--font-display); font-size: 21px; font-weight: 800; letter-spacing: -0.03em; color: var(--ink); display: flex; align-items: center; gap: 1px; transition: color var(--dur-2) var(--ease); }
 .nav__brand:hover { text-decoration: none; }
 .nav__links { display: flex; gap: 6px; margin-left: 4px; }
@@ -74,7 +74,13 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing:
 .nav__stat { transition: color var(--dur-2) var(--ease); }
 
 /* Transparent state — sits over the hero until scrolled past it (toggled by nav.js) */
-.nav--transparent { background: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; box-shadow: none; }
+.nav--transparent { position: relative; background: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; box-shadow: none; }
+/* Dark scrim behind the text — guarantees legibility regardless of what's in the hero background (e.g. the white glow) */
+.nav--transparent::before {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: linear-gradient(to bottom, rgba(0,0,0,.38), rgba(0,0,0,.1));
+}
+.nav--transparent .nav__util-inner, .nav--transparent .nav__inner { position: relative; z-index: 1; }
 .nav--transparent .nav__util { box-shadow: none; }
 .nav--transparent .nav__util, .nav--transparent .nav__util a, .nav--transparent .nav__stat { color: rgba(255,255,255,.82); }
 .nav--transparent .nav__brand { color: #fff; }
@@ -389,6 +395,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing:
   padding-top: 6px;
 }
 .lp-row__icon { font-size: 22px; color: #fff; line-height: 1; width: clamp(44px,4.5vw,54px); height: clamp(44px,4.5vw,54px); display: inline-grid; place-items: center; border-radius: 50%; background: var(--red); box-shadow: var(--ne-red-out); }
+.lp-row__icon::part(svg) { width: 22px; height: 22px; }
 .lp-row h3 { font-family: var(--font-display); font-size: clamp(19px,2.2vw,25px); font-weight: 800; letter-spacing: -0.02em; margin: 0 0 8px; color: var(--ink); }
 .lp-row p { color: var(--muted); font-size: 15.5px; line-height: 1.6; margin: 0; max-width: 62ch; }
 @media (max-width: 640px) {

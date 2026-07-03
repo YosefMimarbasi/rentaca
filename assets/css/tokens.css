@@ -82,7 +82,7 @@
   --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
   --sp-5: 24px; --sp-6: 32px; --sp-7: 48px; --sp-8: 64px; --sp-9: 96px;
   --maxw: 1240px;
-  --nav-h: 64px;
+  --nav-h: 98px;   /* fallback before nav.js measures the real height; kept in sync with the actual rendered nav */
 
   /* ---- Radius — soft, rounded, no sharp corners ---- */
   --r-sm: 14px;
