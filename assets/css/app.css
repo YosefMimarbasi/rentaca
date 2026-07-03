@@ -116,46 +116,34 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing:
 .btn[disabled], .btn--disabled { background: var(--base); color: var(--gray-30); box-shadow: none; cursor: not-allowed; transform: none; }
 
 /* ===========================================================================
-   Hero — one-liner statement on a scroll-animated forest-canopy field,
+   Hero — one-liner statement on a scroll-animated forest-canopy scene,
    recreated (not embedded) from an impressionist bridge-in-the-woods
-   painting: deep shadow-green foliage, dappled golden light, a soft
-   stone-toned arc gesturing at the bridge. Scoped to the hero only —
-   the rest of the site stays on the red/white/black system.
+   painting: sky-to-canopy-to-shadow gradient, crisp leaf-cluster shapes,
+   a visible stone arch. Sharp shapes with gradient falloff for softness —
+   no blur filters, so nothing dissolves into an unrecognizable smear.
+   Scoped to the hero only — rest of the site stays red/white/black.
    =========================================================================== */
 .hero {
   position: relative; overflow: hidden; isolation: isolate;
   min-height: 92vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
   text-align: center; padding: 120px 22px 96px;
-  background:
-    radial-gradient(45% 38% at 22% 16%, rgba(224,197,90,.5) 0%, transparent 62%),
-    radial-gradient(38% 34% at 80% 10%, rgba(169,198,216,.3) 0%, transparent 66%),
-    linear-gradient(165deg, #3c5424 0%, #22350f 45%, #12200d 78%, #0d1a0a 100%);
+  background: linear-gradient(180deg, #9fc3d6 0%, #cdd98f 14%, #7a9c3f 30%, #3c5424 52%, #1c2f10 78%, #0d1a0a 100%);
 }
 .hero__bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
 /* Each parallax-layer wrapper is scroll-driven by nav.js (data-depth); the
    element inside keeps its own independent ambient drift animation. */
 .hero__bg .parallax-layer { position: absolute; inset: 0; }
-.hero__bg .arc {
-  position: absolute; left: 50%; bottom: -18vw; width: 90vw; height: 46vw; transform: translateX(-50%);
-  border-radius: 50%; filter: blur(10px);
-  background: radial-gradient(circle at 50% 30%, rgba(151,143,124,.4) 0%, transparent 62%);
-}
-.hero__bg .blob { position: absolute; border-radius: 50%; filter: blur(70px); }
-.hero__bg .blob--1 { width: 62vw; height: 62vw; top: -20vw; left: -12vw; background: radial-gradient(circle at 35% 35%, #E8C55A, transparent 70%); opacity: .45; animation: blobDrift1 9s ease-in-out infinite alternate; }
-.hero__bg .blob--2 { width: 52vw; height: 52vw; bottom: -22vw; right: -14vw; background: radial-gradient(circle at 60% 40%, #2E2140, transparent 70%); opacity: .7; animation: blobDrift2 11s ease-in-out infinite alternate; }
-.hero__bg .blob--3 { width: 42vw; height: 42vw; top: 22%; left: 58%; background: radial-gradient(circle at 50% 50%, #F4E4A6, transparent 72%); opacity: .3; animation: blobDrift3 8s ease-in-out infinite alternate; }
-/* Dot field — dappled canopy-light speckle, gold on green */
-.hero__bg .dots {
-  position: absolute; inset: -20px;
-  background-image: radial-gradient(rgba(232,197,90,.5) 1.6px, transparent 1.8px);
-  background-size: 30px 30px;
-  opacity: .35;
-  animation: dotDrift 20s linear infinite;
-}
-@keyframes dotDrift { from { transform: translate(0,0); } to { transform: translate(30px, 30px); } }
-@keyframes blobDrift1 { from { transform: translate(0,0) scale(1) rotate(0deg); opacity: .32; } to { transform: translate(4%,6%) scale(1.12) rotate(8deg); opacity: .52; } }
-@keyframes blobDrift2 { from { transform: translate(0,0) scale(1) rotate(0deg); opacity: .55; } to { transform: translate(-5%,-4%) scale(1.15) rotate(-10deg); opacity: .78; } }
-@keyframes blobDrift3 { from { transform: translate(0,0) scale(1); opacity: .18; } to { transform: translate(-6%,4%) scale(1.2); opacity: .34; } }
+/* Stone arch — a solid shape with a darker cutout to read as an archway */
+.hero__bg .arc { position: absolute; left: 50%; bottom: -4vw; width: 58vw; height: 32vw; transform: translateX(-50%); background: linear-gradient(180deg, #ada190 0%, #8c8577 60%, #6f6a5c 100%); border-radius: 50% 50% 0 0 / 100% 100% 0 0; }
+.hero__bg .arc::after { content: ""; position: absolute; left: 50%; bottom: -2vw; width: 60%; height: 72%; transform: translateX(-50%); background: #0d1a0a; border-radius: 50% 50% 0 0 / 100% 100% 0 0; }
+/* Leaf-cluster silhouettes framing the top corners, plus a warm sunbreak */
+.hero__bg .blob { position: absolute; }
+.hero__bg .blob--1 { width: 46vw; height: 40vw; top: -8vw; left: -10vw; background: #2b4419; border-radius: 38% 62% 61% 39% / 41% 44% 56% 59%; opacity: .55; animation: blobDrift1 9s ease-in-out infinite alternate; }
+.hero__bg .blob--2 { width: 40vw; height: 36vw; top: -12vw; right: -8vw; background: #23360f; border-radius: 55% 45% 40% 60% / 60% 55% 45% 40%; opacity: .6; animation: blobDrift2 11s ease-in-out infinite alternate; }
+.hero__bg .blob--3 { width: 30vw; height: 26vw; top: 8%; left: 34%; background: radial-gradient(circle at 40% 35%, #F4E4A6, #E8C55A 55%, transparent 82%); border-radius: 50%; opacity: .55; animation: blobDrift3 8s ease-in-out infinite alternate; }
+@keyframes blobDrift1 { from { transform: translate(0,0) scale(1) rotate(0deg); } to { transform: translate(3%,4%) scale(1.06) rotate(4deg); } }
+@keyframes blobDrift2 { from { transform: translate(0,0) scale(1) rotate(0deg); } to { transform: translate(-3%,3%) scale(1.06) rotate(-4deg); } }
+@keyframes blobDrift3 { from { transform: translate(0,0) scale(1); opacity: .45; } to { transform: translate(-4%,3%) scale(1.1); opacity: .65; } }
 
 .hero__content { position: relative; z-index: 1; max-width: 900px; }
 .hero h1 { margin: 0 auto; max-width: 16ch; font-size: var(--fs-hero); line-height: var(--lh-tight); font-weight: 800; color: #fff; text-shadow: 0 4px 26px rgba(0,0,0,.5), 0 1px 4px rgba(0,0,0,.35); }
