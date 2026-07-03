@@ -50,7 +50,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing:
    =========================================================================== */
 .nav {
   position: sticky; top: 0; z-index: 1000;
-  background: rgba(var(--base-rgb), .74);
+  background: rgba(var(--nav-bg-rgb), .8);
   backdrop-filter: blur(20px) saturate(160%);
   -webkit-backdrop-filter: blur(20px) saturate(160%);
   border-radius: 0 0 var(--r-lg) var(--r-lg);
@@ -66,7 +66,6 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing:
 .nav__inner { max-width: var(--maxw); margin: 0 auto; min-height: var(--nav-h); padding: 10px clamp(18px,5vw,28px); display: flex; align-items: center; gap: 30px; }
 .nav__brand { font-family: var(--font-display); font-size: 21px; font-weight: 800; letter-spacing: -0.03em; color: var(--ink); display: flex; align-items: center; gap: 1px; transition: color var(--dur-2) var(--ease); }
 .nav__brand:hover { text-decoration: none; }
-.nav__brand .dot { color: var(--accent); transition: color var(--dur-2) var(--ease); }
 .nav__links { display: flex; gap: 6px; margin-left: 4px; }
 .nav__links a { color: var(--text-2); font-size: 14.5px; font-weight: 600; letter-spacing: 0; padding: 8px 16px; border-radius: 980px; transition: box-shadow var(--dur-2) var(--ease), color var(--dur-1) var(--ease), background var(--dur-1) var(--ease); }
 .nav__links a:hover { color: var(--ink); box-shadow: var(--ne-out-sm); text-decoration: none; }
@@ -78,7 +77,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing:
 .nav--transparent { background: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; box-shadow: none; }
 .nav--transparent .nav__util { box-shadow: none; }
 .nav--transparent .nav__util, .nav--transparent .nav__util a, .nav--transparent .nav__stat { color: rgba(255,255,255,.82); }
-.nav--transparent .nav__brand, .nav--transparent .nav__brand .dot { color: #fff; }
+.nav--transparent .nav__brand { color: #fff; }
 .nav--transparent .nav__links a { color: rgba(255,255,255,.88); }
 .nav--transparent .nav__links a:hover { color: #fff; box-shadow: none; background: rgba(255,255,255,.16); }
 .nav--transparent .nav__links a[aria-current="page"] { color: #fff; box-shadow: none; background: rgba(255,255,255,.22); }
@@ -143,8 +142,6 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing:
 @keyframes blobDrift3 { from { transform: translate(0,0) scale(1); opacity: .14; } to { transform: translate(-6%,4%) scale(1.2); opacity: .28; } }
 
 .hero__content { position: relative; z-index: 1; max-width: 900px; }
-.hero sl-badge { margin-bottom: 22px; }
-.hero sl-badge::part(base) { background: rgba(255,255,255,.18); color: #fff; box-shadow: none; backdrop-filter: blur(8px); }
 .hero h1 { margin: 0 auto; max-width: 16ch; font-size: var(--fs-hero); line-height: var(--lh-tight); font-weight: 800; color: #fff; }
 .hero h1 .grad { color: #fff; -webkit-text-fill-color: #fff; }
 
@@ -541,7 +538,7 @@ select { -webkit-appearance: none; appearance: none; }
    to system preference. Same soft-shadow mechanic, near-black material.
    =========================================================================== */
 :root.theme-dark {
-  --base: #1C1C1C; --base-rgb: 28,28,28; --bg-tint: #222222;
+  --base: #1C1C1C; --base-rgb: 28,28,28; --nav-bg-rgb: 14,14,14; --bg-tint: #222222;
   --ink: #F2F2F2; --text-2: #D8D8D8; --muted: #9C9C9C; --muted-2: #6E6E6E;
   --line-100: #272727; --line-soft: rgba(255,255,255,.05);
   --gray-30: #565656; --gray-50: #8C8C8C; --gray-70: #B8B8B8; --gray-90: #ECECEC;

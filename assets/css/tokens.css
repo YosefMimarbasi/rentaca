@@ -21,6 +21,7 @@
   /* ---- The material: single-tone neumorphic surface (light mode) ---- */
   --base:     #EEEEEE;
   --base-rgb: 238,238,238;
+  --nav-bg-rgb: 208,208,208;
   --gray-90:  #262626;
   --gray-70:  #4A4A4A;
   --gray-50:  #5C5C5C;   /* darkened from #6E6E6E — was 4.39:1 on the base surface, fails WCAG AA text */
