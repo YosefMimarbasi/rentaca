@@ -23,8 +23,18 @@
 <link rel="preconnect" href="https://unpkg.com" crossorigin>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
       integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
-<link rel="stylesheet" href="assets/css/app.css">
+<link rel="stylesheet" href="assets/css/app.css?v=10">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏙️</text></svg>">
+
+<!-- Three.js (CDN, no build step) — renders the McGraw Tower model in the hero -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.170.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.170.0/examples/jsm/"
+  }
+}
+</script>
 
 <!-- UI component libraries (CDN, no build): Tailwind utilities + Shoelace web components -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -65,13 +75,11 @@
   </div>
 </nav>
 
-<!-- HERO — one-liner statement on a scroll-animated forest-canopy field -->
+<!-- HERO — McGraw Tower (WebGL, hero3d.js) descending as you scroll -->
 <header class="hero">
   <div class="hero__bg" aria-hidden="true">
-    <div class="parallax-layer" data-depth="-0.08"><span class="arc"></span></div>
-    <div class="parallax-layer" data-depth="0.35"><span class="blob blob--1"></span></div>
-    <div class="parallax-layer" data-depth="0.55"><span class="blob blob--2"></span></div>
-    <div class="parallax-layer" data-depth="0.2"><span class="blob blob--3"></span></div>
+    <canvas id="heroCanvas"></canvas>
+    <div class="tower-fallback"></div>
   </div>
   <div class="hero__content">
     <h1>Find your place in <span class="grad">Ithaca</span>.</h1>
@@ -243,7 +251,8 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-<script src="assets/js/nav.js"></script>
+<script src="assets/js/nav.js?v=7"></script>
 <script src="assets/js/home.js"></script>
+<script type="module" src="assets/js/hero3d.js"></script>
 </body>
 </html>

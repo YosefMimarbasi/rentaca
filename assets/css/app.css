@@ -116,38 +116,35 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing:
 .btn[disabled], .btn--disabled { background: var(--base); color: var(--gray-30); box-shadow: none; cursor: not-allowed; transform: none; }
 
 /* ===========================================================================
-   Hero — one-liner statement on a scroll-animated forest-canopy scene,
-   recreated (not embedded) from an impressionist bridge-in-the-woods
-   painting: sky-to-canopy-to-shadow gradient, crisp leaf-cluster shapes,
-   a visible stone arch. Sharp shapes with gradient falloff for softness —
-   no blur filters, so nothing dissolves into an unrecognizable smear.
-   Scoped to the hero only — rest of the site stays red/white/black.
+   Hero — McGraw Tower rendered in WebGL (Three.js, hero3d.js), the camera
+   panning down its height as the visitor scrolls, over a night photo of
+   the real tower lit warm amber against a dark sky. Scoped to the hero
+   only — the rest of the site stays red/white/black.
    =========================================================================== */
 .hero {
   position: relative; overflow: hidden; isolation: isolate;
   min-height: 92vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
   text-align: center; padding: 120px 22px 96px;
-  background: linear-gradient(180deg, #9fc3d6 0%, #cdd98f 14%, #7a9c3f 30%, #3c5424 52%, #1c2f10 78%, #0d1a0a 100%);
+  background-image: var(--hero-bg-image, url("../img/hero-fireworks.png"));
+  background-size: cover; background-position: center 65%;
 }
 .hero__bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
-/* Each parallax-layer wrapper is scroll-driven by nav.js (data-depth); the
-   element inside keeps its own independent ambient drift animation. */
-.hero__bg .parallax-layer { position: absolute; inset: 0; }
-/* Stone arch — a solid shape with a darker cutout to read as an archway */
-.hero__bg .arc { position: absolute; left: 50%; bottom: -4vw; width: 58vw; height: 32vw; transform: translateX(-50%); background: linear-gradient(180deg, #ada190 0%, #8c8577 60%, #6f6a5c 100%); border-radius: 50% 50% 0 0 / 100% 100% 0 0; }
-.hero__bg .arc::after { content: ""; position: absolute; left: 50%; bottom: -2vw; width: 60%; height: 72%; transform: translateX(-50%); background: #0d1a0a; border-radius: 50% 50% 0 0 / 100% 100% 0 0; }
-/* Leaf-cluster silhouettes framing the top corners, plus a warm sunbreak */
-.hero__bg .blob { position: absolute; }
-.hero__bg .blob--1 { width: 46vw; height: 40vw; top: -8vw; left: -10vw; background: #2b4419; border-radius: 38% 62% 61% 39% / 41% 44% 56% 59%; opacity: .55; animation: blobDrift1 9s ease-in-out infinite alternate; }
-.hero__bg .blob--2 { width: 40vw; height: 36vw; top: -12vw; right: -8vw; background: #23360f; border-radius: 55% 45% 40% 60% / 60% 55% 45% 40%; opacity: .6; animation: blobDrift2 11s ease-in-out infinite alternate; }
-.hero__bg .blob--3 { width: 30vw; height: 26vw; top: 8%; left: 34%; background: radial-gradient(circle at 40% 35%, #F4E4A6, #E8C55A 55%, transparent 82%); border-radius: 50%; opacity: .55; animation: blobDrift3 8s ease-in-out infinite alternate; }
-@keyframes blobDrift1 { from { transform: translate(0,0) scale(1) rotate(0deg); } to { transform: translate(3%,4%) scale(1.06) rotate(4deg); } }
-@keyframes blobDrift2 { from { transform: translate(0,0) scale(1) rotate(0deg); } to { transform: translate(-3%,3%) scale(1.06) rotate(-4deg); } }
-@keyframes blobDrift3 { from { transform: translate(0,0) scale(1); opacity: .45; } to { transform: translate(-4%,3%) scale(1.1); opacity: .65; } }
+#heroCanvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+/* Static fallback (reduced motion / no WebGL) — a simple centered silhouette mark */
+.hero__bg .tower-fallback {
+  position: absolute; left: 50%; top: 8%; width: 120px; height: 46%; transform: translateX(-50%);
+  background: linear-gradient(180deg, rgba(20,16,12,.55), rgba(20,16,12,.75));
+  clip-path: polygon(35% 100%, 35% 30%, 20% 30%, 50% 0%, 80% 30%, 65% 30%, 65% 100%);
+  opacity: .9;
+}
+.hero--3d-ready .tower-fallback { display: none; }
 
 .hero__content { position: relative; z-index: 1; max-width: 900px; }
-.hero h1 { margin: 0 auto; max-width: 16ch; font-size: var(--fs-hero); line-height: var(--lh-tight); font-weight: 800; color: #fff; text-shadow: 0 4px 26px rgba(0,0,0,.5), 0 1px 4px rgba(0,0,0,.35); }
-.hero h1 .grad { color: #fff; -webkit-text-fill-color: #fff; }
+.hero h1 {
+  margin: 0 auto; max-width: 96vw; font-size: min(5.6vw, 84px); line-height: var(--lh-tight); font-weight: 800;
+  color: #fff;
+  white-space: nowrap;
+}
 
 .hero__scroll {
   position: absolute; left: 50%; bottom: 30px; transform: translateX(-50%); z-index: 1;
@@ -523,7 +520,6 @@ select { -webkit-appearance: none; appearance: none; }
   .lightbox__nav { font-size: 30px; padding: 12px; }
 }
 @media (max-width: 380px) {
-  .hero h1 { font-size: 34px; }
   .hero__stats { gap: 18px; }
   .btn { padding: 10px 18px; }
 }
