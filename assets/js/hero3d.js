@@ -9,11 +9,6 @@
    is unavailable or the user has requested reduced motion. */
 import * as THREE from "three";
 import { STLLoader } from "three/addons/loaders/STLLoader.js";
-import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
-import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
-import { SSAOPass } from "three/addons/postprocessing/SSAOPass.js";
-import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
-import { OutputPass } from "three/addons/postprocessing/OutputPass.js";
 
 (async () => {
   const hero = document.querySelector(".hero");
@@ -166,32 +161,20 @@ import { OutputPass } from "three/addons/postprocessing/OutputPass.js";
     buildPlaceholderTower(); // model missing/failed to load — keep the mechanism demonstrable
   }
 
-  // Post-processing: SSAO darkens the arches/belfry recesses and corners
-  // the way real ambient occlusion would, so the carved detail reads as
-  // sculpted rather than flat-shaded; a conservative, high-threshold bloom
-  // adds a touch of glow to only the brightest lit stone/highlights.
-  const composer = new EffectComposer(renderer);
-  composer.addPass(new RenderPass(scene, camera));
-  const ssaoPass = new SSAOPass(scene, camera, hero.clientWidth, hero.clientHeight);
-  ssaoPass.kernelRadius = 0.35;
-  ssaoPass.minDistance = 0.001;
-  ssaoPass.maxDistance = 0.15;
-  composer.addPass(ssaoPass);
-  const bloomPass = new UnrealBloomPass(new THREE.Vector2(hero.clientWidth, hero.clientHeight), 0.35, 0.5, 0.86);
-  composer.addPass(bloomPass);
-  composer.addPass(new OutputPass());
+  // NOTE: SSAO + bloom via EffectComposer were tried here and reverted —
+  // that post-processing pipeline broke the canvas's alpha transparency
+  // (the whole sky rendered as opaque black, hiding the CSS photo behind
+  // it, confirmed by direct testing). Shadow mapping + tone mapping above
+  // don't need a composer at all — they render directly through
+  // renderer.render() below, so the canvas stays correctly transparent
+  // wherever there's no geometry.
 
   function resize() {
     const w = hero.clientWidth, h = hero.clientHeight;
-    const pr = Math.min(window.devicePixelRatio || 1, 2);
-    renderer.setPixelRatio(pr);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
     camera.updateProjectionMatrix();
-    // EffectComposer.setSize() reads the renderer's current pixel ratio
-    // internally (set just above), so it doesn't need its own setter.
-    composer.setSize(w, h);
-    ssaoPass.setSize(w, h);
   }
   resize();
   window.addEventListener("resize", resize);
@@ -231,7 +214,7 @@ import { OutputPass } from "three/addons/postprocessing/OutputPass.js";
   function animate() {
     requestAnimationFrame(animate);
     if (!inView) return;
-    composer.render();
+    renderer.render(scene, camera);
   }
   animate();
 })();
