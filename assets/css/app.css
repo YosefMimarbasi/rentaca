@@ -141,7 +141,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing:
 
 .hero__content { position: relative; z-index: 1; max-width: 900px; }
 .hero h1 {
-  margin: 0 auto; max-width: 96vw; font-size: min(5.6vw, 84px); line-height: var(--lh-tight); font-weight: 800;
+  margin: 0 auto; max-width: 96vw; font-size: min(3.7vw, 84px); line-height: var(--lh-tight); font-weight: 800;
   color: #fff;
   white-space: nowrap;
 }
