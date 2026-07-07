@@ -124,8 +124,6 @@ import { STLLoader } from "three/addons/loaders/STLLoader.js";
   const ROOF_DARK = new THREE.Color(0x3c4655);    // slate blue-gray roof: light enough for the shader's diamond
                                                    // pattern to read and to catch highlight instead of crushing to
                                                    // near-black, low-red so warm lights don't turn it orange
-  const CLOCK_FACE = new THREE.Color(0xfff6de);   // backlit cream dial
-  const CLOCK_HAND = new THREE.Color(0x201810);   // dark hands/numerals — read via shading on the raised geometry
   const KEY_DIR = new THREE.Vector3(6, 5, 0.5).normalize();
 
   // Procedural surface detail, spliced into MeshStandardMaterial's own
@@ -264,9 +262,18 @@ float mtDialGlow = 0.0;`)
     float marks = max(max(tick, max(ringOuter, ringInner)), hub);
     vec3 dialCream = vec3(1.0, 0.95, 0.80) * (0.90 + 0.12 * (1.0 - smoothstep(0.0, 4.4, rho)));
     vec3 dial = mix(dialCream, vec3(0.14, 0.11, 0.07), marks);
-    vec3 clockCol = mix(dial, vec3(0.82, 0.75, 0.60) * stoneTint.x, step(4.5, rho));
-    clockCol = mix(clockCol, vec3(0.12, 0.09, 0.06), raised * step(rho, 4.5));
-    diffuseColor.rgb = clockCol;
+    dial = mix(dial, vec3(0.12, 0.09, 0.06), raised * step(rho, 4.5));
+    // Only the round dial itself (plus a couple pixels of anti-aliasing at
+    // its rim) overrides the wall's color — clockZone above is really a
+    // rectangular Z x angle gate (much bigger than the circular dial, to
+    // safely cover the whole plaque), and painting a flat synthetic "stone"
+    // tone across that entire rectangle for rho>=4.5 produced a hard-edged
+    // discolored square around each clock: that flat tone never matched the
+    // coursed-masonry pattern's actual brightness/texture right outside it.
+    // Falling through to the wall's own already-computed color instead
+    // makes the dial read as a disc set into the ordinary stone, no seam.
+    float dialMask = 1.0 - smoothstep(4.4, 4.6, rho);
+    diffuseColor.rgb = mix(diffuseColor.rgb, dial, dialMask);
     mtDialGlow = step(rho, 4.4) * (1.0 - raised) * (1.0 - marks);
   }
 }`)
@@ -281,30 +288,30 @@ totalEmissiveRadiance += vec3(1.0, 0.86, 0.6) * mtDialGlow * 1.05;`);
   // add on top — confirmed by parsing the binary file directly (Python,
   // offline): a dense circular cluster of triangles sits at raw Z 71-82
   // (of a 0-125 height range) and radius 9.75-10.84 (of a ±11 footprint),
-  // centered on all four cardinal angles (0°, 90°, 180°, -90°). Coloring
-  // those actual vertices — instead of overlaying a separate flat disc —
-  // is what makes the clock read as part of the tower rather than a sticker.
-  const CLOCK_Z_MIN = 70, CLOCK_Z_MAX = 82.5, CLOCK_R_MIN = 9.5;
-  const CLOCK_ANGLES_DEG = [0, 90, 180, -90];
-  // Re-measured off the STL: the clock plaque's real triangle density holds
-  // out to ~28-30deg from each cardinal face (vs. plain wall, which has
-  // almost none) before dropping sharply — the previous 11deg tolerance
-  // only covered a thin center sliver of the actual shield-shaped plaque.
-  const CLOCK_ANGLE_TOLERANCE_DEG = 30;
-  function isClockVertex(localX, localY, localZ) {
-    if (localZ < CLOCK_Z_MIN || localZ > CLOCK_Z_MAX) return false;
-    if (Math.hypot(localX, localY) < CLOCK_R_MIN) return false;
-    const deg = (Math.atan2(localY, localX) * 180) / Math.PI;
-    return CLOCK_ANGLES_DEG.some((target) => Math.abs(((deg - target + 180) % 360) - 180) < CLOCK_ANGLE_TOLERANCE_DEG);
-  }
-
+  // centered on all four cardinal angles (0°, 90°, 180°, -90°).
+  //
+  // The vertex-color layer below deliberately does NOT special-case those
+  // clock vertices anymore — it used to (first with a dark "hand" tone,
+  // then with a flat cream "face" tone), and both versions caused visible
+  // artifacts: this mesh is low-poly, raw STL with no shared vertex
+  // indexing, so a handful of large triangles run from a clock-zone vertex
+  // all the way down/around to ordinary wall vertices. Any special flat
+  // color assigned there gets Gouraud-interpolated across those triangles,
+  // producing either long dark streaks (the "hand" version) or a washed-out
+  // flat square with faint streaks bleeding into the wall below (the "face"
+  // version) — confirmed by neutralizing the special-cased vertex colors
+  // live and watching both artifacts vanish. The actual dial (cream face,
+  // ticks, hub, hands) is fully handled by the shader below instead, which
+  // computes it per-pixel from continuous position data within a precise
+  // boundary and completely overwrites diffuseColor there — so leaving
+  // clock-zone vertices on the ordinary continuous stone gradient costs
+  // nothing (the shader draws right over it) and removes the only source
+  // of an anomalous flat color for a huge low-poly triangle to smear.
   /** Bakes a height gradient (stone -> belfry glow -> dark metal roof) plus a
-   *  normal-based key-light tint into per-vertex colors, and picks out the
-   *  clock faces' own real geometry for a distinct cream/dark tone instead
-   *  of continuing the stone gradient over them. The STL is authored Z-up
-   *  (height along local Z) and only reoriented to the scene's Y-up axes
-   *  later via the mesh's rotation.x, so this reads/dots against
-   *  local-Z-as-height and remaps each local normal into that same
+   *  normal-based key-light tint into per-vertex colors. The STL is
+   *  authored Z-up (height along local Z) and only reoriented to the
+   *  scene's Y-up axes later via the mesh's rotation.x, so this reads/dots
+   *  against local-Z-as-height and remaps each local normal into that same
    *  post-rotation (world) orientation before comparing it to the key light. */
   function colorizeTower(geometry) {
     geometry.computeVertexNormals();
@@ -317,17 +324,10 @@ totalEmissiveRadiance += vec3(1.0, 0.86, 0.6) * mtDialGlow * 1.05;`);
     const c = new THREE.Color();
     const n = new THREE.Vector3();
     for (let i = 0; i < pos.count; i++) {
-      const lx = pos.getX(i), ly = pos.getY(i), lz = pos.getZ(i);
+      const lz = pos.getZ(i);
       const t = (lz - minZ) / range;
-      const onClock = isClockVertex(lx, ly, lz);
 
-      if (onClock) {
-        // The rim/back of the recess reads darker (hands + shadowed edges),
-        // the face itself bright cream — driven by how far out the vertex
-        // sits, since the modeled hands/numerals are the raised/thin bits.
-        const radial = Math.hypot(lx, ly);
-        c.copy(radial > 10.55 ? CLOCK_HAND : CLOCK_FACE);
-      } else if (t < 0.5) c.copy(STONE_BASE).lerp(STONE_MID, t / 0.5);
+      if (t < 0.5) c.copy(STONE_BASE).lerp(STONE_MID, t / 0.5);
       else if (t < 0.792) c.copy(STONE_MID).lerp(BELFRY_GLOW, (t - 0.5) / 0.292);
       // Slate starts at raw Z ~99 (t=0.792) — the roof's real eave ring, one
       // lip higher than the corbel/cornice band below it (raw Z 89-92, which
@@ -339,7 +339,7 @@ totalEmissiveRadiance += vec3(1.0, 0.86, 0.6) * mtDialGlow * 1.05;`);
 
       // rotation.x = -90° maps local (x,y,z) -> world (x,z,-y); apply the same to the normal
       n.set(normal.getX(i), normal.getZ(i), -normal.getY(i));
-      const tint = n.dot(KEY_DIR) * (onClock ? 0.03 : 0.07); // clock stays closer to flat/backlit
+      const tint = n.dot(KEY_DIR) * 0.07;
       c.r = Math.min(1, c.r + tint);
       c.g = Math.min(1, c.g + tint * 0.6);
       c.b = Math.max(0, c.b - tint * 0.4);
