@@ -34,6 +34,14 @@ import { STLLoader } from "three/addons/loaders/STLLoader.js";
   renderer.toneMappingExposure = 1.05;
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  // Nothing shadow-relevant ever moves after setup — the tower and every
+  // light are static, only the camera pans on scroll, and shadow maps are
+  // computed from the light's point of view, not the camera's. Three.js
+  // still recomputes the (expensive, 2048x2048 depth-pass) shadow map every
+  // single frame by default regardless. Turning that off and manually
+  // triggering it once, right before the first real render below, removes
+  // a large chunk of per-frame GPU work for free.
+  renderer.shadowMap.autoUpdate = false;
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(35, hero.clientWidth / hero.clientHeight, 0.1, 100);
@@ -55,7 +63,9 @@ import { STLLoader } from "three/addons/loaders/STLLoader.js";
   const key = new THREE.DirectionalLight(0xffb15c, 2.8);
   key.position.set(6, 5, 0.5);
   key.castShadow = true;
-  key.shadow.mapSize.set(2048, 2048);
+  key.shadow.mapSize.set(1536, 1536); // trimmed from 2048 for headroom on weaker GPUs — now a one-time
+                                       // cost (see renderer.shadowMap.autoUpdate below), so this mostly
+                                       // just saves memory/first-frame time rather than per-frame cost
   key.shadow.bias = -0.0015;
   key.shadow.normalBias = 0.02;
   // Shadow camera frustum tightly framed around the tower's own bounding
@@ -95,16 +105,59 @@ import { STLLoader } from "three/addons/loaders/STLLoader.js";
   // not dark recesses. A ring of short-range point lights at arch height
   // does this cheaply: each one mainly lights the inside surface of the
   // nearest arch notch, bleeding a warm glow out through the opening.
-  // Height/radius measured directly off the STL (triangle density peaks at
-  // raw Z 88-92 out of a 0-125 range, radius ~10-10.8 out of 11) rather than
-  // guessed — the guessed values were off enough to visibly miss the arches.
+  // Height measured directly off the STL (triangle density peaks at raw Z
+  // 88-92 out of a 0-125 range) rather than guessed — the guessed values
+  // were off enough to visibly miss the arches.
+  //
+  // Radius pulled in from 0.85 to 0.32: the wall/arch stone surface itself
+  // sits at roughly r=0.77-0.86 in this scaled space, so a light at 0.85 was
+  // sitting almost flush against the stone — a physically-correct point
+  // light's intensity climbs toward infinity as distance shrinks toward
+  // zero, so anything that close blows out into a hard white hotspot no
+  // matter how "low" the intensity number looks. Moving it back into the
+  // open belfry interior air gives the falloff room to happen gradually,
+  // reading as a soft interior glow instead of a lamp glued to the wall.
   const BELFRY_LIGHT_Y = TOWER_HEIGHT * 0.72;
   const belfryLights = [];
   [0, Math.PI / 2, Math.PI, Math.PI * 1.5].forEach((angle) => {
-    const light = new THREE.PointLight(0xffc477, 2.4, 3.2, 2);
-    light.position.set(Math.cos(angle) * 0.85, BELFRY_LIGHT_Y, Math.sin(angle) * 0.85);
+    const light = new THREE.PointLight(0xffc477, 1.5, 2.6, 1.6);
+    light.position.set(Math.cos(angle) * 0.32, BELFRY_LIGHT_Y, Math.sin(angle) * 0.32);
     tower.add(light);
     belfryLights.push(light);
+  });
+
+  // Glass clock-face lenses — a real, physically distinct material sitting
+  // slightly proud of the wall so each dial catches its own specular
+  // highlight and a small self-shadow where it meets the stone, instead of
+  // reading as color painted flat onto the tower. The shader-painted dial
+  // on the main mesh (cream face, ticks, hands — see onBeforeCompile below)
+  // still supplies all the actual detail; this sits in front of it as a
+  // slightly-opaque glass pane, so the clearcoat highlight/sheen reads as
+  // "glass" while still letting what's drawn underneath show through. Same
+  // 4-cardinal coordinate convention as belfryLights above; radius/height
+  // match the dial's shader position below. The proud offset (0.055) is
+  // comfortably larger than the STL's own raised rim/hand bump (~0.02-0.03
+  // world units), so the glass fully covers/occludes it.
+  const CLOCK_DIAL_Y = (74.5 / 125) * TOWER_HEIGHT;
+  const CLOCK_WALL_R = 0.82;
+  const CLOCK_GLASS_PROUD = 0.055;
+  const glassMat = new THREE.MeshPhysicalMaterial({
+    color: 0xfff6e6,
+    roughness: 0.06,
+    metalness: 0,
+    clearcoat: 1,
+    clearcoatRoughness: 0.04,
+    reflectivity: 0.9,
+    transparent: true,
+    opacity: 0.34,
+  });
+  [0, Math.PI / 2, Math.PI, Math.PI * 1.5].forEach((angle) => {
+    const glass = new THREE.Mesh(new THREE.CircleGeometry(0.36, 48), glassMat);
+    const r = CLOCK_WALL_R + CLOCK_GLASS_PROUD;
+    glass.position.set(Math.cos(angle) * r, CLOCK_DIAL_Y, Math.sin(angle) * r);
+    glass.rotation.y = Math.PI / 2 - angle;
+    glass.castShadow = true;
+    tower.add(glass);
   });
 
   // Vertex colors carry the broad material zones (buff stone shaft, amber
@@ -154,11 +207,29 @@ float mtNoise(vec2 p){
              mix(mtHash(i + vec2(0.0, 1.0)), mtHash(i + vec2(1.0, 1.0)), f.x), f.y);
 }
 float mtRoofZone = 0.0;
-float mtDialGlow = 0.0;`)
+float mtDialGlow = 0.0;
+// Tapered capsule distance from the hub (origin) to point b, used to paint
+// clean, pixel-precise clock hands instead of relying on the STL's own
+// low-poly raised-bump geometry (which isn't independently controllable and
+// reads as a blobby, imprecise "stamp" rather than a real pointer).
+float sdHand(vec2 p, vec2 b, float w0, float w1) {
+  float h = clamp(dot(p, b) / dot(b, b), 0.0, 1.0);
+  float d = length(p - b * h);
+  return d - mix(w0, w1, h);
+}`)
       .replace("#include <color_fragment>", `#include <color_fragment>
 {
   float axisSel = step(abs(vObjNormal.y), abs(vObjNormal.x));
-  float u = mix(vObjPos.x, vObjPos.y, axisSel);
+  float uRaw = mix(vObjPos.x, vObjPos.y, axisSel);
+  // Chirality fix: "u increasing" must always point toward the viewer's
+  // right when looking at that face from outside, matching a real clock's
+  // layout (12 top, 3 right...). Without this sign correction, 2 of the 4
+  // faces (world -X and -Z) render every asymmetric detail computed from u
+  // — the clock's ticks and hands — mirrored left-right relative to the
+  // other 2, which is what made the clocks look inconsistent/"unaligned"
+  // as the tower rotates through different face pairs while scrolling.
+  float faceSign = mix(-sign(vObjNormal.y), sign(vObjNormal.x), axisSel);
+  float u = uRaw * faceSign;
   float v = vObjPos.z;
   float hRad = length(vObjPos.xy);
 
@@ -183,7 +254,10 @@ float mtDialGlow = 0.0;`)
   // previous 0.20 rad (~11.5 deg) gate only covered a thin center sliver of
   // the actual shield-shaped plaque, so most of its surface fell outside the
   // shader entirely and rendered as flat, undetailed vertex-color cream.
-  float clockZone = step(70.0, v) * step(v, 82.5) * step(9.6, hRad) * step(angDist, 0.5236) * (1.0 - mtRoofZone);
+  // Lower bound dropped from 70 to 65.5 to give the dial (now centered at
+  // v=72.4, one dial-radius lower than before) room to sit lower on the
+  // tower without its bottom edge clipping against the gate.
+  float clockZone = step(65.5, v) * step(v, 82.5) * step(9.6, hRad) * step(angDist, 0.5236) * (1.0 - mtRoofZone);
 
   // hand-laid coursed masonry: joints wobbled with smooth noise so the
   // courses read as laid by hand rather than machine-ruled, staggered rows,
@@ -239,13 +313,17 @@ float mtDialGlow = 0.0;`)
 
   diffuseColor.rgb = mix(diffuseColor.rgb * wallMul, slateCol, mtRoofZone);
 
-  // clock dials on the model's real dial geometry: cream backlit face with
-  // a soft radial falloff, minute ring + hour ticks (bolder at 12/3/6/9),
-  // inner track ring, center hub, dark modeled hands, stone-toned surround
+  // clock dials: cream backlit face with a soft radial falloff, minute ring
+  // + hour ticks (bolder at 12/3/6/9), inner track ring, center hub, and
+  // clean shader-painted hands (see sdHand above) fixed at a classic
+  // "10:10" pose — identical on all 4 faces regardless of the STL's own
+  // low-poly raised-bump geometry, which is no longer used to draw hands.
   if (clockZone > 0.5) {
-    float vert = v - 76.3;
+    // Split the difference between the STL-measured mean (76.9, read as too
+    // high) and the prior fix (72.4, dropped a full dial-radius and read as
+    // too low) — settling roughly halfway.
+    float vert = v - 74.5;
     float rho = length(vec2(u, vert));
-    float raised = step(10.5, hRad);
     float dialAng = atan(vert, u);
     float tickA = mod(dialAng, 0.5235988);
     float tickD = min(tickA, 0.5235988 - tickA) * rho;
@@ -259,10 +337,17 @@ float mtDialGlow = 0.0;`)
     float ringOuter = 1.0 - smoothstep(0.09, 0.15, abs(rho - 4.28));
     float ringInner = 1.0 - smoothstep(0.045, 0.10, abs(rho - 3.05));
     float hub = 1.0 - smoothstep(0.30, 0.42, rho);
-    float marks = max(max(tick, max(ringOuter, ringInner)), hub);
+
+    vec2 dialP = vec2(u, vert);
+    float hourAng = 2.617994; // 150deg from +u — hour hand toward the "10" mark
+    float minAng = 0.523599;  // 30deg from +u — minute hand toward the "2" mark
+    float handHour = sdHand(dialP, 2.05 * vec2(cos(hourAng), sin(hourAng)), 0.15, 0.045);
+    float handMin = sdHand(dialP, 3.35 * vec2(cos(minAng), sin(minAng)), 0.12, 0.035);
+    float hands = 1.0 - smoothstep(0.0, 0.04, min(handHour, handMin));
+
+    float marks = max(max(tick, max(ringOuter, ringInner)), max(hub, hands));
     vec3 dialCream = vec3(1.0, 0.95, 0.80) * (0.90 + 0.12 * (1.0 - smoothstep(0.0, 4.4, rho)));
     vec3 dial = mix(dialCream, vec3(0.14, 0.11, 0.07), marks);
-    dial = mix(dial, vec3(0.12, 0.09, 0.06), raised * step(rho, 4.5));
     // Only the round dial itself (plus a couple pixels of anti-aliasing at
     // its rim) overrides the wall's color — clockZone above is really a
     // rectangular Z x angle gate (much bigger than the circular dial, to
@@ -274,7 +359,7 @@ float mtDialGlow = 0.0;`)
     // makes the dial read as a disc set into the ordinary stone, no seam.
     float dialMask = 1.0 - smoothstep(4.4, 4.6, rho);
     diffuseColor.rgb = mix(diffuseColor.rgb, dial, dialMask);
-    mtDialGlow = step(rho, 4.4) * (1.0 - raised) * (1.0 - marks);
+    mtDialGlow = step(rho, 4.4) * (1.0 - marks);
   }
 }`)
       .replace("#include <roughnessmap_fragment>", `#include <roughnessmap_fragment>
@@ -349,6 +434,36 @@ totalEmissiveRadiance += vec3(1.0, 0.86, 0.6) * mtDialGlow * 1.05;`);
     geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
   }
 
+  /** The clock plaque's "raised" bits (real STL geometry — the rim/hands
+   *  bump used to read the clock's silhouette, radius > ~9.5 within the
+   *  clock's Z band) are low-poly and faceted, so their real per-triangle
+   *  normals catch PBR lighting very differently from the smooth dial around
+   *  them — a stray bright/dark shard baked right into the lighting, not
+   *  something any diffuse-color painting (shader or vertex) can hide,
+   *  since it comes from the *normal*, not the color. Blending those
+   *  vertices' normals toward the idealized flat radial-outward direction
+   *  (i.e. what a real flat glass dial's normal would be) smooths that
+   *  shading out directly, called after colorizeTower() since that
+   *  function's own computeVertexNormals() call would otherwise overwrite
+   *  this. Must run before the geometry is handed to the STLLoader mesh. */
+  function smoothClockNormals(geometry) {
+    const pos = geometry.attributes.position;
+    const normal = geometry.attributes.normal;
+    for (let i = 0; i < pos.count; i++) {
+      const lx = pos.getX(i), ly = pos.getY(i), lz = pos.getZ(i);
+      if (lz < 65.5 || lz > 82.5) continue;
+      const hyp = Math.hypot(lx, ly);
+      if (hyp < 9.5) continue;
+      const ox = lx / hyp, oy = ly / hyp; // idealized flat radial-outward normal
+      const nx = normal.getX(i) * 0.15 + ox * 0.85;
+      const ny = normal.getY(i) * 0.15 + oy * 0.85;
+      const nz = normal.getZ(i) * 0.15;
+      const len = Math.hypot(nx, ny, nz) || 1;
+      normal.setXYZ(i, nx / len, ny / len, nz / len);
+    }
+    normal.needsUpdate = true;
+  }
+
   function buildPlaceholderTower() {
     const roofMat = new THREE.MeshStandardMaterial({ color: 0x6b4a30, roughness: 0.6 });
     const baseMat = new THREE.MeshStandardMaterial({ color: 0x9c7b52, roughness: 0.68, metalness: 0.06 });
@@ -383,6 +498,7 @@ totalEmissiveRadiance += vec3(1.0, 0.86, 0.6) * mtDialGlow * 1.05;`);
   try {
     const geometry = await new STLLoader().loadAsync(MODEL_PATH);
     colorizeTower(geometry);
+    smoothClockNormals(geometry);
     const mesh = new THREE.Mesh(geometry, stoneMat);
     // STL files are commonly authored Z-up (3D-print orientation) — stand it upright for the scene's Y-up axes.
     mesh.rotation.x = -Math.PI / 2;
@@ -416,18 +532,17 @@ totalEmissiveRadiance += vec3(1.0, 0.86, 0.6) * mtDialGlow * 1.05;`);
   // Visible only while the hero is on screen — saves battery/CPU once scrolled past.
   let inView = true;
 
-  // The camera pans down the tower's height as the visitor scrolls — starts
-  // backed off enough to see both the clock (~66% up) and the spire tip
-  // (100%) together, ends mid-shaft (~32% up) so the base is never in
-  // frame. Distance stays FIXED throughout (no zoom); the tower itself
-  // rotates in place instead, so the motion reads as a turntable pan
-  // rather than a push-in.
-  const CAM_TOP_Y = TOWER_HEIGHT * 0.82;    // framed between the clock and the tip
+  // The camera pans straight down the tower's height as the visitor scrolls
+  // — starts backed off enough to see both the clock (~66% up) and the
+  // spire tip (100%) together, ends mid-shaft (~32% up) so the base is
+  // never in frame. Distance and the 3/4 viewing angle stay FIXED
+  // throughout (no zoom, no rotation) — the tower itself no longer spins,
+  // so the only motion is the vertical pan.
+  const CAM_TOP_Y = TOWER_HEIGHT * 0.79;    // framed between the clock and the tip — nudged down
+                                             // to match the clock dial's own lower position
   const CAM_BOTTOM_Y = TOWER_HEIGHT * 0.32;
   const CAM_DIST = 7.8;                     // constant — never zooms while scrolling
   const CAM_ANGLE = 0.62; // radians off dead-center, for the 3/4 view
-  const TOWER_ROT_START = 0;
-  const TOWER_ROT_END = Math.PI * 0.55; // just over a quarter turn across the full scroll
 
   function scrollProgress() {
     return Math.min(Math.max(window.scrollY / heroHeight, 0), 1);
@@ -436,7 +551,6 @@ totalEmissiveRadiance += vec3(1.0, 0.86, 0.6) * mtDialGlow * 1.05;`);
     const targetY = CAM_TOP_Y + (CAM_BOTTOM_Y - CAM_TOP_Y) * p;
     camera.position.set(Math.sin(CAM_ANGLE) * CAM_DIST, targetY, Math.cos(CAM_ANGLE) * CAM_DIST);
     camera.lookAt(0, targetY, 0);
-    tower.rotation.y = TOWER_ROT_START + (TOWER_ROT_END - TOWER_ROT_START) * p;
   }
 
   // The raw scroll fraction jumps in large, discrete steps (mouse-wheel
@@ -451,7 +565,16 @@ totalEmissiveRadiance += vec3(1.0, 0.86, 0.6) * mtDialGlow * 1.05;`);
   let smoothed = target;
   applyProgress(smoothed);
 
-  const SMOOTH_TAU = 0.15; // seconds to close ~63% of the remaining gap
+  // The page has `scroll-behavior: smooth` globally (used by the hero's own
+  // "scroll down" chevron and the nav's anchor links), which animates
+  // window.scrollY itself over ~200-300ms for any anchor-triggered scroll.
+  // That already-eased scrollY feeds into this same smoothing on top of it
+  // — two easing layers stacked — which read as sluggish/laggy rather than
+  // smooth. Tightened from 0.15 to 0.06 so this layer's own contribution is
+  // small enough to stay crisp even when compounded with the native
+  // smooth-scroll, while still absorbing raw mouse-wheel notch jumps (the
+  // teleporting this mechanism exists to fix) instead of hard-snapping.
+  const SMOOTH_TAU = 0.06; // seconds to close ~63% of the remaining gap
   const SNAP_EPSILON = 0.0003;
 
   let running = false;
@@ -530,5 +653,6 @@ totalEmissiveRadiance += vec3(1.0, 0.86, 0.6) * mtDialGlow * 1.05;`);
     }, { threshold: 0 }).observe(hero);
   }
 
+  renderer.shadowMap.needsUpdate = true; // bake the shadow map once, now that the real (or placeholder) tower exists
   wake(); // render the initial frame
 })();

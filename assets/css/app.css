@@ -10,7 +10,13 @@
 @import url("tokens.css");
 
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+/* scroll-behavior: smooth removed — it double-animates window.scrollY (its
+   own ~250-300ms ease) on top of the hero's own JS-driven camera smoothing
+   (assets/js/hero3d.js), stacking two competing easing curves that read as
+   sluggish/laggy on any anchor-triggered scroll (nav links, the hero's own
+   "scroll down" chevron). The hero's JS easing is the sole smoothing layer
+   now; anchor clicks jump instantly, which is an accepted tradeoff. */
+html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
   font-family: var(--font-body);
