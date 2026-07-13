@@ -145,11 +145,20 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing:
 }
 .hero--3d-ready .tower-fallback { display: none; }
 
-.hero__content { position: relative; z-index: 1; max-width: 900px; }
+.hero__content { position: relative; z-index: 1; max-width: 900px; text-align: center; }
 .hero h1 {
+  /* white-space: nowrap (previous) forced the whole heading onto one line and
+     relied on font-size: min(3.7vw, 84px) alone to keep it inside its box —
+     at wider viewports (e.g. ~1440px) hero__content's own 900px max-width
+     caps the box before the vw-scaled font shrinks enough, so the unbreakable
+     line quietly overflowed its box by ~30px. Overflowing nowrap content
+     still paints centered around the box's own center (so it wasn't visibly
+     off-center there), but it's the wrong mechanism to guarantee that at
+     every width. Letting it wrap naturally is the robust fix: text-align:
+     center centers each line independently, so the heading is exactly
+     centered at any viewport size, whether it renders on one line or two. */
   margin: 0 auto; max-width: 96vw; font-size: min(3.7vw, 84px); line-height: var(--lh-tight); font-weight: 800;
   color: #fff;
-  white-space: nowrap;
 }
 
 .hero__scroll {

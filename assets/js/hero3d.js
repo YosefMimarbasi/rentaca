@@ -34,14 +34,13 @@ import { STLLoader } from "three/addons/loaders/STLLoader.js";
   renderer.toneMappingExposure = 1.05;
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-  // Nothing shadow-relevant ever moves after setup — the tower and every
-  // light are static, only the camera pans on scroll, and shadow maps are
-  // computed from the light's point of view, not the camera's. Three.js
-  // still recomputes the (expensive, 2048x2048 depth-pass) shadow map every
-  // single frame by default regardless. Turning that off and manually
-  // triggering it once, right before the first real render below, removes
-  // a large chunk of per-frame GPU work for free.
-  renderer.shadowMap.autoUpdate = false;
+  // The tower spins continuously (see ROTATION_SPEED below) while the key
+  // light stays fixed in world space (added to `scene`, not `tower`), so the
+  // shadow-casting geometry's orientation relative to that light changes
+  // every frame — the depth pass genuinely needs to recompute each frame.
+  // (autoUpdate=false was only valid while the tower was static; that
+  // no longer holds once it rotates.)
+  renderer.shadowMap.autoUpdate = true;
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(35, hero.clientWidth / hero.clientHeight, 0.1, 100);
@@ -535,14 +534,20 @@ totalEmissiveRadiance += vec3(1.0, 0.86, 0.6) * mtDialGlow * 1.05;`);
   // The camera pans straight down the tower's height as the visitor scrolls
   // — starts backed off enough to see both the clock (~66% up) and the
   // spire tip (100%) together, ends mid-shaft (~32% up) so the base is
-  // never in frame. Distance and the 3/4 viewing angle stay FIXED
-  // throughout (no zoom, no rotation) — the tower itself no longer spins,
-  // so the only motion is the vertical pan.
+  // never in frame. Distance and the 3/4 viewing angle stay FIXED throughout
+  // (no zoom) — the tower itself spins continuously and independently (see
+  // ROTATION_SPEED below), so the total motion is a vertical pan layered on
+  // top of the tower's own slow turn, not a rotating camera.
   const CAM_TOP_Y = TOWER_HEIGHT * 0.79;    // framed between the clock and the tip — nudged down
                                              // to match the clock dial's own lower position
   const CAM_BOTTOM_Y = TOWER_HEIGHT * 0.32;
   const CAM_DIST = 7.8;                     // constant — never zooms while scrolling
   const CAM_ANGLE = 0.62; // radians off dead-center, for the 3/4 view
+
+  // Slow, continuous spin — independent of scroll. All 4 clock faces and the
+  // belfry lights are already 4-fold symmetric (see belfryLights/glassMat
+  // above) so the silhouette reads consistently at any rotation angle.
+  const ROTATION_SPEED = 0.12; // radians/second (~52s per full turn)
 
   function scrollProgress() {
     return Math.min(Math.max(window.scrollY / heroHeight, 0), 1);
@@ -603,18 +608,15 @@ totalEmissiveRadiance += vec3(1.0, 0.86, 0.6) * mtDialGlow * 1.05;`);
       smoothed = target;
     }
     applyProgress(smoothed);
+    tower.rotation.y += ROTATION_SPEED * dt;
     renderer.render(scene, camera);
 
-    // Once caught up, stop rendering entirely instead of looping forever at
-    // rest — nothing else in the scene animates on its own, so idle frames
-    // are wasted GPU/CPU work (and, on lower-end devices, a source of jank
-    // on the *rest* of the page while scrolling). The next scroll/resize
-    // wakes it back up.
-    if (Math.abs(target - smoothed) > SNAP_EPSILON) {
-      requestAnimationFrame(tick);
-    } else {
-      running = false;
-    }
+    // The tower's own spin never settles (unlike the scroll-smoothing above,
+    // which does reach target and could previously stop the loop entirely at
+    // rest), so rendering now continues every frame for as long as the hero
+    // is in view — the earlier "stop once caught up" idle optimization only
+    // applied while nothing in the scene animated on its own.
+    requestAnimationFrame(tick);
   }
 
   window.addEventListener("scroll", () => {
@@ -653,6 +655,5 @@ totalEmissiveRadiance += vec3(1.0, 0.86, 0.6) * mtDialGlow * 1.05;`);
     }, { threshold: 0 }).observe(hero);
   }
 
-  renderer.shadowMap.needsUpdate = true; // bake the shadow map once, now that the real (or placeholder) tower exists
-  wake(); // render the initial frame
+  wake(); // start the render loop (shadowMap.autoUpdate handles the shadow pass every frame from here)
 })();
