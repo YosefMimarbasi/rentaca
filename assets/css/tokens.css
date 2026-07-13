@@ -82,6 +82,7 @@
   --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
   --sp-5: 24px; --sp-6: 32px; --sp-7: 48px; --sp-8: 64px; --sp-9: 96px;
   --maxw: 1240px;
+  --maxw-wide: 1600px;  /* listings grid only — wide enough to cut the dead side margins on large screens without going edge-to-edge */
   --nav-h: 98px;   /* fallback before nav.js measures the real height; kept in sync with the actual rendered nav */
 
   /* ---- Radius — soft, rounded, no sharp corners ---- */

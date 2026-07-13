@@ -17,7 +17,7 @@
 
   const state = {
     kw: "", area: "", maxpp: null, minprice: null, maxprice: null,
-    beds: "", dist: null, sort: "pp",
+    beds: "", dist: null, sort: "pp", perPage: 48,
     parking: false, laundry: false, ac: false, furnished: false,
     cats: false, dogs: false, photos: false, reviews: false,
   };
@@ -186,59 +186,70 @@
     </a>`;
   }
 
-  const PAGE = 48;          // cards per batch
-  let shown = 0, current = [], firstRender = true;
+  let current = [], currentPage = 1, firstRender = true;
 
   function render(list) {
     current = list;
-    shown = 0;
+    currentPage = 1;
     $("#count").textContent = list.length.toLocaleString() + " buildings";
     drawMarkers(list);
-    const cards = $("#cards");
-    if (!list.length) {
-      cards.innerHTML = '<div class="state"><h3>No matches</h3>Try widening your filters.</div>';
-      return;
-    }
-    cards.innerHTML = "";
-    appendBatch();
-    // when re-filtering while scrolled into the results, snap back up to the
-    // top of the grid so the user sees the new best matches (skip on first paint)
-    if (!firstRender) {
-      const browse = document.getElementById("browse");
-      if (browse && browse.getBoundingClientRect().top < 0) {
-        browse.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    }
+    renderPage();
     firstRender = false;
   }
 
-  function appendBatch() {
+  function renderPage() {
     const cards = $("#cards");
-    const slice = current.slice(shown, shown + PAGE);
-    const sentinel = $("#sentinel");
-    if (sentinel) sentinel.remove();           // detach before appending
-    const frag = document.createElement("div");
-    frag.innerHTML = slice.map(card).join("");
-    const newCards = Array.from(frag.children);
-    while (frag.firstChild) cards.appendChild(frag.firstChild);
-    bindCardHover(newCards);
-    shown += slice.length;
+    if (!current.length) {
+      cards.innerHTML = '<div class="state"><h3>No matches</h3>Try widening your filters.</div>';
+      $("#pager").innerHTML = "";
+      return;
+    }
+    const totalPages = Math.max(1, Math.ceil(current.length / state.perPage));
+    currentPage = Math.min(Math.max(currentPage, 1), totalPages);
+    const start = (currentPage - 1) * state.perPage;
 
-    if (shown < current.length) {
-      let s = $("#sentinel");
-      if (!s) {
-        s = document.createElement("div");
-        s.id = "sentinel";
-        s.style.cssText = "grid-column:1/-1;height:1px";
-        io.observe(s);
-      }
-      cards.appendChild(s);
+    cards.innerHTML = current.slice(start, start + state.perPage).map(card).join("");
+    bindCardHover(Array.from(cards.children));
+    renderPager(totalPages);
+  }
+
+  function goToPage(n) {
+    currentPage = n;
+    renderPage();
+    // skip on first paint, matching the old infinite-scroll "snap back to top" behavior
+    if (!firstRender) {
+      const browse = document.getElementById("browse");
+      if (browse) browse.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   }
 
-  const io = new IntersectionObserver((entries) => {
-    if (entries.some((e) => e.isIntersecting)) appendBatch();
-  }, { rootMargin: "600px" });
+  // Truncated page list: 1 2 … cur-1 cur cur+1 … last-1 last
+  function pageList(cur, total) {
+    if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
+    const keep = [...new Set([1, 2, total - 1, total, cur - 1, cur, cur + 1])]
+      .filter((n) => n >= 1 && n <= total).sort((a, b) => a - b);
+    const out = [];
+    keep.forEach((n, i) => {
+      if (i > 0 && n - keep[i - 1] > 1) out.push("…");
+      out.push(n);
+    });
+    return out;
+  }
+
+  function renderPager(totalPages) {
+    const pager = $("#pager");
+    if (totalPages <= 1) { pager.innerHTML = ""; return; }
+    const btn = (label, page, opts = {}) =>
+      `<button class="pager__btn" data-page="${page}"${opts.current ? ' aria-current="page"' : ""}${opts.disabled ? " disabled" : ""}>${label}</button>`;
+    const parts = [btn("‹ Prev", currentPage - 1, { disabled: currentPage === 1 })];
+    pageList(currentPage, totalPages).forEach((p) => {
+      parts.push(p === "…" ? '<span class="pager__ellipsis">…</span>' : btn(p, p, { current: p === currentPage }));
+    });
+    parts.push(btn("Next ›", currentPage + 1, { disabled: currentPage === totalPages }));
+    pager.innerHTML = parts.join("");
+    $$("#pager .pager__btn:not([disabled]):not([aria-current])").forEach((b) =>
+      b.addEventListener("click", () => goToPage(+b.dataset.page)));
+  }
 
   function bindCardHover(els) {
     els.forEach((el) => {
@@ -257,6 +268,7 @@
   /* ---------- UI bindings ---------- */
   function bindUI() {
     $("#sort").addEventListener("change", (e) => { state.sort = e.target.value; apply(); });
+    $("#perPage").addEventListener("change", (e) => { state.perPage = +e.target.value; goToPage(1); });
 
     const doSearch = () => { state.kw = $("#heroSearch").value.trim().toLowerCase(); apply();
       document.getElementById("browse").scrollIntoView({ behavior: "smooth" }); };

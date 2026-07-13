@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://unpkg.com" crossorigin>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
       integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
-<link rel="stylesheet" href="assets/css/app.css?v=17">
+<link rel="stylesheet" href="assets/css/app.css?v=18">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%23B31B1B'/><text x='50' y='70' font-family='Arial,Helvetica,sans-serif' font-size='60' font-weight='800' fill='white' text-anchor='middle'>R</text></svg>">
 
 <!-- Three.js (CDN, no build step) — renders the McGraw Tower model in the hero -->
@@ -127,6 +127,14 @@
         <option value="units">Most units</option>
       </select>
     </span>
+    <span class="select-wrap">
+      Show
+      <select id="perPage">
+        <option value="24">24</option>
+        <option value="48" selected>48</option>
+        <option value="96">96</option>
+      </select>
+    </span>
     <button class="chip" id="openFilters">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
       Filters
@@ -138,10 +146,11 @@
 <section id="map" aria-label="Map of Ithaca rentals"></section>
 
 <!-- RESULTS -->
-<main class="wrap section" id="main" aria-label="Rental listings">
+<main class="wrap wrap--wide section" id="main" aria-label="Rental listings">
   <div class="grid" id="cards">
     <div class="state"><div class="spinner"></div>Loading Ithaca’s rental map…</div>
   </div>
+  <nav class="pager" id="pager" aria-label="Results pages"></nav>
 </main>
 
 <!-- FILTER SHEET -->
@@ -233,7 +242,7 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script src="assets/js/nav.js?v=8"></script>
-<script src="assets/js/home.js?v=1"></script>
+<script src="assets/js/home.js?v=2"></script>
 <script type="module" src="assets/js/hero3d.js?v=67"></script>
 </body>
 </html>
