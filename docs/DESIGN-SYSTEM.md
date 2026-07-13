@@ -80,7 +80,7 @@ display; headings render lowercase (`text-transform: lowercase` in
 
 Restyled, never renamed — `home.js` / `building.js` render against these:
 `.nav .btn .card .hero .searchbar .toolbar .chip .sheet .field .seg .units
-.gallery .rating-big .catbar .panel .footer .lp-row .prose .statcard`.
+.gallery .rating-big .catbar .panel .footer .lp-cta .prose .statcard`.
 
 ### Primary button (actual code)
 ```css

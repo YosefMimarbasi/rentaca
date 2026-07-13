@@ -36,7 +36,7 @@ focus ring (`--ne-focus`) added on `:focus`.
 
 ## Card (from shadcn / HyperUI)
 Anatomy: surface, optional media, header (title + description), content,
-footer; single soft hover elevation. → `.card` / `.lp-row` / `.panel`, all
+footer; single soft hover elevation. → `.card` / `.lp-cta` / `.panel`, all
 borderless — depth comes entirely from the `--ne-out`/`--ne-out-lg` shadow
 pair, not a border or flat fill.
 
