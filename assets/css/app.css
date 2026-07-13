@@ -73,23 +73,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing:
 .nav__links a:hover { color: var(--ink); box-shadow: var(--ne-out-sm); text-decoration: none; }
 .nav__links a[aria-current="page"] { color: var(--accent); box-shadow: var(--ne-in-sm); }
 .nav__spacer { margin-left: auto; }
-.nav__stat { transition: color var(--dur-2) var(--ease); }
-
-/* Transparent state — sits over the hero until scrolled past it (toggled by nav.js) */
-.nav--transparent { position: relative; background: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; box-shadow: none; }
-/* Dark scrim behind the text — guarantees legibility regardless of what's in the hero background (e.g. the white glow) */
-.nav--transparent::before {
-  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
-  background: linear-gradient(to bottom, rgba(0,0,0,.38), rgba(0,0,0,.1));
-}
-.nav--transparent .nav__util-inner, .nav--transparent .nav__inner { position: relative; z-index: 1; }
-.nav--transparent .nav__util { box-shadow: none; }
-.nav--transparent .nav__util, .nav--transparent .nav__util a, .nav--transparent .nav__stat { color: rgba(255,255,255,.82); }
-.nav--transparent .nav__brand { color: #fff; }
-.nav--transparent .nav__links a { color: rgba(255,255,255,.88); }
-.nav--transparent .nav__links a:hover { color: #fff; box-shadow: none; background: rgba(255,255,255,.16); }
-.nav--transparent .nav__links a[aria-current="page"] { color: #fff; box-shadow: none; background: rgba(255,255,255,.22); }
-.nav__stat { color: var(--muted); font-size: 13px; }
+.nav__stat { color: var(--muted); font-size: 13px; transition: color var(--dur-2) var(--ease); }
 
 /* ---------- Buttons — raised pills; pressed/inset when active ---------- */
 .btn {
@@ -573,5 +557,3 @@ select { -webkit-appearance: none; appearance: none; }
 .theme-toggle__moon { display: none; }
 .theme-dark .theme-toggle__sun { display: none; }
 .theme-dark .theme-toggle__moon { display: block; }
-.nav--transparent .theme-toggle { background: rgba(255,255,255,.16); color: #fff; box-shadow: none; }
-.nav--transparent .theme-toggle:hover { background: rgba(255,255,255,.26); }

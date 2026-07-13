@@ -399,8 +399,9 @@ totalEmissiveRadiance += vec3(1.0, 0.86, 0.6) * mtDialGlow * 1.05;`);
 
   // Camera pans straight down the tower's height as the visitor scrolls —
   // starts framing both the clock and the spire tip, ends mid-shaft so the
-  // base is never in view. Distance/angle stay fixed (no zoom); the tower's
-  // own rotation (ROTATION_SPEED below) is independent of this pan.
+  // base is never in view. Distance/angle stay fixed (no zoom); the tower
+  // itself turns in lockstep with the same scroll progress (below), so
+  // scrolling both descends the camera and rotates the tower.
   const CAM_TOP_Y = TOWER_HEIGHT * 0.79;
   const CAM_BOTTOM_Y = TOWER_HEIGHT * 0.32;
   const CAM_DIST = 7.8;
@@ -408,7 +409,7 @@ totalEmissiveRadiance += vec3(1.0, 0.86, 0.6) * mtDialGlow * 1.05;`);
 
   // All 4 clock faces and belfry lights are 4-fold symmetric, so the
   // silhouette reads consistently at any rotation angle.
-  const ROTATION_SPEED = 0.12; // radians/second (~52s per full turn)
+  const ROTATION_RANGE = Math.PI * 2; // one full turn across the full scroll range
 
   function scrollProgress() {
     return Math.min(Math.max(window.scrollY / heroHeight, 0), 1);
@@ -417,6 +418,7 @@ totalEmissiveRadiance += vec3(1.0, 0.86, 0.6) * mtDialGlow * 1.05;`);
     const targetY = CAM_TOP_Y + (CAM_BOTTOM_Y - CAM_TOP_Y) * p;
     camera.position.set(Math.sin(CAM_ANGLE) * CAM_DIST, targetY, Math.cos(CAM_ANGLE) * CAM_DIST);
     camera.lookAt(0, targetY, 0);
+    tower.rotation.y = p * ROTATION_RANGE;
   }
 
   // Raw scroll fraction jumps in discrete steps (mouse-wheel notches
@@ -452,13 +454,16 @@ totalEmissiveRadiance += vec3(1.0, 0.86, 0.6) * mtDialGlow * 1.05;`);
       smoothed = target;
     }
     applyProgress(smoothed);
-    tower.rotation.y += ROTATION_SPEED * dt;
     renderer.render(scene, camera);
 
-    // The tower's spin never settles, so rendering runs every frame for as
-    // long as the hero is in view (unlike the scroll-smoothing above, which
-    // does reach target).
-    requestAnimationFrame(tick);
+    // Once caught up to the scroll target, stop rendering entirely instead
+    // of looping forever at rest — the tower's rotation is a function of
+    // scroll progress, not time, so nothing moves once smoothed===target.
+    if (Math.abs(target - smoothed) > SNAP_EPSILON) {
+      requestAnimationFrame(tick);
+    } else {
+      running = false;
+    }
   }
 
   window.addEventListener("scroll", () => {
