@@ -1,12 +1,11 @@
 /* Rentaca — hero 3D scene (McGraw Tower)
-   Loads assets/models/mcgraw-tower.stl (a geometry-only 3D-print file, no
-   color/material data) via Three.js and lights it to match the warm
-   amber-on-dark-sky photo behind it. The tower stays fixed; the camera
-   pans down its height as the visitor scrolls — starting close on the
-   clock/belfry near the top, ending well above the base so the bottom of
-   the tower is never revealed. Falls back to a procedural placeholder
-   tower if the model isn't there, and to a flat CSS silhouette if WebGL
-   is unavailable or the user has requested reduced motion. */
+   Loads assets/models/mcgraw-tower.stl (geometry-only, no color/material
+   data) via Three.js and lights it to match the warm amber-on-dark-sky
+   photo behind it. The tower spins slowly in place; the camera pans down
+   its height as the visitor scrolls, starting close on the clock/belfry
+   and ending mid-shaft so the base is never revealed. Falls back to a
+   procedural placeholder tower if the model isn't there, and to a flat
+   CSS silhouette if WebGL is unavailable or reduced motion is requested. */
 import * as THREE from "three";
 import { STLLoader } from "three/addons/loaders/STLLoader.js";
 
@@ -26,50 +25,32 @@ import { STLLoader } from "three/addons/loaders/STLLoader.js";
   }
   hero.classList.add("hero--3d-ready"); // hides the CSS fallback once we know WebGL works
 
-  // Filmic tone mapping so the amber floodlight rolls off richly instead of
-  // clipping flat, and real shadow mapping so the arches/belfry openings
-  // cast convincing shadows on the stone around them (self-shadowing off a
-  // single mesh is what actually sells "carved" over "smooth-shaded solid").
+  // Filmic tone mapping for a richer amber rolloff; shadow mapping so the
+  // arches/belfry self-shadow onto the stone around them.
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.05;
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-  // The tower spins continuously (see ROTATION_SPEED below) while the key
-  // light stays fixed in world space (added to `scene`, not `tower`), so the
-  // shadow-casting geometry's orientation relative to that light changes
-  // every frame — the depth pass genuinely needs to recompute each frame.
-  // (autoUpdate=false was only valid while the tower was static; that
-  // no longer holds once it rotates.)
+  // Must recompute every frame: the tower rotates but the key light is
+  // fixed in world space, so their relative orientation keeps changing.
   renderer.shadowMap.autoUpdate = true;
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(35, hero.clientWidth / hero.clientHeight, 0.1, 100);
 
-  // Lit to match the reference photo: warm amber floodlight on the stone
-  // against a near-black sky, no cool/blue light sources at all. Key light
-  // sits off to the side (not near the camera axis) so the two faces the
-  // angled camera sees read as clearly lit vs. shadowed, not evenly washed.
-  // A low warm rim light separates the silhouette's edge from the night sky.
-  //
-  // The previous rig had the 3 secondary lights (fill+edgeGlow+rimUp) summing
-  // to nearly the same intensity as the key light itself, from three
-  // different directions — that flattened the render: both visible tower
-  // faces came out reading almost identically bright, killing the sense of
-  // 3D form the reference photo has. Key is now clearly dominant; the
-  // secondaries are cut to a genuine "fill" role (hold shadow-side detail
-  // and separate the silhouette from the sky, don't compete with the key).
+  // Warm floodlight rig matching the reference photo (no cool/blue sources).
+  // Key light sits off-axis so the two faces the camera sees read as clearly
+  // lit vs. shadowed; the rest are a subordinate fill that holds shadow-side
+  // detail and separates the silhouette from the night sky.
   scene.add(new THREE.AmbientLight(0x140f1c, 0.38));
   const key = new THREE.DirectionalLight(0xffb15c, 2.8);
   key.position.set(6, 5, 0.5);
   key.castShadow = true;
-  key.shadow.mapSize.set(1536, 1536); // trimmed from 2048 for headroom on weaker GPUs — now a one-time
-                                       // cost (see renderer.shadowMap.autoUpdate below), so this mostly
-                                       // just saves memory/first-frame time rather than per-frame cost
+  key.shadow.mapSize.set(1536, 1536);
   key.shadow.bias = -0.0015;
   key.shadow.normalBias = 0.02;
-  // Shadow camera frustum tightly framed around the tower's own bounding
-  // volume (TOWER_HEIGHT=10, roughly ±6 in x/z) — a loose frustum here is
-  // the usual cause of blocky, low-resolution shadows.
+  // Frustum framed tightly to the tower's own bounds — a loose frustum here
+  // is the usual cause of blocky, low-resolution shadows.
   const shadowCam = key.shadow.camera;
   shadowCam.left = -8; shadowCam.right = 8;
   shadowCam.top = 12; shadowCam.bottom = -2;
@@ -84,38 +65,20 @@ import { STLLoader } from "three/addons/loaders/STLLoader.js";
   const rimUp = new THREE.DirectionalLight(0xffa64d, 0.28);
   rimUp.position.set(-4, -1.5, -3); // low, from below/behind — grazes the silhouette edge
   scene.add(rimUp);
-  // NOTE: every light here is warm-toned (matching the floodlit stone), so
-  // the roof's dark vertex tint still comes out dark warm-brown rather than
-  // true blue-gray once multiplied by an all-orange light set — there's no
-  // blue anywhere in the scene for it to reflect. A dedicated cool light was
-  // tried here and reverted: it raised the roof's overall brightness (light
-  // intensity adds regardless of hue) without visibly shifting its color.
-  // Getting dark-vs-stone contrast right instead relies on the vertex color
-  // itself being aggressively dark (below) and the roof's own bounce/tint
-  // being minimal, not on fighting the light palette.
+  // Every light is warm-toned on purpose: with no blue light source in the
+  // scene, the roof's dark vertex tint reads warm-brown rather than blue-gray.
 
   const tower = new THREE.Group();
   scene.add(tower);
 
   const TOWER_HEIGHT = 10;
 
-  // Interior belfry lighting — every reference photo shows the arch
-  // openings as the brightest, warmest part of the tower (lit from inside),
-  // not dark recesses. A ring of short-range point lights at arch height
-  // does this cheaply: each one mainly lights the inside surface of the
-  // nearest arch notch, bleeding a warm glow out through the opening.
-  // Height measured directly off the STL (triangle density peaks at raw Z
-  // 88-92 out of a 0-125 range) rather than guessed — the guessed values
-  // were off enough to visibly miss the arches.
-  //
-  // Radius pulled in from 0.85 to 0.32: the wall/arch stone surface itself
-  // sits at roughly r=0.77-0.86 in this scaled space, so a light at 0.85 was
-  // sitting almost flush against the stone — a physically-correct point
-  // light's intensity climbs toward infinity as distance shrinks toward
-  // zero, so anything that close blows out into a hard white hotspot no
-  // matter how "low" the intensity number looks. Moving it back into the
-  // open belfry interior air gives the falloff room to happen gradually,
-  // reading as a soft interior glow instead of a lamp glued to the wall.
+  // Interior belfry glow: short-range point lights inside the open belfry
+  // air (not flush against the stone) so each arch opening bleeds warm light
+  // outward. Kept off the wall surface deliberately — a physically-correct
+  // point light's brightness climbs toward infinity as distance shrinks, so
+  // anything placed too close blows out into a hard white hotspot regardless
+  // of its intensity value.
   const BELFRY_LIGHT_Y = TOWER_HEIGHT * 0.72;
   const belfryLights = [];
   [0, Math.PI / 2, Math.PI, Math.PI * 1.5].forEach((angle) => {
@@ -125,18 +88,10 @@ import { STLLoader } from "three/addons/loaders/STLLoader.js";
     belfryLights.push(light);
   });
 
-  // Glass clock-face lenses — a real, physically distinct material sitting
-  // slightly proud of the wall so each dial catches its own specular
-  // highlight and a small self-shadow where it meets the stone, instead of
-  // reading as color painted flat onto the tower. The shader-painted dial
-  // on the main mesh (cream face, ticks, hands — see onBeforeCompile below)
-  // still supplies all the actual detail; this sits in front of it as a
-  // slightly-opaque glass pane, so the clearcoat highlight/sheen reads as
-  // "glass" while still letting what's drawn underneath show through. Same
-  // 4-cardinal coordinate convention as belfryLights above; radius/height
-  // match the dial's shader position below. The proud offset (0.055) is
-  // comfortably larger than the STL's own raised rim/hand bump (~0.02-0.03
-  // world units), so the glass fully covers/occludes it.
+  // Glass clock lenses — thin discs sitting slightly proud of the wall over
+  // the shader-painted dial (below), giving each clock its own specular
+  // highlight and a real self-shadow at the rim, instead of reading as flat
+  // paint. The proud offset comfortably clears the STL's own raised rim bump.
   const CLOCK_DIAL_Y = (74.5 / 125) * TOWER_HEIGHT;
   const CLOCK_WALL_R = 0.82;
   const CLOCK_GLASS_PROUD = 0.055;
@@ -159,37 +114,25 @@ import { STLLoader } from "three/addons/loaders/STLLoader.js";
     tower.add(glass);
   });
 
-  // Vertex colors carry the broad material zones (buff stone shaft, amber
-  // belfry band, dark slate roof), and an injected shader pass (below) adds
-  // the per-PIXEL surface detail the real tower has — coursed stone masonry
-  // with mortar joints and per-stone tonal variation, the diamond-pattern
-  // slate roof, and painted glowing clock dials — computed procedurally
-  // from the model's own object-space coordinates, since the STL has no UVs
-  // and only ~6.8k triangles (vertex colors alone can never resolve
-  // individual stones). Base material color stays white so vertex colors
-  // show through true.
+  // Vertex colors carry the broad material zones (stone shaft, belfry glow,
+  // slate roof); the shader below adds per-pixel surface detail (masonry,
+  // slate diamonds, clock dials) from object-space position, since the STL
+  // has no UVs and too few triangles for vertex colors alone to resolve
+  // individual stones. Base material stays white so vertex colors show true.
   const stoneMat = new THREE.MeshStandardMaterial({ color: 0xffffff, vertexColors: true, roughness: 0.8, metalness: 0.05 });
 
-  const STONE_BASE = new THREE.Color(0xb09678);   // grounded gray-buff stone (Cornell bluestone under warm light)
+  const STONE_BASE = new THREE.Color(0xb09678);   // grounded gray-buff stone
   const STONE_MID = new THREE.Color(0xe4c9a2);    // warm tan, uplit shaft
-  const BELFRY_GLOW = new THREE.Color(0xffdf9e);  // brightest — floodlight + interior glow at the belfry
-  const ROOF_DARK = new THREE.Color(0x3c4655);    // slate blue-gray roof: light enough for the shader's diamond
-                                                   // pattern to read and to catch highlight instead of crushing to
-                                                   // near-black, low-red so warm lights don't turn it orange
+  const BELFRY_GLOW = new THREE.Color(0xffdf9e);  // brightest — floodlight + interior glow
+  const ROOF_DARK = new THREE.Color(0x3c4655);    // slate blue-gray, light enough to catch highlight
   const KEY_DIR = new THREE.Vector3(6, 5, 0.5).normalize();
 
-  // Procedural surface detail, spliced into MeshStandardMaterial's own
-  // shader so it keeps full PBR lighting/shadows. Everything is derived
-  // from object-space position (raw STL coords: Z-up, 0-125 tall, ±11
-  // footprint — all thresholds below are measured off the file, same as
-  // the JS-side zone constants):
-  //   - walls: staggered stone courses w/ darker mortar joints, per-stone
-  //     brightness/warmth variation and fine grain
-  //   - roof (Z > ~92.5): diamond slate lattice with lighter ridge lines,
-  //     matching the reference photo of the spire
-  //   - clock dials: painted minute/hour ticks + rim ring on the flat dial
-  //     surface, dark modeled hands, lighter stone surround, and a warm
-  //     emissive glow on the cream face so it reads backlit at night
+  // Procedural surface detail, spliced into MeshStandardMaterial's shader so
+  // it keeps full PBR lighting/shadows. Coordinates are raw STL space
+  // (Z-up, 0-125 tall, ±11 footprint):
+  //   - walls: coursed stone masonry with mortar joints + per-stone variation
+  //   - roof (Z > ~99): diamond slate lattice with ridge lines
+  //   - clock dials: painted ticks/ring/hub/hands with a backlit emissive glow
   stoneMat.onBeforeCompile = (shader) => {
     shader.vertexShader = shader.vertexShader
       .replace("#include <common>", "#include <common>\nvarying vec3 vObjPos;\nvarying vec3 vObjNormal;")
@@ -207,10 +150,8 @@ float mtNoise(vec2 p){
 }
 float mtRoofZone = 0.0;
 float mtDialGlow = 0.0;
-// Tapered capsule distance from the hub (origin) to point b, used to paint
-// clean, pixel-precise clock hands instead of relying on the STL's own
-// low-poly raised-bump geometry (which isn't independently controllable and
-// reads as a blobby, imprecise "stamp" rather than a real pointer).
+// Tapered capsule distance, hub (origin) to point b — paints pixel-precise
+// hands instead of relying on the STL's own low-poly bump geometry.
 float sdHand(vec2 p, vec2 b, float w0, float w1) {
   float h = clamp(dot(p, b) / dot(b, b), 0.0, 1.0);
   float d = length(p - b * h);
@@ -220,53 +161,28 @@ float sdHand(vec2 p, vec2 b, float w0, float w1) {
 {
   float axisSel = step(abs(vObjNormal.y), abs(vObjNormal.x));
   float uRaw = mix(vObjPos.x, vObjPos.y, axisSel);
-  // Chirality fix: "u increasing" must always point toward the viewer's
-  // right when looking at that face from outside, matching a real clock's
-  // layout (12 top, 3 right...). Without this sign correction, 2 of the 4
-  // faces (world -X and -Z) render every asymmetric detail computed from u
-  // — the clock's ticks and hands — mirrored left-right relative to the
-  // other 2, which is what made the clocks look inconsistent/"unaligned"
-  // as the tower rotates through different face pairs while scrolling.
+  // Sign-corrects u so "right" is consistent on all 4 faces — without this,
+  // 2 of the 4 clock faces render every asymmetric detail (ticks, hands) mirrored.
   float faceSign = mix(-sign(vObjNormal.y), sign(vObjNormal.x), axisSel);
   float u = uRaw * faceSign;
   float v = vObjPos.z;
   float hRad = length(vObjPos.xy);
 
-  // HARD material break at the roof's true eave — re-verified against the
-  // STL with fine (0.25-unit) height bins: raw Z 89.5-92.25 is a dense
-  // corbel/cornice band (radius bulges to ~14.85 at the corners), but
-  // there is a SECOND, higher lip at raw Z 99.25-100.0 (a sparse 12-point
-  // ring, radius flaring to ~14.5 at the same 4 corners) with a completely
-  // vertex-free gap between them (92.25-99.25) — a plain parapet wall
-  // running between the corbel table and the actual roof eave. That upper
-  // ring is the roof's real eave/base; the pyramid apex sits at Z~108 and
-  // a thin finial/spire continues to Z=125. Cutting at 89 (the corbel, not
-  // the eave) put the whole parapet into the roof/slate zone by mistake.
-  // The roof is painted with an absolute slate color below (not the
-  // interpolated vertex gradient), so the stone->slate edge is pixel-sharp.
+  // Roof eave starts at raw Z 99 — one lip above the corbel/cornice band
+  // (Z 89-92), which stays in the stone gradient as plain parapet wall.
   mtRoofZone = step(99.0, v);
   float m4 = mod(atan(vObjPos.y, vObjPos.x), 1.5707963);
   float angDist = min(m4, 1.5707963 - m4);
-  // Clock plaque real angular half-width, re-measured off the STL: triangle
-  // density within the Z 70-82.5 clock band stays high (300-2500/bin) out
-  // to ~28-30 deg from each cardinal face before dropping off sharply — the
-  // previous 0.20 rad (~11.5 deg) gate only covered a thin center sliver of
-  // the actual shield-shaped plaque, so most of its surface fell outside the
-  // shader entirely and rendered as flat, undetailed vertex-color cream.
-  // Lower bound dropped from 70 to 65.5 to give the dial (now centered at
-  // v=72.4, one dial-radius lower than before) room to sit lower on the
-  // tower without its bottom edge clipping against the gate.
+  // Clock plaque angular half-width (~30deg) and Z band, measured off the STL.
   float clockZone = step(65.5, v) * step(v, 82.5) * step(9.6, hRad) * step(angDist, 0.5236) * (1.0 - mtRoofZone);
 
-  // hand-laid coursed masonry: joints wobbled with smooth noise so the
-  // courses read as laid by hand rather than machine-ruled, staggered rows,
-  // mortar joints, per-stone tone + interior mottle, pillowed bevel relief
-  // toward each stone's edges, and two scales of surface grain
+  // Hand-laid coursed masonry: wobbled joints, staggered rows, mortar,
+  // per-stone tone + mottle, pillowed edge bevel, two scales of grain.
   float wobU = (mtNoise(vec2(v * 1.6, u * 1.6)) - 0.5) * 0.18;
   float wobV = (mtNoise(vec2(u * 1.6 + 31.7, v * 1.6)) - 0.5) * 0.12;
   float su = u + wobU;
   float sv = v + wobV;
-  float courseH = 0.75; // much smaller/more numerous stones than before
+  float courseH = 0.75;
   float stoneW = 1.05;
   float row = floor(sv / courseH);
   float rowOff = mtHash(vec2(row, 7.0)) * stoneW;
@@ -288,10 +204,9 @@ float sdHand(vec2 p, vec2 b, float w0, float w1) {
   vec3 stoneCol = (stoneTint + vec3(mottle + grain)) * mix(0.78, 1.0, bevel);
   vec3 wallMul = mix(stoneCol, vec3(0.50, 0.47, 0.43) + vec3(grain), mortar);
 
-  // slate roof, painted absolute: diamond tiles shaded darker toward the
-  // hanging tip (shingle overlap), per-tile tone shifting between bluer
-  // and greener slate, lighter joint lines, and pale ridge caps running up
-  // the pyramid's hips (where |x| meets |y|), like the reference photo
+  // Slate roof, painted absolute: diamond tiles darker toward the hanging
+  // tip, tone shifting bluer/greener per tile, lighter joints, pale ridge
+  // caps along the pyramid's hips (where |x| meets |y|).
   vec2 diag = vec2(u + v, u - v) / 2.4;
   vec2 dCell = floor(diag);
   vec2 dF = fract(diag);
@@ -299,9 +214,6 @@ float sdHand(vec2 p, vec2 b, float w0, float w1) {
   float dLine = 1.0 - smoothstep(0.025, 0.09, dEdge);
   float s1 = mtHash(dCell);
   float s2 = mtHash(dCell + 7.3);
-  // Lightened from the original near-black values — under this rig's warm
-  // key light, dark-and-matte was crushing the whole roof to a flat
-  // silhouette with no readable diamond pattern or highlight.
   float overlapShade = mix(0.85, 1.18, (dF.x + dF.y) * 0.5);
   vec3 slateCol = mix(vec3(0.19, 0.22, 0.28), vec3(0.18, 0.24, 0.245), s2)
                 * (0.85 + 0.4 * s1) * overlapShade;
@@ -312,15 +224,10 @@ float sdHand(vec2 p, vec2 b, float w0, float w1) {
 
   diffuseColor.rgb = mix(diffuseColor.rgb * wallMul, slateCol, mtRoofZone);
 
-  // clock dials: cream backlit face with a soft radial falloff, minute ring
-  // + hour ticks (bolder at 12/3/6/9), inner track ring, center hub, and
-  // clean shader-painted hands (see sdHand above) fixed at a classic
-  // "10:10" pose — identical on all 4 faces regardless of the STL's own
-  // low-poly raised-bump geometry, which is no longer used to draw hands.
+  // Clock dial: cream backlit face, minute ring + hour ticks (bolder at
+  // 12/3/6/9), inner track ring, hub, and shader-painted hands (see sdHand)
+  // fixed at a "10:10" pose, identical on all 4 faces.
   if (clockZone > 0.5) {
-    // Split the difference between the STL-measured mean (76.9, read as too
-    // high) and the prior fix (72.4, dropped a full dial-radius and read as
-    // too low) — settling roughly halfway.
     float vert = v - 74.5;
     float rho = length(vec2(u, vert));
     float dialAng = atan(vert, u);
@@ -338,8 +245,8 @@ float sdHand(vec2 p, vec2 b, float w0, float w1) {
     float hub = 1.0 - smoothstep(0.30, 0.42, rho);
 
     vec2 dialP = vec2(u, vert);
-    float hourAng = 2.617994; // 150deg from +u — hour hand toward the "10" mark
-    float minAng = 0.523599;  // 30deg from +u — minute hand toward the "2" mark
+    float hourAng = 2.617994; // 150deg from +u — hour hand toward "10"
+    float minAng = 0.523599;  // 30deg from +u — minute hand toward "2"
     float handHour = sdHand(dialP, 2.05 * vec2(cos(hourAng), sin(hourAng)), 0.15, 0.045);
     float handMin = sdHand(dialP, 3.35 * vec2(cos(minAng), sin(minAng)), 0.12, 0.035);
     float hands = 1.0 - smoothstep(0.0, 0.04, min(handHour, handMin));
@@ -347,15 +254,9 @@ float sdHand(vec2 p, vec2 b, float w0, float w1) {
     float marks = max(max(tick, max(ringOuter, ringInner)), max(hub, hands));
     vec3 dialCream = vec3(1.0, 0.95, 0.80) * (0.90 + 0.12 * (1.0 - smoothstep(0.0, 4.4, rho)));
     vec3 dial = mix(dialCream, vec3(0.14, 0.11, 0.07), marks);
-    // Only the round dial itself (plus a couple pixels of anti-aliasing at
-    // its rim) overrides the wall's color — clockZone above is really a
-    // rectangular Z x angle gate (much bigger than the circular dial, to
-    // safely cover the whole plaque), and painting a flat synthetic "stone"
-    // tone across that entire rectangle for rho>=4.5 produced a hard-edged
-    // discolored square around each clock: that flat tone never matched the
-    // coursed-masonry pattern's actual brightness/texture right outside it.
-    // Falling through to the wall's own already-computed color instead
-    // makes the dial read as a disc set into the ordinary stone, no seam.
+    // Only the round dial (rho < ~4.5) overrides the wall color, not the
+    // whole rectangular clockZone gate — so it reads as a disc set into the
+    // stone, no seam against the surrounding masonry.
     float dialMask = 1.0 - smoothstep(4.4, 4.6, rho);
     diffuseColor.rgb = mix(diffuseColor.rgb, dial, dialMask);
     mtDialGlow = step(rho, 4.4) * (1.0 - marks);
@@ -368,35 +269,16 @@ roughnessFactor = mix(roughnessFactor, 0.3, mtDialGlow);`)
 totalEmissiveRadiance += vec3(1.0, 0.86, 0.6) * mtDialGlow * 1.05;`);
   };
 
-  // The clock faces are real modeled geometry in the STL, not something to
-  // add on top — confirmed by parsing the binary file directly (Python,
-  // offline): a dense circular cluster of triangles sits at raw Z 71-82
-  // (of a 0-125 height range) and radius 9.75-10.84 (of a ±11 footprint),
-  // centered on all four cardinal angles (0°, 90°, 180°, -90°).
-  //
-  // The vertex-color layer below deliberately does NOT special-case those
-  // clock vertices anymore — it used to (first with a dark "hand" tone,
-  // then with a flat cream "face" tone), and both versions caused visible
-  // artifacts: this mesh is low-poly, raw STL with no shared vertex
-  // indexing, so a handful of large triangles run from a clock-zone vertex
-  // all the way down/around to ordinary wall vertices. Any special flat
-  // color assigned there gets Gouraud-interpolated across those triangles,
-  // producing either long dark streaks (the "hand" version) or a washed-out
-  // flat square with faint streaks bleeding into the wall below (the "face"
-  // version) — confirmed by neutralizing the special-cased vertex colors
-  // live and watching both artifacts vanish. The actual dial (cream face,
-  // ticks, hub, hands) is fully handled by the shader below instead, which
-  // computes it per-pixel from continuous position data within a precise
-  // boundary and completely overwrites diffuseColor there — so leaving
-  // clock-zone vertices on the ordinary continuous stone gradient costs
-  // nothing (the shader draws right over it) and removes the only source
-  // of an anomalous flat color for a huge low-poly triangle to smear.
-  /** Bakes a height gradient (stone -> belfry glow -> dark metal roof) plus a
+  // Clock-zone vertices are deliberately left on the ordinary stone-color
+  // gradient below — the shader above overwrites them per-pixel anyway, and
+  // this mesh's large low-poly triangles (no shared vertex indexing) would
+  // otherwise Gouraud-interpolate any special vertex color into streaks
+  // bleeding down into the wall.
+  /** Bakes a height gradient (stone → belfry glow → dark roof) plus a
    *  normal-based key-light tint into per-vertex colors. The STL is
-   *  authored Z-up (height along local Z) and only reoriented to the
-   *  scene's Y-up axes later via the mesh's rotation.x, so this reads/dots
-   *  against local-Z-as-height and remaps each local normal into that same
-   *  post-rotation (world) orientation before comparing it to the key light. */
+   *  authored Z-up and reoriented to the scene's Y-up axes via the mesh's
+   *  rotation.x, so normals are remapped into that same orientation before
+   *  comparing against the key light direction. */
   function colorizeTower(geometry) {
     geometry.computeVertexNormals();
     geometry.computeBoundingBox();
@@ -413,13 +295,7 @@ totalEmissiveRadiance += vec3(1.0, 0.86, 0.6) * mtDialGlow * 1.05;`);
 
       if (t < 0.5) c.copy(STONE_BASE).lerp(STONE_MID, t / 0.5);
       else if (t < 0.792) c.copy(STONE_MID).lerp(BELFRY_GLOW, (t - 0.5) / 0.292);
-      // Slate starts at raw Z ~99 (t=0.792) — the roof's real eave ring, one
-      // lip higher than the corbel/cornice band below it (raw Z 89-92, which
-      // is now correctly left in the stone gradient as the plain parapet
-      // wall above the corbel and below the eave). Hard cut, no fade — and
-      // the shader paints the roof with an absolute slate color anyway, so
-      // this is only the no-shader fallback.
-      else c.copy(ROOF_DARK);
+      else c.copy(ROOF_DARK); // hard cut at the roof eave (t≈0.792); shader paints the real slate color anyway
 
       // rotation.x = -90° maps local (x,y,z) -> world (x,z,-y); apply the same to the normal
       n.set(normal.getX(i), normal.getZ(i), -normal.getY(i));
@@ -433,18 +309,12 @@ totalEmissiveRadiance += vec3(1.0, 0.86, 0.6) * mtDialGlow * 1.05;`);
     geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
   }
 
-  /** The clock plaque's "raised" bits (real STL geometry — the rim/hands
-   *  bump used to read the clock's silhouette, radius > ~9.5 within the
-   *  clock's Z band) are low-poly and faceted, so their real per-triangle
-   *  normals catch PBR lighting very differently from the smooth dial around
-   *  them — a stray bright/dark shard baked right into the lighting, not
-   *  something any diffuse-color painting (shader or vertex) can hide,
-   *  since it comes from the *normal*, not the color. Blending those
-   *  vertices' normals toward the idealized flat radial-outward direction
-   *  (i.e. what a real flat glass dial's normal would be) smooths that
-   *  shading out directly, called after colorizeTower() since that
-   *  function's own computeVertexNormals() call would otherwise overwrite
-   *  this. Must run before the geometry is handed to the STLLoader mesh. */
+  /** Blends the clock zone's own STL bump-geometry normals toward an
+   *  idealized flat radial-outward direction. The bump's low-poly faceted
+   *  normals otherwise catch PBR lighting as stray bright/dark shards that
+   *  no diffuse-color painting can fix, since the artifact comes from the
+   *  normal, not the color. Must run after colorizeTower() (whose own
+   *  computeVertexNormals() would overwrite this) and before the mesh is built. */
   function smoothClockNormals(geometry) {
     const pos = geometry.attributes.position;
     const normal = geometry.attributes.normal;
@@ -509,13 +379,10 @@ totalEmissiveRadiance += vec3(1.0, 0.86, 0.6) * mtDialGlow * 1.05;`);
     buildPlaceholderTower(); // model missing/failed to load — keep the mechanism demonstrable
   }
 
-  // NOTE: SSAO + bloom via EffectComposer were tried here and reverted —
-  // that post-processing pipeline broke the canvas's alpha transparency
-  // (the whole sky rendered as opaque black, hiding the CSS photo behind
-  // it, confirmed by direct testing). Shadow mapping + tone mapping above
-  // don't need a composer at all — they render directly through
-  // renderer.render() below, so the canvas stays correctly transparent
-  // wherever there's no geometry.
+  // No post-processing composer here: SSAO/bloom via EffectComposer breaks
+  // the canvas's alpha transparency, hiding the CSS photo behind it. Shadow
+  // mapping + tone mapping alone render directly through renderer.render()
+  // below and stay correctly transparent wherever there's no geometry.
 
   let heroHeight = hero.offsetHeight;
   function resize() {
@@ -528,25 +395,19 @@ totalEmissiveRadiance += vec3(1.0, 0.86, 0.6) * mtDialGlow * 1.05;`);
   }
   resize();
 
-  // Visible only while the hero is on screen — saves battery/CPU once scrolled past.
-  let inView = true;
+  let inView = true; // paused via IntersectionObserver below once scrolled past
 
-  // The camera pans straight down the tower's height as the visitor scrolls
-  // — starts backed off enough to see both the clock (~66% up) and the
-  // spire tip (100%) together, ends mid-shaft (~32% up) so the base is
-  // never in frame. Distance and the 3/4 viewing angle stay FIXED throughout
-  // (no zoom) — the tower itself spins continuously and independently (see
-  // ROTATION_SPEED below), so the total motion is a vertical pan layered on
-  // top of the tower's own slow turn, not a rotating camera.
-  const CAM_TOP_Y = TOWER_HEIGHT * 0.79;    // framed between the clock and the tip — nudged down
-                                             // to match the clock dial's own lower position
+  // Camera pans straight down the tower's height as the visitor scrolls —
+  // starts framing both the clock and the spire tip, ends mid-shaft so the
+  // base is never in view. Distance/angle stay fixed (no zoom); the tower's
+  // own rotation (ROTATION_SPEED below) is independent of this pan.
+  const CAM_TOP_Y = TOWER_HEIGHT * 0.79;
   const CAM_BOTTOM_Y = TOWER_HEIGHT * 0.32;
-  const CAM_DIST = 7.8;                     // constant — never zooms while scrolling
+  const CAM_DIST = 7.8;
   const CAM_ANGLE = 0.62; // radians off dead-center, for the 3/4 view
 
-  // Slow, continuous spin — independent of scroll. All 4 clock faces and the
-  // belfry lights are already 4-fold symmetric (see belfryLights/glassMat
-  // above) so the silhouette reads consistently at any rotation angle.
+  // All 4 clock faces and belfry lights are 4-fold symmetric, so the
+  // silhouette reads consistently at any rotation angle.
   const ROTATION_SPEED = 0.12; // radians/second (~52s per full turn)
 
   function scrollProgress() {
@@ -558,27 +419,14 @@ totalEmissiveRadiance += vec3(1.0, 0.86, 0.6) * mtDialGlow * 1.05;`);
     camera.lookAt(0, targetY, 0);
   }
 
-  // The raw scroll fraction jumps in large, discrete steps (mouse-wheel
-  // notches especially), which made the camera/tower visibly teleport
-  // between positions each tick instead of panning — the main source of the
-  // animation feeling janky. `smoothed` now eases toward `target` every
-  // rendered frame with frame-rate-independent exponential smoothing (a time
-  // constant, not a fixed per-frame step), so it closes the gap at the same
-  // real-world speed on a 60Hz or a 144Hz display instead of drifting out of
-  // sync with the actual scroll on fast/slow monitors.
+  // Raw scroll fraction jumps in discrete steps (mouse-wheel notches
+  // especially); `smoothed` eases toward `target` every frame with
+  // frame-rate-independent exponential smoothing so it closes the gap at
+  // the same real-world speed on any refresh rate instead of teleporting.
   let target = scrollProgress();
   let smoothed = target;
   applyProgress(smoothed);
 
-  // The page has `scroll-behavior: smooth` globally (used by the hero's own
-  // "scroll down" chevron and the nav's anchor links), which animates
-  // window.scrollY itself over ~200-300ms for any anchor-triggered scroll.
-  // That already-eased scrollY feeds into this same smoothing on top of it
-  // — two easing layers stacked — which read as sluggish/laggy rather than
-  // smooth. Tightened from 0.15 to 0.06 so this layer's own contribution is
-  // small enough to stay crisp even when compounded with the native
-  // smooth-scroll, while still absorbing raw mouse-wheel notch jumps (the
-  // teleporting this mechanism exists to fix) instead of hard-snapping.
   const SMOOTH_TAU = 0.06; // seconds to close ~63% of the remaining gap
   const SNAP_EPSILON = 0.0003;
 
@@ -592,12 +440,8 @@ totalEmissiveRadiance += vec3(1.0, 0.86, 0.6) * mtDialGlow * 1.05;`);
 
   function tick(now) {
     if (!inView) { running = false; return; }
-    // Resetting lastFrameT on every wake() would force dt=0 (a hard instant
-    // snap, via the else-branch below) each time a scroll resumes after the
-    // loop had stopped at rest — exactly the teleporting this smoothing is
-    // meant to remove. Leaving it as the last real frame time means a stale
-    // gap just clamps to a slightly larger (but still eased, not snapped)
-    // catch-up step on the first frame back.
+    // Leaving lastFrameT stale (not reset on wake) means a scroll resuming
+    // after idle just clamps to a larger eased catch-up step, not a snap.
     const dt = lastFrameT === null ? 0 : Math.min((now - lastFrameT) / 1000, 0.1);
     lastFrameT = now;
 
@@ -611,11 +455,9 @@ totalEmissiveRadiance += vec3(1.0, 0.86, 0.6) * mtDialGlow * 1.05;`);
     tower.rotation.y += ROTATION_SPEED * dt;
     renderer.render(scene, camera);
 
-    // The tower's own spin never settles (unlike the scroll-smoothing above,
-    // which does reach target and could previously stop the loop entirely at
-    // rest), so rendering now continues every frame for as long as the hero
-    // is in view — the earlier "stop once caught up" idle optimization only
-    // applied while nothing in the scene animated on its own.
+    // The tower's spin never settles, so rendering runs every frame for as
+    // long as the hero is in view (unlike the scroll-smoothing above, which
+    // does reach target).
     requestAnimationFrame(tick);
   }
 
@@ -624,11 +466,9 @@ totalEmissiveRadiance += vec3(1.0, 0.86, 0.6) * mtDialGlow * 1.05;`);
     wake();
   }, { passive: true });
 
-  // ResizeObserver on the hero itself (not just `window`) catches anything
-  // that changes its height — viewport resize, orientation change, or a
-  // late-swapping web font reflowing the layout — not only explicit window
-  // resizes. rAF-debounced so a burst of resize/observer callbacks (some
-  // browsers fire many in a row) collapses to one recompute per frame.
+  // ResizeObserver on the hero (not just `window`) also catches late-swapping
+  // web fonts reflowing the layout. rAF-debounced to collapse a resize burst
+  // into one recompute per frame.
   const scheduleResize = (() => {
     let scheduled = false;
     return () => {
@@ -655,5 +495,5 @@ totalEmissiveRadiance += vec3(1.0, 0.86, 0.6) * mtDialGlow * 1.05;`);
     }, { threshold: 0 }).observe(hero);
   }
 
-  wake(); // start the render loop (shadowMap.autoUpdate handles the shadow pass every frame from here)
+  wake(); // start the render loop
 })();

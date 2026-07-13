@@ -55,6 +55,17 @@ def dedupe(seq):
     return out
 
 
+# Source/company names carried over verbatim from third-party data that have
+# a known typo at the source (not something our own scripts introduced).
+SOURCE_NAME_FIXES = {
+    "Avramis Real Esate": "Avramis Real Estate",
+}
+
+
+def fix_source_name(name):
+    return SOURCE_NAME_FIXES.get(name, name)
+
+
 def slugify(s):
     return re.sub(r"[^a-z0-9]+", "-", (s or "").lower()).strip("-") or "listing"
 
@@ -196,7 +207,7 @@ def main():
                 "dogs": bool(amen.get("dogs_ok")),
                 "deposit": pricing.get("security_deposit") or None,
                 "utilities": bool(pricing.get("utilities_included")),
-                "source": a.get("source"),
+                "source": fix_source_name(a.get("source")),
                 "url": li.get("url") or "",
                 "images": u_imgs[:24],
                 "floorplans": u_fps[:6],
@@ -245,7 +256,8 @@ def main():
         # order units: priced + bedded first, cheapest $/person first
         units_out.sort(key=lambda u: (0 if u["pp"] else 1, u["pp"] or u["price"] or 1e9))
 
-        sources = dedupe((meta.get("sources") or []) + [a.get("source") for a in members])
+        sources = dedupe([fix_source_name(s) for s in (meta.get("sources") or [])] +
+                         [fix_source_name(a.get("source")) for a in members])
 
         out_buildings.append({
             "id": bid,
@@ -272,7 +284,7 @@ def main():
             "rating": round(ratings["avg_rating"], 1) if ratings.get("avg_rating") is not None else None,
             "num_reviews": ratings.get("num_reviews") or len(meta.get("reviews") or []),
             "category_averages": ratings.get("category_averages") or {},
-            "company": contact.get("company") or "",
+            "company": fix_source_name(contact.get("company") or ""),
             "phone": contact.get("phone") or "",
             "website": contact.get("website") or "",
             "email": contact.get("email") or "",

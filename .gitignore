@@ -74,5 +74,10 @@ scripts/ithaca_uids.txt
 
 # local dev / editor
 .claude/
-.tmp_ithaca/ _cl_live_cache
 data/*precleanbak*
+
+# scratch audit output / regenerable caches — not pipeline inputs
+data/_all_listings_audit.csv
+data/_audit_report.txt
+data/ui-libraries.json
+data/_cl_live_cache.json

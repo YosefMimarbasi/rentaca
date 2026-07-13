@@ -52,9 +52,8 @@
     return `<div class="gallery${single}">` + show.map((src, i) => {
       const more = (i === 4 && imgs.length > 5)
         ? `<div class="ov">+${imgs.length - 5} photos</div>` : "";
-      const cls = `g${i}` + (more ? " gallery__more" : "");
       return `<div class="${i === 0 ? "g0" : ""} ${more ? "gallery__more" : ""}" style="position:relative;${i === 0 ? "grid-row:1/3" : ""}">
-        <img class="lb" data-i="${i}" src="${esc(src)}" loading="lazy" alt="" onerror="this.style.opacity=.2">
+        <img class="lb" data-i="${i}" src="${esc(src)}" loading="lazy" alt="" onerror="this.outerHTML='<div class=ph style=width:100%;height:100%>No photo</div>'">
         ${more}</div>`;
     }).join("") + `</div>`;
   }
@@ -147,7 +146,17 @@
     }
 
     const am = b.amenities || {};
-    const amenLabels = { parking: "🅿️ Parking", laundry: "🧺 Laundry", ac: "❄️ A/C", furnished: "🛋️ Furnished", cats: "🐱 Cats OK", dogs: "🐶 Dogs OK" };
+    // Bootstrap Icons (Shoelace's set) has no cat/dog icons, so those two keep
+    // an emoji glyph — the rest map to real sl-icon names for visual parity
+    // with the rest of the site's icon system.
+    const amenLabels = {
+      parking: '<sl-icon name="car-front"></sl-icon> Parking',
+      laundry: '<sl-icon name="basket"></sl-icon> Laundry',
+      ac: '<sl-icon name="fan"></sl-icon> A/C',
+      furnished: '<sl-icon name="house-door"></sl-icon> Furnished',
+      cats: "🐱 Cats OK",
+      dogs: "🐶 Dogs OK",
+    };
     const amens = Object.keys(amenLabels).filter((k) => am[k]).map((k) => `<span class="amen">${amenLabels[k]}</span>`).join("");
 
     const contact = [];

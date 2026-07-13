@@ -10,12 +10,8 @@
 @import url("tokens.css");
 
 * { box-sizing: border-box; }
-/* scroll-behavior: smooth removed — it double-animates window.scrollY (its
-   own ~250-300ms ease) on top of the hero's own JS-driven camera smoothing
-   (assets/js/hero3d.js), stacking two competing easing curves that read as
-   sluggish/laggy on any anchor-triggered scroll (nav links, the hero's own
-   "scroll down" chevron). The hero's JS easing is the sole smoothing layer
-   now; anchor clicks jump instantly, which is an accepted tradeoff. */
+/* No scroll-behavior:smooth — it would double-animate scroll on top of the
+   hero's own JS camera smoothing (assets/js/hero3d.js). */
 html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
@@ -147,18 +143,14 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing:
 
 .hero__content { position: relative; z-index: 1; max-width: 900px; text-align: center; }
 .hero h1 {
-  /* white-space: nowrap (previous) forced the whole heading onto one line and
-     relied on font-size: min(3.7vw, 84px) alone to keep it inside its box —
-     at wider viewports (e.g. ~1440px) hero__content's own 900px max-width
-     caps the box before the vw-scaled font shrinks enough, so the unbreakable
-     line quietly overflowed its box by ~30px. Overflowing nowrap content
-     still paints centered around the box's own center (so it wasn't visibly
-     off-center there), but it's the wrong mechanism to guarantee that at
-     every width. Letting it wrap naturally is the robust fix: text-align:
-     center centers each line independently, so the heading is exactly
-     centered at any viewport size, whether it renders on one line or two. */
+  /* Wraps naturally (no white-space:nowrap) so text-align:center keeps it
+     exactly centered at any viewport width, even on 2 lines. */
   margin: 0 auto; max-width: 96vw; font-size: min(3.7vw, 84px); line-height: var(--lh-tight); font-weight: 800;
   color: #fff;
+}
+.hero h1 .grad {
+  background: linear-gradient(135deg, var(--red-hi), var(--red));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 
 .hero__scroll {
