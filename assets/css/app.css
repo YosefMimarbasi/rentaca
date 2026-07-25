@@ -7,7 +7,7 @@
    building.js work untouched.
    =========================================================================== */
 
-@import url("tokens.css?v=1");
+@import url("tokens.css?v=2");
 
 * { box-sizing: border-box; }
 /* No scroll-behavior:smooth — it would double-animate scroll on top of the

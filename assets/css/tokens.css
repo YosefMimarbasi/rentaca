@@ -10,6 +10,31 @@
    render unchanged.
    =========================================================================== */
 
+/* Self-hosted (SIL OFL, see assets/fonts/OFL.txt). Weight ranges map any
+   requested CSS font-weight to whichever of the 2 real files is closest,
+   so nothing gets browser-synthesized fake-bold. */
+@font-face {
+  font-family: "Redaction";
+  src: url("../fonts/Redaction-Regular.woff2") format("woff2");
+  font-weight: 100 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Redaction";
+  src: url("../fonts/Redaction-Bold.woff2") format("woff2");
+  font-weight: 700 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Redaction";
+  src: url("../fonts/Redaction-Italic.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
 :root {
   /* ---- Palette: Red / White / Black — nothing else ---- */
   --red:      #B31B1B;   /* Cornell red — the one accent */
@@ -64,9 +89,9 @@
   --sh-2: var(--ne-out);
   --sh-3: var(--ne-out-lg);
 
-  /* ---- Type — calm and rounded, not oversized ---- */
-  --font-display: "Plus Jakarta Sans", system-ui, sans-serif;
-  --font-body:    "Plus Jakarta Sans", system-ui, sans-serif;
+  /* ---- Type ---- */
+  --font-display: "Redaction", Georgia, "Times New Roman", serif;
+  --font-body:    "Redaction", Georgia, "Times New Roman", serif;
   --fs-hero:   clamp(40px, 7vw, 84px);
   --fs-h1:     clamp(30px, 4.4vw, 52px);
   --fs-h2:     clamp(24px, 3.2vw, 38px);
